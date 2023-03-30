@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+    <head>
+        <meta charset = "utf-8"/>
+        <title>WebGL Articulated Object App</title>
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+        <link href = "styles.css" rel = "stylesheet"></link>
+    </script>
+    </head>
+
+    <body>
+        <div class = "flex-container">
+            <div style="width: 30vw; padding: 30px; height: 100vh; overflow-y: auto;">
+                <h1 style="font-size:20px;">WebGL Articulated Object App</h1>
+                <div> 
+                    <div class = "inline-flex">
+                    <!-- <div class = "button-group">
+                        <button id = "hollow-cube-button" class = "button-elmt">Hollow Cube</button>
+                    </div>
+                    
+                    <div class = "button-group">
+                        <button id = "hollow-triangle-prisma-button" class = "button-elmt"> Hollow Triangle Prisma</button>
+                    </div>
+
+                    <div class = "button-group">
+                        <button id = "hollow-diamond-button" class = "button-elmt"> Hollow Diamond</button>
+                    </div> -->
+                </div>
+
+                    <div class = "inline-flex">
+                        <select id="projection-select" value = "" style = "margin-right: 10px">
+                            <option value="perspective">Perspective</option>
+                            <option value="orthographic">Orthographic</option>
+                            <option value="oblique">Oblique</option>
+                        </select>
+
+                        <div class = "button-group">
+                            <button id = "help-button" class = "button-elmt">How to Use</button>
+                        </div>
+
+                        <div id="help-modal" class="modal">
+                            <div class="modal-content">
+                                <span id="close-button">&times;</span>
+                                <h1>Sementara dikosongin dulu</h1>
+                            </div>
+                        
+                        </div>
+
+                    </div>
+
+
+                    <h3>Transformations</h3>
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>X axis translation: <output id="xtranslation">0</output></p> 
+                        </div>
+                        <div>Left<input type="range" min="-2000" max="2000" value="0" id="x-translate-slider" oninput="xtranslation.value=(value/1000).toFixed(2)">Right</div>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>Y axis translation: <output id="ytranslation">0</output></p> 
+                        </div>
+                        <div>Low<input type="range" min="-2000" max="2000" value="0" id="y-translate-slider" oninput="ytranslation.value=(value/1000).toFixed(2)">High</div>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>Z axis translation: <output id="ztranslation">0</output></p> 
+                        </div>
+                        <div>Near<input type="range" min="-2000" max="2000" value="0" id="z-translate-slider" oninput="ztranslation.value=(value/1000).toFixed(2)">Far</div>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 10vw;">
+                            <p>X axis rotation: <output id="xrotation">0</output></p> 
+                        </div>
+                        <div>-360<input type="range" min="-360" max="360" value="0" id="x-rotate-slider" oninput="xrotation.value=value">360</div>
+                        <input type = "checkbox" id = "x-rotate-checkbox" style = "margin-left: 15px">
+                        <label for = "x-rotate-checkbox" style="margin-right: 10px">Spin</label>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 10vw;">
+                            <p>Y axis rotation: <output id="yrotation">0</output></p> 
+                        </div>
+                        <div>-360<input type="range" min="-360" max="360" value="0" id="y-rotate-slider" oninput="yrotation.value=value">360</div>
+                        <input type = "checkbox" id = "y-rotate-checkbox" style = "margin-left: 15px">
+                        <label for = "y-rotate-checkbox" style="margin-right: 10px">Spin</label>
+                    </div>
+
+
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 10vw;">
+                            <p>Z axis rotation: <output id="zrotation">0</output></p> 
+                        </div>
+                        <div>-360<input type="range" min="-360" max="360" value="0" id="z-rotate-slider" oninput="zrotation.value=value">360</div>
+                        <input type = "checkbox" id = "z-rotate-checkbox" style = "margin-left: 15px">
+                        <label for = "z-rotate-checkbox" style="margin-right: 10px">Spin</label>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>X axis scaling: <output id="xscale">1.0</output></p> 
+                        </div>
+                        <div>Min<input type="range" min="100" max="2000" value="1000" id="x-scaling-slider" oninput="xscale.value=(value/1000).toFixed(2)">Max</div>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>Y axis scaling: <output id="yscale">1.0</output></p> 
+                        </div>
+                        <div>Min<input type="range" min="100" max="2000" value="1000" id="y-scaling-slider" oninput="yscale.value=(value/1000).toFixed(2)">Max</div>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>Z axis scaling: <output id="zscale">1.0</output></p> 
+                        </div>
+                        <div>Min<input type="range" min="100" max="2000" value="1000" id="z-scaling-slider" oninput="zscale.value=(value/1000).toFixed(2)">Max</div>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <input type = "checkbox" id = "shader-checkbox" checked>
+                        <label for = "shader-checkbox" style="margin-right: 10px">Use shader</label>
+                        <input type = "checkbox" id = "rotation-animation-checkbox">
+                        <label for = "rotation-animation-checkbox" style="margin-right: 10px">Rotation animation</label>
+                    </div>
+
+                    <h3>Camera Controls</h3>
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>Camera distance</p> 
+                        </div>
+                        <div>Near<input type="range" min="-7000" max="-3500" id="distance-slider">Far</div>
+                    </div>
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>Horizontal position</p> 
+                        </div>
+                        <div>Left<input type="range" min="-360" max="360" value="0" step = 1 id="horizontal-slider">Right</div>
+                    </div>
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>Vertical position</p> 
+                        </div>
+                        <div>Low<input type="range" min="0" max="180" value="90" step = 1 id="vertical-slider">High</div>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <div style="margin: -15px 15px -15px 0px; width: 9vw;">
+                            <p>FOV: <output id="fov">45</output></p> 
+                        </div>
+    
+                        <div>30<input type="range" min="30" max="90" value="45" step = 1  id="fov-slider" oninput="fov.value=value">90</div>
+                    </div>
+                  
+
+                    <div class = "inline-flex">
+                        <button id = "reset-button">Reset</button>
+                        <label class = "file-button">
+                            <input type = "file" id = "load-model-button">
+                            Load Model
+                        </label>
+                    </div>
+
+                    <div class = "inline-flex">
+                        <button id = "save-model-button" class = "file-button">Save Model</button>
+                        <input type = "text" id = "filename" class = "input-text" value = "" placeholder = "Input model output file name" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class = "flex-item-right">
+                <canvas id = "gl-canvas" width = 1300 height = 1300></canvas>
+            </div>
+
+        </div>
+
+    </body>
+    
+    <script src = "js/model/Cube.js"></script>
+    <script src = "js/matrix/utils.js"></script>
+    <script src = "js/matrix/lookAt.js"></script>
+    <script src = "js/matrix/rotate.js"></script>
+    <script src = "js/matrix/translate.js"></script>
+    <script src = "js/matrix/scale.js"></script>
+    <script src = "js/matrix/projections.js"></script>
+    <script src = "js/webgl/shaders.js"></script>
+    <script src = "js/webgl/buffers.js"></script>
+    <script src = "js/webgl/textures.js"></script>
+    <script src = "js/webgl/draw.js"></script>
+    <script src = "js/handlers.js"></script>
+    <script src = "js/main.js"></script>
+</html>
