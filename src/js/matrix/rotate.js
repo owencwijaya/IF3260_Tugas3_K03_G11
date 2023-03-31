@@ -115,6 +115,32 @@ const rotate = (modelViewMatrix, obj) => {
   return modelViewMatrix;
 };
 
+const rotateWithPivot = (modelViewMatrix, obj) => {
+  // modelViewMatrix = translate(
+  //   modelViewMatrix,
+  //   -obj.pivot[0],
+  //   -obj.pivot[1],
+  //   -obj.pivot[2]
+  // );
+
+  modelViewMatrix = translate(
+    modelViewMatrix,
+    obj.pivot[0],
+    obj.pivot[1],
+    obj.pivot[2]
+  );
+
+  modelViewMatrix = rotate(modelViewMatrix, obj);
+
+  modelViewMatrix = translate(
+    modelViewMatrix,
+    -obj.pivot[0],
+    -obj.pivot[1],
+    -obj.pivot[2]
+  );
+  return modelViewMatrix;
+};
+
 const autoRotate = (modelViewMatrix, cubeRotation) => {
   if (rotationAnimationCheckbox.checked) {
     modelViewMatrix = rotateZ(modelViewMatrix, (cubeRotation * 180) / Math.PI);
@@ -147,5 +173,24 @@ const autoRotate = (modelViewMatrix, cubeRotation) => {
     }
   }
 
+  return modelViewMatrix;
+};
+
+const autoRotateWithPivot = (modelViewMatrix, cubeRotation, obj) => {
+  modelViewMatrix = translate(
+    modelViewMatrix,
+    obj.pivot[0],
+    obj.pivot[1],
+    obj.pivot[2]
+  );
+
+  modelViewMatrix = autoRotate(modelViewMatrix, cubeRotation);
+
+  modelViewMatrix = translate(
+    modelViewMatrix,
+    -obj.pivot[0],
+    -obj.pivot[1],
+    -obj.pivot[2]
+  );
   return modelViewMatrix;
 };

@@ -6,6 +6,24 @@ projectionSelect.addEventListener("change", () => {
   requestAnimationFrame(render);
 });
 
+const componentSelect = document.getElementById("component-select");
+componentSelect.addEventListener("load", () => {
+  requestAnimationFrame(render);
+});
+
+const resetComponentSelect = (obj) => {
+  for (let i = componentSelect.options.length; i >= 1; i--) {
+    componentSelect.remove(i);
+  }
+
+  obj.cubeList.forEach((component) => {
+    const option = document.createElement("option");
+    option.value = component.name;
+    option.text = component.name;
+    componentSelect.add(option);
+  });
+};
+
 // const colorPicker = document.getElementById("color-picker");
 // colorPicker.addEventListener("input", () => {
 //   requestAnimationFrame(render);

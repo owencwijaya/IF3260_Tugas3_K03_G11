@@ -105,21 +105,49 @@ const draw = (gl, programInfo, obj, texture) => {
     projectionMatrix = transpose(ortho(-2.0, 2.0, -2.0, 2.0, zNear, zFar));
   }
 
-  // transformasi untuk model view matrix
-  modelViewMatrix = translate(modelViewMatrix, obj);
+  // transformasi apabila:
+  // 1. yang dipilih = "all"
+  // 2. object yang lagi di-render namanya sama dengan yang mau ditransform
 
-  if (
-    rotationAnimationCheckbox.checked ||
-    xRotateCheckbox.checked ||
-    yRotateCheckbox.checked ||
-    zRotateCheckbox.checked
-  ) {
-    modelViewMatrix = autoRotate(modelViewMatrix, cubeRotation);
-  } else {
-    modelViewMatrix = rotate(modelViewMatrix, obj);
+  if (componentSelect.value == "all" || obj.name == componentSelect.value) {
+    // transformasi untuk model view matrix
+    modelViewMatrix = translate(
+      modelViewMatrix,
+      (obj.config.translation.x + parseInt(xTranslateSlider.value)) / 1000,
+      (obj.config.translation.y + parseInt(yTranslateSlider.value)) / 1000,
+      (obj.config.translation.z + parseInt(zTranslateSlider.value)) / 1000
+    );
+
+    if (componentSelect.value == "all") {
+      if (
+        rotationAnimationCheckbox.checked ||
+        xRotateCheckbox.checked ||
+        yRotateCheckbox.checked ||
+        zRotateCheckbox.checked
+      ) {
+        modelViewMatrix = autoRotate(modelViewMatrix, cubeRotation);
+      } else {
+        modelViewMatrix = rotate(modelViewMatrix, obj);
+      }
+    } else if (obj.name == componentSelect.value) {
+      if (
+        rotationAnimationCheckbox.checked ||
+        xRotateCheckbox.checked ||
+        yRotateCheckbox.checked ||
+        zRotateCheckbox.checked
+      ) {
+        modelViewMatrix = autoRotateWithPivot(
+          modelViewMatrix,
+          cubeRotation,
+          obj
+        );
+      } else {
+        modelViewMatrix = rotateWithPivot(modelViewMatrix, obj);
+      }
+    }
+
+    modelViewMatrix = scale(modelViewMatrix, obj);
   }
-
-  modelViewMatrix = scale(modelViewMatrix, obj);
 
   let normalMatrix = invert(modelViewMatrix);
   normalMatrix = transpose(normalMatrix);

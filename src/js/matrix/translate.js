@@ -1,19 +1,18 @@
-const translateMatrix = (obj) => {
+const translateMatrix = (xValue, yValue, zValue) => {
   const factor = projectionSelect.value == "perspective" ? -1 : 1;
   return new Float32Array([
     1,
     0,
     0,
-    (obj.config.translation.x + parseInt(xTranslateSlider.value)) / 1000,
+    xValue,
     0,
     1,
     0,
-    (obj.config.translation.y + parseInt(yTranslateSlider.value)) / 1000,
+    yValue,
     0,
     0,
     1,
-    (factor * (obj.config.translation.z + parseInt(zTranslateSlider.value))) /
-      1000,
+    factor * zValue,
     0,
     0,
     0,
@@ -21,7 +20,10 @@ const translateMatrix = (obj) => {
   ]);
 };
 
-const translate = (modelViewMatrix, obj) => {
-  modelViewMatrix = multiply(transpose(translateMatrix(obj)), modelViewMatrix);
+const translate = (modelViewMatrix, xValue, yValue, zValue) => {
+  modelViewMatrix = multiply(
+    transpose(translateMatrix(xValue, yValue, zValue)),
+    modelViewMatrix
+  );
   return modelViewMatrix;
 };

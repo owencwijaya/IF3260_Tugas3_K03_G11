@@ -39,6 +39,8 @@ const programInfo = {
 
 let obj = new Steve();
 
+resetComponentSelect(obj);
+
 gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 
 const render = (now) => {

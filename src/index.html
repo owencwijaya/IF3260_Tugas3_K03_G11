@@ -38,6 +38,10 @@
                             <option value="oblique">Oblique</option>
                         </select>
 
+                        <select id="component-select" value = "" style = "margin-right: 10px">
+                            <option value = "all">Whole Body</option>
+                        </select>
+
                         <div class = "button-group">
                             <button id = "help-button" class = "button-elmt">How to Use</button>
                         </div>
@@ -89,7 +93,7 @@
                             <p>Y axis rotation: <output id="yrotation">0</output></p> 
                         </div>
                         <div>-360<input type="range" min="-360" max="360" value="0" id="y-rotate-slider" oninput="yrotation.value=value">360</div>
-                        <input type = "checkbox" id = "y-rotate-checkbox" style = "margin-left: 15px" checked>
+                        <input type = "checkbox" id = "y-rotate-checkbox" style = "margin-left: 15px">
                         <label for = "y-rotate-checkbox" style="margin-right: 10px">Spin</label>
                     </div>
 

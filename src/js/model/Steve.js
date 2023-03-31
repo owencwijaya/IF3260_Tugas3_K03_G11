@@ -3,11 +3,13 @@ class Steve {
     const obj = new Cube(
       "Body",
       [0, 0.4, 0],
+      [0, 0, 0],
       [0.4, 0.8, 0.2],
       "js/model/texture/pochita.jpg"
     );
     const obj2 = new Cube(
       "Head",
+      [0, 1.0, 0],
       [0, 1.0, 0],
       [0.4, 0.4, 0.4],
       "js/model/texture/amogus.jpg"
@@ -16,6 +18,7 @@ class Steve {
     const obj3 = new Cube(
       "Right Arm",
       [0.3, 0.4, 0],
+      [0.3, 0.7, 0],
       [0.2, 0.8, 0.2],
       "js/model/texture/amogus.jpg"
     );
@@ -23,6 +26,7 @@ class Steve {
     const obj4 = new Cube(
       "Left Arm",
       [-0.3, 0.4, 0],
+      [0.3, 0.7, 0],
       [0.2, 0.8, 0.2],
       "js/model/texture/amogus.jpg"
     );
@@ -30,6 +34,7 @@ class Steve {
     const obj5 = new Cube(
       "Right Leg",
       [0.1, -0.4, 0],
+      [0, 0, 0],
       [0.2, 0.8, 0.2],
       "js/model/texture/amogus.jpg"
     );
@@ -37,6 +42,7 @@ class Steve {
     const obj6 = new Cube(
       "Left Leg",
       [-0.1, -0.4, 0],
+      [0, 0, 0],
       [0.2, 0.8, 0.2],
       "js/model/texture/amogus.jpg"
     );
