@@ -51,6 +51,11 @@ const loadTexture = (gl, url) => {
     // kalo bukan, kita set wrapping to clamp to edge
     if (isPowerOf2(image.width) && isPowerOf2(image.height)) {
       gl.generateMipmap(gl.TEXTURE_2D);
+      gl.texParameteri(
+        gl.TEXTURE_2D,
+        gl.TEXTURE_MIN_FILTER,
+        gl.LINEAR_MIPMAP_LINEAR
+      );
     } else {
       // set parameter gl.TEXTURE_2D untuk wrap_s dan wrap_t (x dan y),
       // mau clamp to edge (bar ngga wrapping)

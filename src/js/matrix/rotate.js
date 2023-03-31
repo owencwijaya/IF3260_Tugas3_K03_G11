@@ -88,18 +88,27 @@ const rotateZ = (modelViewMatrix, degs) => {
   return modelViewMatrix;
 };
 
-const rotate = (modelViewMatrix) => {
+const rotate = (modelViewMatrix, obj) => {
   const factor = projectionSelect.value == "perspective" ? -1 : 1;
   modelViewMatrix = multiply(
-    rotateZMatrix(degreesToRadians(factor * parseInt(zRotateSlider.value))),
+    rotateZMatrix(
+      factor *
+        degreesToRadians(obj.config.rotation.z + parseInt(zRotateSlider.value))
+    ),
     modelViewMatrix
   );
   modelViewMatrix = multiply(
-    rotateYMatrix(degreesToRadians(factor * parseInt(yRotateSlider.value))),
+    rotateYMatrix(
+      factor *
+        degreesToRadians(obj.config.rotation.y + parseInt(yRotateSlider.value))
+    ),
     modelViewMatrix
   );
   modelViewMatrix = multiply(
-    rotateXMatrix(degreesToRadians(factor * parseInt(xRotateSlider.value))),
+    rotateXMatrix(
+      factor *
+        degreesToRadians(obj.config.rotation.x + parseInt(xRotateSlider.value))
+    ),
     modelViewMatrix
   );
 

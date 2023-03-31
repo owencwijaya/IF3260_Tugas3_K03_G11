@@ -37,12 +37,8 @@ const programInfo = {
   },
 };
 
-let obj = new Cube([0, 0, 0], [1, 1, 1]);
-let obj2 = new Cube([0, 1.5, 0], [1, 1, 1]);
-const imageUrl = "js/model/texture/pochita.jpg";
-const imageUrl2 = "js/model/texture/amogus.jpg";
-const texture = loadTexture(gl, imageUrl);
-const texture2 = loadTexture(gl, imageUrl2);
+let obj = new Steve();
+
 gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 
 const render = (now) => {
@@ -50,8 +46,10 @@ const render = (now) => {
   deltaTime = now - then;
   then = now;
 
-  draw(gl, programInfo, obj, texture);
-  draw(gl, programInfo, obj2, texture2);
+  for (let i = 0; i < obj.names.length; i++) {
+    draw(gl, programInfo, obj.cubeList[i], obj.textureList[i]);
+  }
+
   cubeRotation += deltaTime;
 
   requestAnimationFrame(render);

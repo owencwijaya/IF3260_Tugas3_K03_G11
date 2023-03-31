@@ -1,12 +1,24 @@
 /**
  * @class Cube
  * @classdesc base cube biasa, dipake untuk ngebangun articulated model
+ * @param {string} name nama dari kubus, PASTIKAN UNIK per objek
  * @param {number[]} middle titik tengah dari kubus
  * @param {number[]} length ekspektasi panjang
+ * @param {*} config konfigurasi translasi / rotasi / scaling dari setiap kubus
  */
 
 class Cube {
-  constructor(middle = [0, 0, 0], length = [1, 1, 1]) {
+  //prettier-ignore
+  constructor(
+    name = "", middle = [0, 0, 0], length = [1, 1, 1], texturePath = "",
+    config = {
+      translation: {x: 0, y: 0, z: 0},
+      rotation: {x: 0, y: 0, z: 0},
+      scale: {x: 1000, y: 1000, z: 1000},
+    }
+  ) {
+    this.name = name;
+
     this.x_middle = middle[0];
     this.y_middle = middle[1];
     this.z_middle = middle[2];
@@ -14,6 +26,10 @@ class Cube {
     this.x_length = length[0];
     this.y_length = length[1];
     this.z_length = length[2];
+    
+    this.texturePath = texturePath;
+
+    this.config = config;
 
     this.x_left = this.x_middle - this.x_length / 2;
     this.x_right = this.x_middle + this.x_length / 2;
@@ -21,14 +37,6 @@ class Cube {
     this.y_down = this.y_middle - this.y_length / 2;
     this.z_front = this.z_middle + this.z_length / 2;
     this.z_back = this.z_middle - this.z_length / 2;
-    console.log(
-      this.x_left,
-      this.x_right,
-      this.y_up,
-      this.y_down,
-      this.z_front,
-      this.z_back
-    );
 
     // prettier-ignore
     this.vertices = [

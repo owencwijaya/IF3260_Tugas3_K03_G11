@@ -106,7 +106,7 @@ const draw = (gl, programInfo, obj, texture) => {
   }
 
   // transformasi untuk model view matrix
-  modelViewMatrix = translate(modelViewMatrix);
+  modelViewMatrix = translate(modelViewMatrix, obj);
 
   if (
     rotationAnimationCheckbox.checked ||
@@ -116,10 +116,10 @@ const draw = (gl, programInfo, obj, texture) => {
   ) {
     modelViewMatrix = autoRotate(modelViewMatrix, cubeRotation);
   } else {
-    modelViewMatrix = rotate(modelViewMatrix);
+    modelViewMatrix = rotate(modelViewMatrix, obj);
   }
 
-  modelViewMatrix = scale(modelViewMatrix);
+  modelViewMatrix = scale(modelViewMatrix, obj);
 
   let normalMatrix = invert(modelViewMatrix);
   normalMatrix = transpose(normalMatrix);
