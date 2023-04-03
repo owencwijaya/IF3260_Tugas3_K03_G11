@@ -37,7 +37,8 @@ const programInfo = {
   },
 };
 
-let obj = new Steve();
+// let obj = new Steve();
+let obj = new Chicken();
 
 gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 
