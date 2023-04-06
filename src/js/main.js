@@ -5,17 +5,25 @@ let then = 0;
 let loaded = false;
 
 const gl_canvas = document.getElementById("gl-canvas");
+const component_canvas = document.getElementById("component-canvas");
 
 const gl =
   gl_canvas.getContext("webgl") || gl_canvas.getContext("experimental-webgl");
-
-gl.canvas.width = innerHeight;
-gl.canvas.height = innerHeight;
+const componentGl =
+  component_canvas.getContext("webgl") ||
+  component_canvas.getContext("experimental-webgl");
 
 gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 gl.enable(gl.DEPTH_TEST);
+gl.canvas.width = innerHeight;
+gl.canvas.height = innerHeight;
+
+componentGl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+componentGl.enable(gl.DEPTH_TEST);
+componentGl.canvas.width = componentGl.canvas.height;
 
 const shaderProgram = initShaders(gl);
+const componentShaderProgram = initShaders(componentGl);
 
 const programInfo = {
   program: shaderProgram,
@@ -37,6 +45,49 @@ const programInfo = {
   },
 };
 
+const componentProgramInfo = {
+  program: componentShaderProgram,
+  attribLocations: {
+    vertexPosition: componentGl.getAttribLocation(
+      componentShaderProgram,
+      "aVertexPosition"
+    ),
+    vertexNormal: componentGl.getAttribLocation(
+      componentShaderProgram,
+      "aVertexNormal"
+    ),
+    textureCoord: componentGl.getAttribLocation(
+      componentShaderProgram,
+      "aTextureCoord"
+    ),
+  },
+  uniformLocations: {
+    projectionMatrix: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uProjectionMatrix"
+    ),
+    modelViewMatrix: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uModelViewMatrix"
+    ),
+    normalMatrix: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uNormalMatrix"
+    ),
+    uSampler: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uSampler"
+    ),
+    ambientLight: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uAmbientLight"
+    ),
+    directionalVector: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uDirectionalVector"
+    ),
+  },
+};
 // let obj = new Steve();
 let obj = new Chicken();
 
@@ -50,7 +101,16 @@ const render = (now) => {
   then = now;
 
   for (let i = 0; i < obj.names.length; i++) {
-    draw(gl, programInfo, obj.cubeList[i], obj.textureList[i]);
+    draw(gl, programInfo, obj.cubeList[i], obj.textureList[i], false);
+    if (obj.cubeList[i].name == componentSelect.value) {
+      draw(
+        componentGl,
+        componentProgramInfo,
+        obj.cubeList[i],
+        obj.componentTextureList[i],
+        true
+      );
+    }
   }
 
   cubeRotation += deltaTime;

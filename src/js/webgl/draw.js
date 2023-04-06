@@ -65,7 +65,7 @@ const setTextureAttribute = (gl, programInfo, textures) => {
  * @param {*} obj objek yang mau di-render
  * @param {*} texture gambar texture
  */
-const draw = (gl, programInfo, obj, texture) => {
+const draw = (gl, programInfo, obj, texture, drawComponent) => {
   gl.clearColor(0.0, 0.0, 0.0, 1.0); // set warna background
   gl.clearDepth(1.0); //clear everything
   gl.enable(gl.DEPTH_TEST); // enable depth testing
@@ -73,6 +73,14 @@ const draw = (gl, programInfo, obj, texture) => {
 
   gl.canvas.width = innerHeight;
   gl.canvas.height = innerHeight;
+
+  let projection;
+
+  if (drawComponent) {
+    projection = componentProjectionSelect.value;
+  } else {
+    projection = projectionSelect.value;
+  }
 
   let modelViewMatrix = null;
   let projectionMatrix = null;
@@ -95,9 +103,9 @@ const draw = (gl, programInfo, obj, texture) => {
   modelViewMatrix = lookAtMatrix;
 
   // setup projection matrix
-  if (projectionSelect.value == "perspective") {
+  if (projection == "perspective") {
     projectionMatrix = transpose(perspective(fov, aspect, 0.1, 100.0));
-  } else if (projectionSelect.value == "oblique") {
+  } else if (projection == "oblique") {
     const orthoMatrix = ortho(-2.0, 2.0, -2.0, 2.0, zNear, zFar);
     const obliqueMatrix = oblique(-angle, -angle);
     projectionMatrix = transpose(multiply(obliqueMatrix, orthoMatrix));
@@ -105,49 +113,26 @@ const draw = (gl, programInfo, obj, texture) => {
     projectionMatrix = transpose(ortho(-2.0, 2.0, -2.0, 2.0, zNear, zFar));
   }
 
-  // transformasi apabila:
-  // 1. yang dipilih = "all"
-  // 2. object yang lagi di-render namanya sama dengan yang mau ditransform
+  modelViewMatrix = translate(
+    modelViewMatrix,
+    (obj.config.translation.x + parseInt(xTranslateSlider.value)) / 1000,
+    (obj.config.translation.y + parseInt(yTranslateSlider.value)) / 1000,
+    (obj.config.translation.z + parseInt(zTranslateSlider.value)) / 1000
+  );
 
-  if (componentSelect.value == "all" || obj.name == componentSelect.value) {
-    // transformasi untuk model view matrix
-    modelViewMatrix = translate(
-      modelViewMatrix,
-      (obj.config.translation.x + parseInt(xTranslateSlider.value)) / 1000,
-      (obj.config.translation.y + parseInt(yTranslateSlider.value)) / 1000,
-      (obj.config.translation.z + parseInt(zTranslateSlider.value)) / 1000
-    );
+  // transformasi untuk model view matrix
 
-    if (componentSelect.value == "all") {
-      if (
-        rotationAnimationCheckbox.checked ||
-        xRotateCheckbox.checked ||
-        yRotateCheckbox.checked ||
-        zRotateCheckbox.checked
-      ) {
-        modelViewMatrix = autoRotate(modelViewMatrix, cubeRotation);
-      } else {
-        modelViewMatrix = rotate(modelViewMatrix, obj);
-      }
-    } else if (obj.name == componentSelect.value) {
-      if (
-        rotationAnimationCheckbox.checked ||
-        xRotateCheckbox.checked ||
-        yRotateCheckbox.checked ||
-        zRotateCheckbox.checked
-      ) {
-        modelViewMatrix = autoRotateWithPivot(
-          modelViewMatrix,
-          cubeRotation,
-          obj
-        );
-      } else {
-        modelViewMatrix = rotateWithPivot(modelViewMatrix, obj);
-      }
-    }
-
-    modelViewMatrix = scale(modelViewMatrix, obj);
+  if (
+    xRotateCheckbox.checked ||
+    yRotateCheckbox.checked ||
+    zRotateCheckbox.checked
+  ) {
+    modelViewMatrix = autoRotate(modelViewMatrix, cubeRotation);
+  } else {
+    modelViewMatrix = rotate(modelViewMatrix, obj);
   }
+
+  modelViewMatrix = scale(modelViewMatrix, obj);
 
   let normalMatrix = invert(modelViewMatrix);
   normalMatrix = transpose(normalMatrix);

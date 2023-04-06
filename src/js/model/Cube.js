@@ -12,7 +12,7 @@
 class Cube {
   //prettier-ignore
   constructor(
-    name = "", middle = [0, 0, 0], pivot = [0, 0, 0], length = [1, 1, 1], texturePath = "",
+    name = "", middle = [0, 0, 0], length = [1, 1, 1], texturePath = "",
     config = {
       translation: {x: 0, y: 0, z: 0},
       rotation: {x: 0, y: 0, z: 0},
@@ -24,8 +24,6 @@ class Cube {
     this.x_middle = middle[0];
     this.y_middle = middle[1];
     this.z_middle = middle[2];
-
-    this.pivot = pivot;
 
     this.x_length = length[0];
     this.y_length = length[1];

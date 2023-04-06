@@ -6,46 +6,10 @@ projectionSelect.addEventListener("change", () => {
   requestAnimationFrame(render);
 });
 
-const componentSelect = document.getElementById("component-select");
-componentSelect.addEventListener("load", () => {
-  requestAnimationFrame(render);
-});
-
-const resetComponentSelect = (obj) => {
-  for (let i = componentSelect.options.length; i >= 1; i--) {
-    componentSelect.remove(i);
-  }
-
-  obj.cubeList.forEach((component) => {
-    const option = document.createElement("option");
-    option.value = component.name;
-    option.text = component.name;
-    componentSelect.add(option);
-  });
-};
-
 // const colorPicker = document.getElementById("color-picker");
 // colorPicker.addEventListener("input", () => {
 //   requestAnimationFrame(render);
 // });
-
-const helpModal = document.getElementById("help-modal");
-
-const helpButton = document.getElementById("help-button");
-helpButton.addEventListener("click", () => {
-  helpModal.style.display = "block";
-});
-
-const closeButton = document.getElementById("close-button");
-closeButton.addEventListener("click", () => {
-  helpModal.style.display = "none";
-});
-
-window.onclick = function (event) {
-  if (event.target == helpModal) {
-    helpModal.style.display = "none";
-  }
-};
 
 const xTranslateSlider = document.getElementById("x-translate-slider");
 xTranslateSlider.addEventListener("input", () => {
@@ -112,18 +76,18 @@ shaderCheckbox.addEventListener("change", () => {
   requestAnimationFrame(render);
 });
 
-const rotationAnimationCheckbox = document.getElementById(
-  "rotation-animation-checkbox"
-);
-rotationAnimationCheckbox.addEventListener("change", () => {
-  xRotateSlider.disabled = rotationAnimationCheckbox.checked;
-  yRotateSlider.disabled = rotationAnimationCheckbox.checked;
-  zRotateSlider.disabled = rotationAnimationCheckbox.checked;
-  xRotateCheckbox.disabled = rotationAnimationCheckbox.checked;
-  yRotateCheckbox.disabled = rotationAnimationCheckbox.checked;
-  zRotateCheckbox.disabled = rotationAnimationCheckbox.checked;
-  requestAnimationFrame(render);
-});
+// const rotationAnimationCheckbox = document.getElementById(
+//   "rotation-animation-checkbox"
+// );
+// rotationAnimationCheckbox.addEventListener("change", () => {
+//   xRotateSlider.disabled = rotationAnimationCheckbox.checked;
+//   yRotateSlider.disabled = rotationAnimationCheckbox.checked;
+//   zRotateSlider.disabled = rotationAnimationCheckbox.checked;
+//   xRotateCheckbox.disabled = rotationAnimationCheckbox.checked;
+//   yRotateCheckbox.disabled = rotationAnimationCheckbox.checked;
+//   zRotateCheckbox.disabled = rotationAnimationCheckbox.checked;
+//   requestAnimationFrame(render);
+// });
 
 const distanceSlider = document.getElementById("distance-slider");
 distanceSlider.addEventListener("input", () => {
@@ -257,3 +221,21 @@ loadModelButton.addEventListener("change", () => {
   reset();
   loadModelButton.value = "";
 });
+
+const helpModal = document.getElementById("help-modal");
+
+const helpButton = document.getElementById("help-button");
+helpButton.addEventListener("click", () => {
+  helpModal.style.display = "block";
+});
+
+const closeButton = document.getElementById("close-button");
+closeButton.addEventListener("click", () => {
+  helpModal.style.display = "none";
+});
+
+window.onclick = function (event) {
+  if (event.target == helpModal) {
+    helpModal.style.display = "none";
+  }
+};
