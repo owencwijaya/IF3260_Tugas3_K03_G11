@@ -33,8 +33,10 @@ const loadTexture = (gl, url) => {
     pixel
   );
 
-  const image = new Image();
-  image.onload = () => {
+  let image = new Image();
+  image.src = url;
+  image.addEventListener("load", () => {
+    console.log("image loaded");
     // bind texture, terus ubah texture jadi gambar
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.texImage2D(
@@ -64,9 +66,7 @@ const loadTexture = (gl, url) => {
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     }
-  };
-
-  image.src = url;
+  });
 
   return texture;
 };

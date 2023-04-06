@@ -329,7 +329,7 @@
             <div style="margin: -15px 15px -15px 0px; width: 9vw">
               <p>
                 X axis translation:
-                <output id="component-xtranslation">0</output>
+                <output id="component_xtranslation">0</output>
               </p>
             </div>
             <div>
@@ -339,7 +339,7 @@
                 max="2000"
                 value="0"
                 id="component-x-translate-slider"
-                oninput="xtranslation.value=(value/1000).toFixed(2)"
+                oninput="component_xtranslation.value=(value/1000).toFixed(2)"
               />Right
             </div>
           </div>
@@ -348,7 +348,7 @@
             <div style="margin: -15px 15px -15px 0px; width: 9vw">
               <p>
                 Y axis translation:
-                <output id="component-ytranslation">0</output>
+                <output id="component_ytranslation">0</output>
               </p>
             </div>
             <div>
@@ -358,7 +358,7 @@
                 max="2000"
                 value="0"
                 id="component-y-translate-slider"
-                oninput="ytranslation.value=(value/1000).toFixed(2)"
+                oninput="component_ytranslation.value=(value/1000).toFixed(2)"
               />High
             </div>
           </div>
@@ -367,7 +367,7 @@
             <div style="margin: -15px 15px -15px 0px; width: 9vw">
               <p>
                 Z axis translation:
-                <output id="component-ztranslation">0</output>
+                <output id="component_ztranslation">0</output>
               </p>
             </div>
             <div>
@@ -377,7 +377,7 @@
                 max="2000"
                 value="0"
                 id="component-z-translate-slider"
-                oninput="ztranslation.value=(value/1000).toFixed(2)"
+                oninput="component_ztranslation.value=(value/1000).toFixed(2)"
               />Far
             </div>
           </div>
@@ -385,7 +385,7 @@
           <div class="inline-flex">
             <div style="margin: -15px 15px -15px 0px; width: 10vw">
               <p>
-                X axis rotation: <output id="component-xrotation">0</output>
+                X axis rotation: <output id="component_xrotation">0</output>
               </p>
             </div>
             <div>
@@ -395,7 +395,7 @@
                 max="360"
                 value="0"
                 id="component-x-rotate-slider"
-                oninput="xrotation.value=value"
+                oninput="component_xrotation.value=value"
               />360
             </div>
             <input
@@ -411,7 +411,7 @@
           <div class="inline-flex">
             <div style="margin: -15px 15px -15px 0px; width: 10vw">
               <p>
-                Y axis rotation: <output id="component-yrotation">0</output>
+                Y axis rotation: <output id="component_yrotation">0</output>
               </p>
             </div>
             <div>
@@ -421,7 +421,7 @@
                 max="360"
                 value="0"
                 id="component-y-rotate-slider"
-                oninput="yrotation.value=value"
+                oninput="component_yrotation.value=value"
               />360
             </div>
             <input
@@ -437,7 +437,7 @@
           <div class="inline-flex">
             <div style="margin: -15px 15px -15px 0px; width: 10vw">
               <p>
-                Z axis rotation: <output id="component-zrotation">0</output>
+                Z axis rotation: <output id="component_zrotation">0</output>
               </p>
             </div>
             <div>
@@ -447,7 +447,7 @@
                 max="360"
                 value="0"
                 id="component-z-rotate-slider"
-                oninput="zrotation.value=value"
+                oninput="component_zrotation.value=value"
               />360
             </div>
             <input
@@ -472,7 +472,7 @@
         <div class="component-column">
           <div class="inline-flex">
             <div style="margin: -15px 15px -15px 0px; width: 9vw">
-              <p>X axis scaling: <output id="component-xscale">1.0</output></p>
+              <p>X axis scaling: <output id="component_xscale">1.0</output></p>
             </div>
             <div>
               Min<input
@@ -481,14 +481,14 @@
                 max="2000"
                 value="1000"
                 id="component-x-scaling-slider"
-                oninput="xscale.value=(value/1000).toFixed(2)"
+                oninput="component_xscale.value=(value/1000).toFixed(2)"
               />Max
             </div>
           </div>
 
           <div class="inline-flex">
             <div style="margin: -15px 15px -15px 0px; width: 9vw">
-              <p>Y axis scaling: <output id="component-yscale">1.0</output></p>
+              <p>Y axis scaling: <output id="component_yscale">1.0</output></p>
             </div>
             <div>
               Min<input
@@ -497,14 +497,14 @@
                 max="2000"
                 value="1000"
                 id="component-y-scaling-slider"
-                oninput="yscale.value=(value/1000).toFixed(2)"
+                oninput="component_yscale.value=(value/1000).toFixed(2)"
               />Max
             </div>
           </div>
 
           <div class="inline-flex">
             <div style="margin: -15px 15px -15px 0px; width: 9vw">
-              <p>Z axis scaling: <output id="component-zscale">1.0</output></p>
+              <p>Z axis scaling: <output id="component_zscale">1.0</output></p>
             </div>
             <div>
               Min<input
@@ -513,7 +513,7 @@
                 max="2000"
                 value="1000"
                 id="component-z-scaling-slider"
-                oninput="zscale.value=(value/1000).toFixed(2)"
+                oninput="component_zscale.value=(value/1000).toFixed(2)"
               />Max
             </div>
           </div>
@@ -564,7 +564,7 @@
 
           <div class="inline-flex">
             <div style="margin: -15px 15px -15px 0px; width: 9vw">
-              <p>FOV: <output id="component-fov">45</output></p>
+              <p>FOV: <output id="component_fov">45</output></p>
             </div>
 
             <div>
@@ -575,7 +575,7 @@
                 value="45"
                 step="1"
                 id="component-fov-slider"
-                oninput="fov.value=value"
+                oninput="component_fov.value=value"
               />90
             </div>
           </div>

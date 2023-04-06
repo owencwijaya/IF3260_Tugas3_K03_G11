@@ -97,17 +97,17 @@ const draw = (gl, programInfo, obj, texture, drawComponent) => {
       (obj.config.translation.z + parseInt(componentZTranslateSlider.value)) /
       1000;
 
-    rotateX = obj.config.translation.x + parseInt(componentXRotateSlider.value);
-    rotateY = obj.config.translation.y + parseInt(componentYRotateSlider.value);
-    rotateZ = obj.config.translation.z + parseInt(componentZRotateSlider.value);
+    rotateX = parseInt(componentXRotateSlider.value);
+    rotateY = parseInt(componentYRotateSlider.value);
+    rotateZ = parseInt(componentZRotateSlider.value);
 
     rotateXChecked = componentXRotateCheckbox.checked;
     rotateYChecked = componentYRotateCheckbox.checked;
     rotateZChecked = componentZRotateCheckbox.checked;
 
-    scaleX = componentXScalingSlider.value;
-    scaleY = componentYScalingSlider.value;
-    scaleZ = componentZScalingSlider.value;
+    scaleX = parseFloat(componentXScalingSlider.value);
+    scaleY = parseFloat(componentYScalingSlider.value);
+    scaleZ = parseFloat(componentZScalingSlider.value);
 
     distance =
       (parseInt(componentDistanceSlider.min) +
@@ -119,28 +119,46 @@ const draw = (gl, programInfo, obj, texture, drawComponent) => {
       (parseInt(componentHorizontalSlider.value) * Math.PI) / 180;
     verticalAngle = (parseInt(componentVerticalSlider.value) * Math.PI) / 180;
     shaderOn = componentShaderCheckbox.checked;
+
+    // update config per component
+    obj.config.translation.x = translateX;
+    obj.config.translation.y = translateY;
+    obj.config.translation.z = translateZ;
+    obj.config.rotation.x = rotateX;
+    obj.config.rotation.y = rotateY;
+    obj.config.rotation.z = rotateZ;
+    obj.config.scale.x = scaleX;
+    obj.config.scale.y = scaleY;
+    obj.config.scale.z = scaleZ;
   } else {
     projection = projectionSelect.value;
     angle = fovSlider.value;
 
     translateX =
-      (obj.config.translation.x + parseInt(xTranslateSlider.value)) / 1000;
+      (obj.config.translation.x * 1000 + parseInt(xTranslateSlider.value)) /
+      1000;
     translateY =
-      (obj.config.translation.y + parseInt(yTranslateSlider.value)) / 1000;
+      (obj.config.translation.y * 1000 + parseInt(yTranslateSlider.value)) /
+      1000;
     translateZ =
-      (obj.config.translation.z + parseInt(zTranslateSlider.value)) / 1000;
+      (obj.config.translation.z * 1000 + parseInt(zTranslateSlider.value)) /
+      1000;
 
-    rotateX = obj.config.translation.x + parseInt(xRotateSlider.value);
-    rotateY = obj.config.translation.y + parseInt(yRotateSlider.value);
-    rotateZ = obj.config.translation.z + parseInt(zRotateSlider.value);
+    if (obj.name == componentSelect.value) {
+      console.log(translateX, translateY, translateZ);
+    }
+
+    rotateX = obj.config.rotation.x + parseInt(xRotateSlider.value);
+    rotateY = obj.config.rotation.y + parseInt(yRotateSlider.value);
+    rotateZ = obj.config.rotation.z + parseInt(zRotateSlider.value);
 
     rotateXChecked = xRotateCheckbox.checked;
     rotateYChecked = yRotateCheckbox.checked;
     rotateZChecked = zRotateCheckbox.checked;
 
-    scaleX = xScalingSlider.value;
-    scaleY = yScalingSlider.value;
-    scaleZ = zScalingSlider.value;
+    scaleX = obj.config.scale.x + parseFloat(xScalingSlider.value) - 1000;
+    scaleY = obj.config.scale.y + parseFloat(yScalingSlider.value) - 1000;
+    scaleZ = obj.config.scale.z + parseFloat(zScalingSlider.value) - 1000;
 
     distance =
       (parseInt(distanceSlider.min) +
