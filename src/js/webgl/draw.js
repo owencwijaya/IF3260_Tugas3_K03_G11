@@ -75,11 +75,82 @@ const draw = (gl, programInfo, obj, texture, drawComponent) => {
   gl.canvas.height = innerHeight;
 
   let projection;
+  let angle;
+  let translateX, translateY, translateZ;
+  let rotateX, rotateY, rotateZ;
+  let scaleX, scaleY, scaleZ;
+  let rotateXChecked, rotateYChecked, rotateZChecked;
+  let distance, horizontalAngle, verticalAngle;
+  let shaderOn;
 
   if (drawComponent) {
     projection = componentProjectionSelect.value;
+    angle = componentFovSlider.value;
+
+    translateX =
+      (obj.config.translation.x + parseInt(componentXTranslateSlider.value)) /
+      1000;
+    translateY =
+      (obj.config.translation.y + parseInt(componentYTranslateSlider.value)) /
+      1000;
+    translateZ =
+      (obj.config.translation.z + parseInt(componentZTranslateSlider.value)) /
+      1000;
+
+    rotateX = obj.config.translation.x + parseInt(componentXRotateSlider.value);
+    rotateY = obj.config.translation.y + parseInt(componentYRotateSlider.value);
+    rotateZ = obj.config.translation.z + parseInt(componentZRotateSlider.value);
+
+    rotateXChecked = componentXRotateCheckbox.checked;
+    rotateYChecked = componentYRotateCheckbox.checked;
+    rotateZChecked = componentZRotateCheckbox.checked;
+
+    scaleX = componentXScalingSlider.value;
+    scaleY = componentYScalingSlider.value;
+    scaleZ = componentZScalingSlider.value;
+
+    distance =
+      (parseInt(componentDistanceSlider.min) +
+        parseInt(componentDistanceSlider.max) -
+        componentDistanceSlider.value) /
+      1000;
+
+    horizontalAngle =
+      (parseInt(componentHorizontalSlider.value) * Math.PI) / 180;
+    verticalAngle = (parseInt(componentVerticalSlider.value) * Math.PI) / 180;
+    shaderOn = componentShaderCheckbox.checked;
   } else {
     projection = projectionSelect.value;
+    angle = fovSlider.value;
+
+    translateX =
+      (obj.config.translation.x + parseInt(xTranslateSlider.value)) / 1000;
+    translateY =
+      (obj.config.translation.y + parseInt(yTranslateSlider.value)) / 1000;
+    translateZ =
+      (obj.config.translation.z + parseInt(zTranslateSlider.value)) / 1000;
+
+    rotateX = obj.config.translation.x + parseInt(xRotateSlider.value);
+    rotateY = obj.config.translation.y + parseInt(yRotateSlider.value);
+    rotateZ = obj.config.translation.z + parseInt(zRotateSlider.value);
+
+    rotateXChecked = xRotateCheckbox.checked;
+    rotateYChecked = yRotateCheckbox.checked;
+    rotateZChecked = zRotateCheckbox.checked;
+
+    scaleX = xScalingSlider.value;
+    scaleY = yScalingSlider.value;
+    scaleZ = zScalingSlider.value;
+
+    distance =
+      (parseInt(distanceSlider.min) +
+        parseInt(distanceSlider.max) -
+        distanceSlider.value) /
+      1000;
+
+    horizontalAngle = (parseInt(horizontalSlider.value) * Math.PI) / 180;
+    verticalAngle = (parseInt(verticalSlider.value) * Math.PI) / 180;
+    shaderOn = shaderCheckbox.checked;
   }
 
   let modelViewMatrix = null;
@@ -87,7 +158,6 @@ const draw = (gl, programInfo, obj, texture, drawComponent) => {
   let lookAtMatrix = null;
 
   // setup variabel untuk projection
-  const angle = fovSlider.value;
   const fov = (angle * Math.PI) / 180;
   const zNear = 0.1;
   const zFar = 10;
@@ -98,8 +168,18 @@ const draw = (gl, programInfo, obj, texture, drawComponent) => {
   const modelViewMatrixLoc = programInfo.uniformLocations.modelViewMatrix;
   const normalMatrixLoc = programInfo.uniformLocations.normalMatrix;
 
+  const factor = projection == "perspective" ? -1 : 1;
+
+  const eye = [
+    Math.sin(horizontalAngle) * Math.sin(verticalAngle) * distance,
+    Math.cos(verticalAngle) * distance,
+    Math.cos(horizontalAngle) * Math.sin(verticalAngle) * distance * factor,
+  ];
+
+  const at = [0, 0, factor];
+
   // inisialisasi model view matrix
-  lookAtMatrix = getLookAt();
+  lookAtMatrix = lookAt(eye, at, [0, 1, 0]);
   modelViewMatrix = lookAtMatrix;
 
   // setup projection matrix
@@ -115,24 +195,25 @@ const draw = (gl, programInfo, obj, texture, drawComponent) => {
 
   modelViewMatrix = translate(
     modelViewMatrix,
-    (obj.config.translation.x + parseInt(xTranslateSlider.value)) / 1000,
-    (obj.config.translation.y + parseInt(yTranslateSlider.value)) / 1000,
-    (obj.config.translation.z + parseInt(zTranslateSlider.value)) / 1000
+    translateX,
+    translateY,
+    translateZ
   );
 
   // transformasi untuk model view matrix
-
-  if (
-    xRotateCheckbox.checked ||
-    yRotateCheckbox.checked ||
-    zRotateCheckbox.checked
-  ) {
-    modelViewMatrix = autoRotate(modelViewMatrix, cubeRotation);
+  if (rotateXChecked || rotateYChecked || rotateZChecked) {
+    modelViewMatrix = autoRotate(
+      modelViewMatrix,
+      cubeRotation,
+      rotateXChecked,
+      rotateYChecked,
+      rotateZChecked
+    );
   } else {
-    modelViewMatrix = rotate(modelViewMatrix, obj);
+    modelViewMatrix = rotate(modelViewMatrix, rotateX, rotateY, rotateZ);
   }
 
-  modelViewMatrix = scale(modelViewMatrix, obj);
+  modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
 
   let normalMatrix = invert(modelViewMatrix);
   normalMatrix = transpose(normalMatrix);
@@ -159,7 +240,7 @@ const draw = (gl, programInfo, obj, texture, drawComponent) => {
   );
 
   // enable / disable normal attribute
-  if (shaderCheckbox.checked) {
+  if (shaderOn) {
     setNormalAttribute(gl, programInfo, obj.normalVertices);
     gl.uniform3fv(programInfo.uniformLocations.ambientLight, [0.4, 0.4, 0.4]);
   } else {

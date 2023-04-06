@@ -88,27 +88,18 @@ const rotateZ = (modelViewMatrix, degs) => {
   return modelViewMatrix;
 };
 
-const rotate = (modelViewMatrix, obj) => {
+const rotate = (modelViewMatrix, rotateX, rotateY, rotateZ) => {
   const factor = projectionSelect.value == "perspective" ? -1 : 1;
   modelViewMatrix = multiply(
-    rotateZMatrix(
-      factor *
-        degreesToRadians(obj.config.rotation.z + parseInt(zRotateSlider.value))
-    ),
+    rotateZMatrix(factor * degreesToRadians(rotateX)),
     modelViewMatrix
   );
   modelViewMatrix = multiply(
-    rotateYMatrix(
-      factor *
-        degreesToRadians(obj.config.rotation.y + parseInt(yRotateSlider.value))
-    ),
+    rotateYMatrix(factor * degreesToRadians(rotateY)),
     modelViewMatrix
   );
   modelViewMatrix = multiply(
-    rotateXMatrix(
-      factor *
-        degreesToRadians(obj.config.rotation.x + parseInt(xRotateSlider.value))
-    ),
+    rotateXMatrix(factor * degreesToRadians(rotateZ)),
     modelViewMatrix
   );
 
@@ -141,25 +132,20 @@ const rotateWithPivot = (modelViewMatrix, obj) => {
   return modelViewMatrix;
 };
 
-const autoRotate = (modelViewMatrix, cubeRotation) => {
-  // if (rotationAnimationCheckbox.checked) {
-  //   modelViewMatrix = rotateZ(modelViewMatrix, (cubeRotation * 180) / Math.PI);
-  //   modelViewMatrix = rotateY(
-  //     modelViewMatrix,
-  //     (cubeRotation * 180 * 0.6) / Math.PI
-  //   );
-  //   modelViewMatrix = rotateX(
-  //     modelViewMatrix,
-  //     (cubeRotation * 180 * 0.2) / Math.PI
-  //   );
-  // } else {
-  if (zRotateCheckbox.checked) {
+const autoRotate = (
+  modelViewMatrix,
+  cubeRotation,
+  rotateXChecked,
+  rotateYChecked,
+  rotateZChecked
+) => {
+  if (rotateXChecked) {
     modelViewMatrix = rotateZ(modelViewMatrix, (cubeRotation * 180) / Math.PI);
   }
-  if (yRotateCheckbox.checked) {
+  if (rotateYChecked) {
     modelViewMatrix = rotateY(modelViewMatrix, (cubeRotation * 180) / Math.PI);
   }
-  if (xRotateCheckbox.checked) {
+  if (rotateZChecked) {
     modelViewMatrix = rotateX(modelViewMatrix, (cubeRotation * 180) / Math.PI);
   }
 

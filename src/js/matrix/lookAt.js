@@ -24,26 +24,3 @@ const lookAt = (eye, at, up) => {
 
   return matrix;
 };
-
-const getLookAt = () => {
-  const factor = projectionSelect.value == "perspective" ? -1 : 1;
-  const distance =
-    (factor *
-      (parseInt(distanceSlider.min) +
-        parseInt(distanceSlider.max) -
-        distanceSlider.value)) /
-    1000;
-
-  const horizontalAngle = (parseInt(horizontalSlider.value) * Math.PI) / 180;
-  const verticalAngle = (parseInt(verticalSlider.value) * Math.PI) / 180;
-
-  const eye = [
-    factor * Math.sin(horizontalAngle) * Math.sin(verticalAngle) * distance,
-    Math.cos(verticalAngle) * distance,
-    Math.cos(horizontalAngle) * Math.sin(verticalAngle) * distance,
-  ];
-
-  const at = [0, 0, factor];
-
-  return lookAt(eye, at, [0, 1, 0]);
-};
