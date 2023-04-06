@@ -3,22 +3,24 @@ class Steve {
     const obj = new Cube(
       "Body",
       [0, 0.4, 0],
-      // [0, 0, 0],
+      [0, 0, 0],
       [0.4, 0.8, 0.2],
       "js/model/texture/steve/steve_body.png"
     );
     const obj2 = new Cube(
       "Head",
       [0, 1.0, 0],
-      // [0, 1.0, 0],
+      [0, 1.0, 0],
       [0.4, 0.4, 0.4],
       "js/model/texture/steve/steve_head.png"
     );
 
+    console.log(obj2);
+
     const obj3 = new Cube(
       "Upper Right Arm",
       [0.3, 0.7, 0],
-      // [0.3, 0.7, 0],
+      [0.3, 0.6, 0],
       [0.2, 0.2, 0.2],
       "js/model/texture/steve/steve_upper_arm.png"
     );
@@ -26,7 +28,7 @@ class Steve {
     const obj4 = new Cube(
       "Lower Right Arm",
       [0.3, 0.3, 0],
-      // [0.3, 0.7, 0],
+      [0.3, 0.5, 0],
       [0.2, 0.6, 0.2],
       "js/model/texture/steve/steve_lower_arm.png"
     );
@@ -34,7 +36,7 @@ class Steve {
     const obj5 = new Cube(
       "Upper Left Arm",
       [-0.3, 0.7, 0],
-      // [0.3, 0.7, 0],
+      [-0.3, 0.6, 0],
       [0.2, 0.2, 0.2],
       "js/model/texture/steve/steve_upper_arm.png"
     );
@@ -42,7 +44,7 @@ class Steve {
     const obj6 = new Cube(
       "Lower Left Arm",
       [-0.3, 0.3, 0],
-      // [0.3, 0.7, 0],
+      [-0.3, 0.5, 0],
       [0.2, 0.6, 0.2],
       "js/model/texture/steve/steve_lower_arm.png"
     );
@@ -50,7 +52,7 @@ class Steve {
     const obj7 = new Cube(
       "Right Leg",
       [0.1, -0.4, 0],
-      /// [0, 0, 0],
+      [0, 0, 0],
       [0.2, 0.8, 0.2],
       "js/model/texture/steve/steve_leg.png"
     );
@@ -58,7 +60,7 @@ class Steve {
     const obj8 = new Cube(
       "Left Leg",
       [-0.1, -0.4, 0],
-      // [0, 0, 0],
+      [0, 0, 0],
       [0.2, 0.8, 0.2],
       "js/model/texture/steve/steve_leg.png"
     );

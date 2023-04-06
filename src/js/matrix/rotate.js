@@ -91,7 +91,7 @@ const rotateZ = (modelViewMatrix, degs) => {
 const rotate = (modelViewMatrix, rotateX, rotateY, rotateZ) => {
   const factor = projectionSelect.value == "perspective" ? -1 : 1;
   modelViewMatrix = multiply(
-    rotateZMatrix(factor * degreesToRadians(rotateX)),
+    rotateZMatrix(factor * degreesToRadians(rotateZ)),
     modelViewMatrix
   );
   modelViewMatrix = multiply(
@@ -99,36 +99,26 @@ const rotate = (modelViewMatrix, rotateX, rotateY, rotateZ) => {
     modelViewMatrix
   );
   modelViewMatrix = multiply(
-    rotateXMatrix(factor * degreesToRadians(rotateZ)),
+    rotateXMatrix(factor * degreesToRadians(rotateX)),
     modelViewMatrix
   );
 
   return modelViewMatrix;
 };
 
-const rotateWithPivot = (modelViewMatrix, obj) => {
+const rotateWithPivot = (modelViewMatrix, rotateX, rotateY, rotateZ, pivot) => {
   // modelViewMatrix = translate(
   //   modelViewMatrix,
   //   -obj.pivot[0],
   //   -obj.pivot[1],
   //   -obj.pivot[2]
   // );
+  console.log("we rotating thru pivot", pivot);
+  modelViewMatrix = translate(modelViewMatrix, pivot[0], pivot[1], pivot[2]);
 
-  modelViewMatrix = translate(
-    modelViewMatrix,
-    obj.pivot[0],
-    obj.pivot[1],
-    obj.pivot[2]
-  );
+  modelViewMatrix = rotate(modelViewMatrix, rotateX, rotateY, rotateZ);
 
-  modelViewMatrix = rotate(modelViewMatrix, obj);
-
-  modelViewMatrix = translate(
-    modelViewMatrix,
-    -obj.pivot[0],
-    -obj.pivot[1],
-    -obj.pivot[2]
-  );
+  modelViewMatrix = translate(modelViewMatrix, -pivot[0], -pivot[1], -pivot[2]);
   return modelViewMatrix;
 };
 

@@ -218,18 +218,30 @@ const draw = (gl, programInfo, obj, texture, drawComponent) => {
     translateZ
   );
 
-  // transformasi untuk model view matrix
-  if (rotateXChecked || rotateYChecked || rotateZChecked) {
-    modelViewMatrix = autoRotate(
-      modelViewMatrix,
-      cubeRotation,
-      rotateXChecked,
-      rotateYChecked,
-      rotateZChecked
-    );
-  } else {
-    modelViewMatrix = rotate(modelViewMatrix, rotateX, rotateY, rotateZ);
-  }
+  // // transformasi untuk model view matrix
+  // if (rotateXChecked || rotateYChecked || rotateZChecked) {
+  //   modelViewMatrix = autoRotate(
+  //     modelViewMatrix,
+  //     cubeRotation,
+  //     rotateXChecked,
+  //     rotateYChecked,
+  //     rotateZChecked
+  //   );
+  // } else {
+  //   modelViewMatrix = rotate(modelViewMatrix, rotateX, rotateY, rotateZ);
+  // }
+
+  modelViewMatrix = rotate(modelViewMatrix, rotateX, rotateY, rotateZ);
+
+  const parentObject =
+    model.cubeList[model.getObjectIdxFromName(componentSelect.value)];
+  modelViewMatrix = rotateWithPivot(
+    modelViewMatrix,
+    rotateX,
+    rotateY,
+    rotateZ,
+    parentObject.pivot
+  );
 
   modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
 

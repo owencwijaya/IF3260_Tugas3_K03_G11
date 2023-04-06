@@ -106,11 +106,11 @@ const componentProgramInfo = {
     ),
   },
 };
-let obj = new Steve();
-// let obj = new Spider();
-// let obj = new Chicken();
+let model = new Steve();
+// let model = new Spider();
+// let model = new Chicken();
 
-resetComponentSelect(obj);
+resetComponentSelect(model);
 
 gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 componentGl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
@@ -120,27 +120,31 @@ const render = (now) => {
   deltaTime = now - then;
   then = now;
 
-  for (let i = 0; i < obj.names.length; i++) {
-    if (obj.cubeList[i].name == componentSelect.value) {
+  for (let i = 0; i < model.names.length; i++) {
+    if (model.cubeList[i].name == componentSelect.value) {
       draw(
         componentGl,
         componentProgramInfo,
-        obj.cubeList[i],
-        obj.componentTextureList[i],
+        model.cubeList[i],
+        model.componentTextureList[i],
         true
       );
-      let childrenObjects = obj.findChildren(obj.cubeList[i].name);
-      childrenObjects.forEach((element) => {
+      // let childrenmodelects = JSON.parse(
+      //   JSON.stringify(model.findChildren(model.cubeList[i].name))
+      // );
+      let childrenmodelects = model.findChildren(model.cubeList[i].name);
+      childrenmodelects.forEach((element) => {
+        // element.pivot = model.cubeList[i].pivot;
         draw(
           componentGl,
           componentProgramInfo,
           element,
-          obj.componentTextureList[obj.getObjectIdxFromName(element.name)],
+          model.componentTextureList[model.getObjectIdxFromName(element.name)],
           true
         );
       });
     }
-    draw(gl, programInfo, obj.cubeList[i], obj.textureList[i], false);
+    draw(gl, programInfo, model.cubeList[i], model.textureList[i], false);
   }
 
   cubeRotation += deltaTime;
