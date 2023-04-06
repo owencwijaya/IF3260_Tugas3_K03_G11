@@ -20,7 +20,7 @@ class Steve {
     const obj3 = new Cube(
       "Upper Right Arm",
       [0.3, 0.7, 0],
-      [0.3, 0.6, 0],
+      [0.3, 0.7, 0],
       [0.2, 0.2, 0.2],
       "js/model/texture/steve/steve_upper_arm.png"
     );
@@ -36,7 +36,7 @@ class Steve {
     const obj5 = new Cube(
       "Upper Left Arm",
       [-0.3, 0.7, 0],
-      [-0.3, 0.6, 0],
+      [-0.3, 0.7, 0],
       [0.2, 0.2, 0.2],
       "js/model/texture/steve/steve_upper_arm.png"
     );

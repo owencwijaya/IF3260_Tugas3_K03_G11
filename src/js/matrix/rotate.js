@@ -119,6 +119,7 @@ const rotateWithPivot = (modelViewMatrix, rotateX, rotateY, rotateZ, pivot) => {
   modelViewMatrix = rotate(modelViewMatrix, rotateX, rotateY, rotateZ);
 
   modelViewMatrix = translate(modelViewMatrix, -pivot[0], -pivot[1], -pivot[2]);
+
   return modelViewMatrix;
 };
 
