@@ -119,7 +119,8 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     distance =
       (parseInt(componentDistanceSlider.min) +
         parseInt(componentDistanceSlider.max) -
-        componentDistanceSlider.value) /
+        componentDistanceSlider.value +
+        2000) /
       1000;
 
     horizontalAngle =
@@ -242,6 +243,21 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     projectionMatrix = transpose(multiply(obliqueMatrix, orthoMatrix));
   } else {
     projectionMatrix = transpose(ortho(-2.0, 2.0, -2.0, 2.0, zNear, zFar));
+  }
+
+  if (
+    drawMode == Draw.COMPONENT &&
+    (obj.name == currentComponent ||
+      (currentComponent != model.mainObject &&
+        model.relationship.get(currentComponent).includes(obj.name)))
+  ) {
+    console.log(obj.name);
+    modelViewMatrix = translate(
+      modelViewMatrix,
+      -obj.x_middle,
+      0,
+      -obj.z_middle
+    );
   }
 
   modelViewMatrix = translate(
