@@ -252,7 +252,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   );
 
   let parentObject =
-    model.cubeList[model.getObjectIdxFromName(componentSelect.value)];
+    model.cubeList[model.getObjectIdxFromName(currentComponent)];
 
   if (drawMode == Draw.ANIMATION) {
     const mainObjectName = model.mainObject;

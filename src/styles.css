@@ -37,8 +37,18 @@ h1 {
   height: 60%;
 }
 
-canvas {
+#gl-canvas {
   width: 50%;
+}
+
+#component-canvas {
+  width: 30%
+}
+
+#component-tree {
+  padding: 30px;
+
+  background-color: #979797;
 }
 
 .component-container {

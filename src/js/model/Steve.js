@@ -64,8 +64,8 @@ class Steve {
     );
 
     this.cubeList = [
-      head,
       body,
+      head,
       upperRightArm,
       lowerRightArm,
       upperLeftArm,
@@ -104,6 +104,16 @@ class Steve {
     relationships.set("Upper Right Arm", ["Lower Right Arm"]);
 
     return relationships;
+  }
+
+  getDepth(componentName) {
+    let depth = 0;
+    let currentComponent = componentName;
+    while (currentComponent != this.mainObject) {
+      currentComponent = this.findParent(currentComponent);
+      depth++;
+    }
+    return depth;
   }
 
   createAnimation() {

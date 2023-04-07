@@ -133,38 +133,31 @@ const render = (now) => {
     }
     requestAnimationFrame(render);
   } else {
-    for (let i = 0; i < model.names.length; i++) {
-      if (model.cubeList[i].name == componentSelect.value) {
+    draw(gl, programInfo, model.cubeList[i], model.textureList[i], Draw.WHOLE);
+  }
+  for (let i = 0; i < model.names.length; i++) {
+    if (model.cubeList[i].name == currentComponent) {
+      draw(
+        componentGl,
+        componentProgramInfo,
+        model.cubeList[i],
+        model.componentTextureList[i],
+        true
+      );
+
+      let childrenObjs = model.findChildren(model.cubeList[i].name);
+      childrenObjs.forEach((element) => {
         draw(
           componentGl,
           componentProgramInfo,
-          model.cubeList[i],
-          model.componentTextureList[i],
-          true
+          element,
+          model.componentTextureList[model.getObjectIdxFromName(element.name)],
+          Draw.COMPONENT
         );
-
-        let childrenObjs = model.findChildren(model.cubeList[i].name);
-        childrenObjs.forEach((element) => {
-          draw(
-            componentGl,
-            componentProgramInfo,
-            element,
-            model.componentTextureList[
-              model.getObjectIdxFromName(element.name)
-            ],
-            Draw.COMPONENT
-          );
-        });
-      }
-      draw(
-        gl,
-        programInfo,
-        model.cubeList[i],
-        model.textureList[i],
-        Draw.WHOLE
-      );
+      });
     }
   }
+
   cubeRotation += deltaTime;
 };
 

@@ -19,16 +19,40 @@ componentSelect.addEventListener("change", () => {
   requestAnimationFrame(render);
 });
 
+const componentTree = document.getElementById("component-tree");
+
+let currentComponent = "";
+
+const createTreeButton = (name, margin) => {
+  const buttonElement = document.createElement("button");
+  buttonElement.textContent = name;
+  buttonElement.style.display = "block";
+  buttonElement.style.marginLeft = margin;
+  buttonElement.addEventListener("click", () => {
+    currentComponent = component.name;
+    requestAnimationFrame(render);
+  });
+
+  componentTree.appendChild(buttonElement);
+};
+
 const resetComponentSelect = (obj) => {
-  for (let i = componentSelect.options.length; i >= 1; i--) {
-    componentSelect.remove(i);
-  }
+  componentTree.innerHTML = "";
+  currentComponent = obj.mainObject;
 
   obj.cubeList.forEach((component) => {
-    const option = document.createElement("option");
-    option.value = component.name;
-    option.text = component.name;
-    componentSelect.add(option);
+    const buttonElement = document.createElement("button");
+    buttonElement.textContent = component.name;
+    buttonElement.style.display = "block";
+    buttonElement.style.marginLeft = obj.getDepth(component.name) * 10 + "px";
+    console.log(obj.getDepth(component.name));
+    console.log(obj.findChildren(component.name));
+    buttonElement.addEventListener("click", () => {
+      currentComponent = component.name;
+      requestAnimationFrame(render);
+    });
+
+    componentTree.appendChild(buttonElement);
   });
 };
 
@@ -179,52 +203,4 @@ const componentReset = () => {
 const componentFovSlider = document.getElementById("component-fov-slider");
 componentFovSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
-});
-
-const componentResetButton = document.getElementById("component-reset-button");
-componentResetButton.addEventListener("click", componentReset);
-
-const componentSaveModelButton = document.getElementById(
-  "component-save-model-button"
-);
-componentSaveModelButton.addEventListener("click", () => {
-  const filename = document.getElementById("component-filename").value;
-  if (filename == "") {
-    alert("Please input the output file name!");
-    return;
-  }
-
-  const content = JSON.stringify(savedObj);
-
-  const file = new Blob([content], {
-    type: "json/javascript",
-  });
-
-  const link = document.createElement("a");
-
-  link.href = URL.createObjectURL(file);
-  link.download = `${filename}.json`;
-  link.click();
-  URL.revokeObjectURL(link.href);
-});
-
-const componentLoadModelButton = document.getElementById(
-  "component-load-model-button"
-);
-componentLoadModelButton.addEventListener("change", () => {
-  const selectedFile = loadModelButton.files[0];
-
-  const reader = new FileReader();
-
-  reader.readAsText(selectedFile, "UTF-8");
-
-  reader.onload = (evt) => {
-    const content = JSON.parse(evt.target.result);
-
-    reset();
-  };
-
-  alert("Successfully loaded file!");
-  reset();
-  loadModelButton.value = "";
 });
