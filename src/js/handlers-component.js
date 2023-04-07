@@ -45,8 +45,6 @@ const resetComponentSelect = (obj) => {
     buttonElement.textContent = component.name;
     buttonElement.style.display = "block";
     buttonElement.style.marginLeft = obj.getDepth(component.name) * 10 + "px";
-    console.log(obj.getDepth(component.name));
-    console.log(obj.findChildren(component.name));
     buttonElement.addEventListener("click", () => {
       currentComponent = component.name;
       requestAnimationFrame(render);
@@ -95,27 +93,6 @@ const componentZRotateSlider = document.getElementById(
   "component-z-rotate-slider"
 );
 componentZRotateSlider.addEventListener("input", () => {
-  requestAnimationFrame(render);
-});
-
-const componentXRotateCheckbox = document.getElementById(
-  "component-x-rotate-checkbox"
-);
-componentXRotateCheckbox.addEventListener("input", () => {
-  requestAnimationFrame(render);
-});
-
-const componentYRotateCheckbox = document.getElementById(
-  "component-y-rotate-checkbox"
-);
-componentYRotateCheckbox.addEventListener("input", () => {
-  requestAnimationFrame(render);
-});
-
-const componentZRotateCheckbox = document.getElementById(
-  "component-z-rotate-checkbox"
-);
-componentZRotateCheckbox.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
 

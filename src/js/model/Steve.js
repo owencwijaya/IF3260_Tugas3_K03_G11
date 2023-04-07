@@ -75,7 +75,6 @@ class Steve {
     ];
 
     this.textureList = [];
-    this.textureList = [];
     this.componentTextureList = [];
     this.names = [];
     this.mainObject = "Body";

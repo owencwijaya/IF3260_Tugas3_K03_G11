@@ -86,7 +86,6 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   let translateX, translateY, translateZ;
   let rotateX, rotateY, rotateZ;
   let scaleX, scaleY, scaleZ;
-  let rotateXChecked, rotateYChecked, rotateZChecked;
   let distance, horizontalAngle, verticalAngle;
   let shaderOn;
 
@@ -107,10 +106,6 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     rotateX = parseInt(componentXRotateSlider.value);
     rotateY = parseInt(componentYRotateSlider.value);
     rotateZ = parseInt(componentZRotateSlider.value);
-
-    rotateXChecked = componentXRotateCheckbox.checked;
-    rotateYChecked = componentYRotateCheckbox.checked;
-    rotateZChecked = componentZRotateCheckbox.checked;
 
     scaleX = parseFloat(componentXScalingSlider.value);
     scaleY = parseFloat(componentYScalingSlider.value);
@@ -158,10 +153,6 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     rotateX = obj.config.rotation.x + parseInt(xRotateSlider.value);
     rotateY = obj.config.rotation.y + parseInt(yRotateSlider.value);
     rotateZ = obj.config.rotation.z + parseInt(zRotateSlider.value);
-
-    rotateXChecked = xRotateCheckbox.checked;
-    rotateYChecked = yRotateCheckbox.checked;
-    rotateZChecked = zRotateCheckbox.checked;
 
     scaleX = obj.config.scale.x + parseFloat(xScalingSlider.value) - 1000;
     scaleY = obj.config.scale.y + parseFloat(yScalingSlider.value) - 1000;
@@ -307,7 +298,17 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     parentObject.pivot
   );
 
-  modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
+  if (currentComponent == model.mainObject) {
+    modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
+  } else {
+    modelViewMatrix = scaleWithPivot(
+      modelViewMatrix,
+      obj,
+      scaleX,
+      scaleY,
+      scaleZ
+    );
+  }
 
   let normalMatrix = invert(modelViewMatrix);
   normalMatrix = transpose(normalMatrix);

@@ -44,3 +44,23 @@ const scale = (modelViewMatrix, obj, xValue, yValue, zValue) => {
 
   return modelViewMatrix;
 };
+
+const scaleWithPivot = (modelViewMatrix, obj, xValue, yValue, zValue) => {
+  modelViewMatrix = translate(
+    modelViewMatrix,
+    obj.pivot[0],
+    obj.pivot[1],
+    obj.pivot[2]
+  );
+  modelViewMatrix = multiply(
+    transpose(scaleMatrix(obj, xValue, yValue, zValue)),
+    modelViewMatrix
+  );
+  modelViewMatrix = translate(
+    modelViewMatrix,
+    -obj.pivot[0],
+    -obj.pivot[1],
+    -obj.pivot[2]
+  );
+  return modelViewMatrix;
+};

@@ -133,7 +133,15 @@ const render = (now) => {
     }
     requestAnimationFrame(render);
   } else {
-    draw(gl, programInfo, model.cubeList[i], model.textureList[i], Draw.WHOLE);
+    for (let i = 0; i < model.names.length; i++) {
+      draw(
+        gl,
+        programInfo,
+        model.cubeList[i],
+        model.textureList[i],
+        Draw.WHOLE
+      );
+    }
   }
   for (let i = 0; i < model.names.length; i++) {
     if (model.cubeList[i].name == currentComponent) {

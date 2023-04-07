@@ -41,21 +41,6 @@ zRotateSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
 
-const xRotateCheckbox = document.getElementById("x-rotate-checkbox");
-xRotateCheckbox.addEventListener("input", () => {
-  requestAnimationFrame(render);
-});
-
-const yRotateCheckbox = document.getElementById("y-rotate-checkbox");
-yRotateCheckbox.addEventListener("input", () => {
-  requestAnimationFrame(render);
-});
-
-const zRotateCheckbox = document.getElementById("z-rotate-checkbox");
-zRotateCheckbox.addEventListener("input", () => {
-  requestAnimationFrame(render);
-});
-
 const xScalingSlider = document.getElementById("x-scaling-slider");
 xScalingSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
@@ -80,19 +65,6 @@ const animationCheckbox = document.getElementById("animation-checkbox");
 animationCheckbox.addEventListener("change", () => {
   requestAnimationFrame(render);
 });
-
-// const rotationAnimationCheckbox = document.getElementById(
-//   "rotation-animation-checkbox"
-// );
-// rotationAnimationCheckbox.addEventListener("change", () => {
-//   xRotateSlider.disabled = rotationAnimationCheckbox.checked;
-//   yRotateSlider.disabled = rotationAnimationCheckbox.checked;
-//   zRotateSlider.disabled = rotationAnimationCheckbox.checked;
-//   xRotateCheckbox.disabled = rotationAnimationCheckbox.checked;
-//   yRotateCheckbox.disabled = rotationAnimationCheckbox.checked;
-//   zRotateCheckbox.disabled = rotationAnimationCheckbox.checked;
-//   requestAnimationFrame(render);
-// });
 
 const distanceSlider = document.getElementById("distance-slider");
 distanceSlider.addEventListener("input", () => {
