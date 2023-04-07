@@ -24,7 +24,7 @@ class Cube {
     this.x_middle = middle[0];
     this.y_middle = middle[1];
     this.z_middle = middle[2];
-    console.log(pivot);
+
     this.pivot = pivot;
 
     this.x_length = length[0];
@@ -94,3 +94,23 @@ class Cube {
     ];
   }
 }
+
+const createConfig = (translateArr, rotateArr, scaleArr) => {
+  return {
+    translation: {
+      x: translateArr[0],
+      y: translateArr[1],
+      z: translateArr[2],
+    },
+    rotation: {
+      x: rotateArr[0],
+      y: rotateArr[1],
+      z: rotateArr[2],
+    },
+    scale: {
+      x: scaleArr[0],
+      y: scaleArr[1],
+      z: scaleArr[2],
+    },
+  };
+};

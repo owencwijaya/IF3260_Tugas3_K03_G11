@@ -36,7 +36,6 @@ const loadTexture = (gl, url) => {
   let image = new Image();
   image.src = url;
   image.addEventListener("load", () => {
-    console.log("image loaded");
     // bind texture, terus ubah texture jadi gambar
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.texImage2D(

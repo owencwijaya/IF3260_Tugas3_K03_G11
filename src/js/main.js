@@ -120,36 +120,52 @@ const render = (now) => {
   deltaTime = now - then;
   then = now;
 
-  for (let i = 0; i < model.names.length; i++) {
-    if (model.cubeList[i].name == componentSelect.value) {
+  if (animationCheckbox.checked) {
+    for (let i = 0; i < model.names.length; i++) {
       draw(
-        componentGl,
-        componentProgramInfo,
+        gl,
+        programInfo,
         model.cubeList[i],
-        model.componentTextureList[i],
-        true
+        model.textureList[i],
+        Draw.ANIMATION,
+        parseInt(now * 10)
       );
-      // let childrenmodelects = JSON.parse(
-      //   JSON.stringify(model.findChildren(model.cubeList[i].name))
-      // );
-      let childrenmodelects = model.findChildren(model.cubeList[i].name);
-      childrenmodelects.forEach((element) => {
-        // element.pivot = model.cubeList[i].pivot;
+    }
+    requestAnimationFrame(render);
+  } else {
+    for (let i = 0; i < model.names.length; i++) {
+      if (model.cubeList[i].name == componentSelect.value) {
         draw(
           componentGl,
           componentProgramInfo,
-          element,
-          model.componentTextureList[model.getObjectIdxFromName(element.name)],
+          model.cubeList[i],
+          model.componentTextureList[i],
           true
         );
-      });
+
+        let childrenObjs = model.findChildren(model.cubeList[i].name);
+        childrenObjs.forEach((element) => {
+          draw(
+            componentGl,
+            componentProgramInfo,
+            element,
+            model.componentTextureList[
+              model.getObjectIdxFromName(element.name)
+            ],
+            Draw.COMPONENT
+          );
+        });
+      }
+      draw(
+        gl,
+        programInfo,
+        model.cubeList[i],
+        model.textureList[i],
+        Draw.WHOLE
+      );
     }
-    draw(gl, programInfo, model.cubeList[i], model.textureList[i], false);
   }
-
   cubeRotation += deltaTime;
-
-  // requestAnimationFrame(render);
 };
 
 requestAnimationFrame(render);

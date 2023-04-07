@@ -107,13 +107,6 @@ const rotate = (modelViewMatrix, rotateX, rotateY, rotateZ) => {
 };
 
 const rotateWithPivot = (modelViewMatrix, rotateX, rotateY, rotateZ, pivot) => {
-  // modelViewMatrix = translate(
-  //   modelViewMatrix,
-  //   -obj.pivot[0],
-  //   -obj.pivot[1],
-  //   -obj.pivot[2]
-  // );
-  console.log("we rotating thru pivot", pivot);
   modelViewMatrix = translate(modelViewMatrix, pivot[0], pivot[1], pivot[2]);
 
   modelViewMatrix = rotate(modelViewMatrix, rotateX, rotateY, rotateZ);

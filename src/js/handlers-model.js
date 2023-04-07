@@ -76,6 +76,11 @@ shaderCheckbox.addEventListener("change", () => {
   requestAnimationFrame(render);
 });
 
+const animationCheckbox = document.getElementById("animation-checkbox");
+animationCheckbox.addEventListener("change", () => {
+  requestAnimationFrame(render);
+});
+
 // const rotationAnimationCheckbox = document.getElementById(
 //   "rotation-animation-checkbox"
 // );

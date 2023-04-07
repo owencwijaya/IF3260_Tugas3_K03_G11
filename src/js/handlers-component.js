@@ -15,6 +15,10 @@ componentSelect.addEventListener("load", () => {
   requestAnimationFrame(render);
 });
 
+componentSelect.addEventListener("change", () => {
+  requestAnimationFrame(render);
+});
+
 const resetComponentSelect = (obj) => {
   for (let i = componentSelect.options.length; i >= 1; i--) {
     componentSelect.remove(i);
