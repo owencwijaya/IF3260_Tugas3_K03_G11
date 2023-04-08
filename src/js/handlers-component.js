@@ -10,15 +10,6 @@ componentProjectionSelect.addEventListener("change", () => {
   requestAnimationFrame(render);
 });
 
-const componentSelect = document.getElementById("component-select");
-componentSelect.addEventListener("load", () => {
-  requestAnimationFrame(render);
-});
-
-componentSelect.addEventListener("change", () => {
-  requestAnimationFrame(render);
-});
-
 const componentTree = document.getElementById("component-tree");
 
 let currentComponent = "";
@@ -34,24 +25,6 @@ const createTreeButton = (name, margin) => {
   });
 
   componentTree.appendChild(buttonElement);
-};
-
-const resetComponentSelect = (obj) => {
-  componentTree.innerHTML = "";
-  currentComponent = obj.mainObject;
-
-  obj.cubeList.forEach((component) => {
-    const buttonElement = document.createElement("button");
-    buttonElement.textContent = component.name;
-    buttonElement.style.display = "block";
-    buttonElement.style.marginLeft = obj.getDepth(component.name) * 10 + "px";
-    buttonElement.addEventListener("click", () => {
-      currentComponent = component.name;
-      requestAnimationFrame(render);
-    });
-
-    componentTree.appendChild(buttonElement);
-  });
 };
 
 const componentXTranslateSlider = document.getElementById(
@@ -96,26 +69,80 @@ componentZRotateSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
 
-const componentXScalingSlider = document.getElementById(
+const componentXScaleSlider = document.getElementById(
   "component-x-scaling-slider"
 );
-componentXScalingSlider.addEventListener("input", () => {
+componentXScaleSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
 
-const componentYScalingSlider = document.getElementById(
+const componentYScaleSlider = document.getElementById(
   "component-y-scaling-slider"
 );
-componentYScalingSlider.addEventListener("input", () => {
+componentYScaleSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
 
-const componentZScalingSlider = document.getElementById(
+const componentZScaleSlider = document.getElementById(
   "component-z-scaling-slider"
 );
-componentZScalingSlider.addEventListener("input", () => {
+componentZScaleSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
+
+const resetComponentSelect = (obj) => {
+  componentTree.innerHTML = "";
+  currentComponent = obj.mainObject;
+
+  obj.cubeList.forEach((component) => {
+    const buttonElement = document.createElement("button");
+    buttonElement.textContent = component.name;
+    buttonElement.style.display = "block";
+    buttonElement.style.marginLeft = obj.getDepth(component.name) * 10 + "px";
+    buttonElement.addEventListener("click", () => {
+      currentComponent = component.name;
+      const componentIdx = model.getObjectIdxFromName(component.name);
+      const comp = model.cubeList[componentIdx];
+
+      componentXTranslateSlider.value = comp.config.translation.x;
+      componentYTranslateSlider.value = comp.config.translation.y;
+      componentZTranslateSlider.value = comp.config.translation.z;
+      componentXRotateSlider.value = comp.config.rotation.x;
+      componentYRotateSlider.value = comp.config.rotation.y;
+      componentZRotateSlider.value = comp.config.rotation.z;
+      componentXScaleSlider.value = comp.config.scale.x;
+      componentYScaleSlider.value = comp.config.scale.y;
+      componentZScaleSlider.value = comp.config.scale.z;
+
+      document.getElementById("component_xtranslation").value =
+        comp.config.translation.x.toFixed(2);
+      document.getElementById("component_ytranslation").value =
+        comp.config.translation.y.toFixed(2);
+      document.getElementById("component_ztranslation").value =
+        comp.config.translation.z.toFixed(2);
+
+      document.getElementById("component_xrotation").value =
+        comp.config.rotation.x;
+      document.getElementById("component_yrotation").value =
+        comp.config.rotation.y;
+      document.getElementById("component_zrotation").value =
+        comp.config.rotation.z;
+
+      document.getElementById("component_xscale").value = (
+        comp.config.scale.x / 1000
+      ).toFixed(2);
+      document.getElementById("component_yscale").value = (
+        comp.config.scale.y / 1000
+      ).toFixed(2);
+      document.getElementById("component_zscale").value = (
+        comp.config.scale.z / 1000
+      ).toFixed(2);
+      requestAnimationFrame(render);
+    });
+
+    componentTree.appendChild(buttonElement);
+  });
+};
 
 const componentShaderCheckbox = document.getElementById(
   "component-shader-checkbox"
@@ -152,9 +179,9 @@ const componentReset = () => {
   componentXRotateSlider.value = 0;
   componentYRotateSlider.value = 0;
   componentZRotateSlider.value = 0;
-  componentXScalingSlider.value = 1000;
-  componentYScalingSlider.value = 1000;
-  componentZScalingSlider.value = 1000;
+  componentXScaleSlider.value = 1000;
+  componentYScaleSlider.value = 1000;
+  componentZScaleSlider.value = 1000;
   componentDistanceSlider.value =
     (parseInt(componentDistanceSlider.max) +
       parseInt(componentDistanceSlider.min)) /
@@ -163,17 +190,17 @@ const componentReset = () => {
   componentVerticalSlider.value = 90;
   componentFovSlider.value = 45;
 
-  document.getElementById("component-xtranslation").value = 0;
-  document.getElementById("component-ytranslation").value = 0;
-  document.getElementById("component-ztranslation").value = 0;
+  document.getElementById("component_xtranslation").value = 0;
+  document.getElementById("component_ytranslation").value = 0;
+  document.getElementById("component_ztranslation").value = 0;
 
-  document.getElementById("component-xrotation").value = 0;
-  document.getElementById("component-yrotation").value = 0;
-  document.getElementById("component-zrotation").value = 0;
+  document.getElementById("component_xrotation").value = 0;
+  document.getElementById("component_yrotation").value = 0;
+  document.getElementById("component_zrotation").value = 0;
 
-  document.getElementById("component-xscale").value = 1.0;
-  document.getElementById("component-yscale").value = 1.0;
-  document.getElementById("component-zscale").value = 1.0;
+  document.getElementById("component_xscale").value = 1.0;
+  document.getElementById("component_yscale").value = 1.0;
+  document.getElementById("component_zscale").value = 1.0;
   requestAnimationFrame(render);
 };
 

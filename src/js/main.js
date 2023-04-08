@@ -133,6 +133,12 @@ const render = (now) => {
     }
     requestAnimationFrame(render);
   } else {
+    const parentIdx = model.getObjectIdxFromName(currentComponent);
+    const parentObject = model.cubeList[parentIdx];
+
+    // console.log(parentObject.name);
+    // console.log(parentObject.config);
+
     for (let i = 0; i < model.names.length; i++) {
       draw(
         gl,
@@ -142,28 +148,24 @@ const render = (now) => {
         Draw.WHOLE
       );
     }
-  }
-  for (let i = 0; i < model.names.length; i++) {
-    if (model.cubeList[i].name == currentComponent) {
+
+    draw(
+      componentGl,
+      componentProgramInfo,
+      parentObject,
+      model.componentTextureList[parentIdx],
+      Draw.COMPONENT
+    );
+    let childrenObjs = model.findChildren(parentObject.name);
+    childrenObjs.forEach((element) => {
       draw(
         componentGl,
         componentProgramInfo,
-        model.cubeList[i],
-        model.componentTextureList[i],
-        true
+        element,
+        model.componentTextureList[model.getObjectIdxFromName(element.name)],
+        Draw.COMPONENT
       );
-
-      let childrenObjs = model.findChildren(model.cubeList[i].name);
-      childrenObjs.forEach((element) => {
-        draw(
-          componentGl,
-          componentProgramInfo,
-          element,
-          model.componentTextureList[model.getObjectIdxFromName(element.name)],
-          Draw.COMPONENT
-        );
-      });
-    }
+    });
   }
 
   cubeRotation += deltaTime;

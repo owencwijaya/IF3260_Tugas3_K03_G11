@@ -77,12 +77,14 @@ class Steve {
     this.textureList = [];
     this.componentTextureList = [];
     this.names = [];
+    this.movedMap = new Map();
     this.mainObject = "Body";
 
     this.cubeList.forEach((obj) => {
       this.textureList.push(loadTexture(gl, obj.texturePath));
       this.componentTextureList.push(loadTexture(componentGl, obj.texturePath));
       this.names.push(obj.name);
+      this.movedMap.set(obj.name, false);
     });
 
     // prettier-ignore

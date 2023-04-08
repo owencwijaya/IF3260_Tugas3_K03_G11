@@ -93,23 +93,35 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     projection = componentProjectionSelect.value;
     angle = componentFovSlider.value;
 
-    translateX =
-      (obj.config.translation.x + parseInt(componentXTranslateSlider.value)) /
-      1000;
-    translateY =
-      (obj.config.translation.y + parseInt(componentYTranslateSlider.value)) /
-      1000;
-    translateZ =
-      (obj.config.translation.z + parseInt(componentZTranslateSlider.value)) /
-      1000;
+    if (
+      obj.name == currentComponent ||
+      model.findChildren(currentComponent).includes(obj)
+      //    &&
+      // currentComponent != model.mainObject
+    ) {
+      obj.config.translation.x = parseInt(componentXTranslateSlider.value);
+      obj.config.translation.y = parseInt(componentYTranslateSlider.value);
+      obj.config.translation.z = parseInt(componentZTranslateSlider.value);
+      obj.config.rotation.x = parseInt(componentXRotateSlider.value);
+      obj.config.rotation.y = parseInt(componentYRotateSlider.value);
+      obj.config.rotation.z = parseInt(componentZRotateSlider.value);
+      obj.config.scale.x = parseFloat(componentXScaleSlider.value);
+      obj.config.scale.y = parseFloat(componentYScaleSlider.value);
+      obj.config.scale.z = parseFloat(componentZScaleSlider.value);
+      console.log(obj.config.translation.x);
+    }
 
-    rotateX = parseInt(componentXRotateSlider.value);
-    rotateY = parseInt(componentYRotateSlider.value);
-    rotateZ = parseInt(componentZRotateSlider.value);
+    translateX = (globalConfig.translation.x + obj.config.translation.x) / 1000;
+    translateY = (globalConfig.translation.y + obj.config.translation.y) / 1000;
+    translateZ = (globalConfig.translation.z + obj.config.translation.z) / 1000;
 
-    scaleX = parseFloat(componentXScalingSlider.value);
-    scaleY = parseFloat(componentYScalingSlider.value);
-    scaleZ = parseFloat(componentZScalingSlider.value);
+    rotateX = obj.config.rotation.x;
+    rotateY = obj.config.rotation.y;
+    rotateZ = obj.config.rotation.z;
+
+    scaleX = obj.config.scale.x;
+    scaleY = obj.config.scale.y;
+    scaleZ = obj.config.scale.z;
 
     distance =
       (parseInt(componentDistanceSlider.min) +
@@ -123,16 +135,17 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     verticalAngle = (parseInt(componentVerticalSlider.value) * Math.PI) / 180;
     shaderOn = componentShaderCheckbox.checked;
 
-    // update config per component
-    obj.config.translation.x = translateX;
-    obj.config.translation.y = translateY;
-    obj.config.translation.z = translateZ;
-    obj.config.rotation.x = rotateX;
-    obj.config.rotation.y = rotateY;
-    obj.config.rotation.z = rotateZ;
-    obj.config.scale.x = scaleX;
-    obj.config.scale.y = scaleY;
-    obj.config.scale.z = scaleZ;
+    if (obj.name == model.mainObject && currentComponent == obj.name) {
+      globalConfig.translation.x = translateX;
+      globalConfig.translation.y = translateY;
+      globalConfig.translation.z = translateZ;
+      globalConfig.rotation.x = rotateX;
+      globalConfig.rotation.y = rotateY;
+      globalConfig.rotation.z = rotateZ;
+      globalConfig.scale.x = scaleX;
+      globalConfig.scale.y = scaleY;
+      globalConfig.scale.z = scaleZ;
+    }
   } else if (
     drawMode == Draw.WHOLE ||
     (drawMode == Draw.ANIMATION && !model.animation.has(obj.name))
@@ -141,22 +154,30 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     angle = fovSlider.value;
 
     translateX =
-      (obj.config.translation.x * 1000 + parseInt(xTranslateSlider.value)) /
+      (globalConfig.translation.x +
+        obj.config.translation.x +
+        parseInt(xTranslateSlider.value)) /
       1000;
+
     translateY =
-      (obj.config.translation.y * 1000 + parseInt(yTranslateSlider.value)) /
+      (globalConfig.translation.y +
+        obj.config.translation.y +
+        parseInt(yTranslateSlider.value)) /
       1000;
+
     translateZ =
-      (obj.config.translation.z * 1000 + parseInt(zTranslateSlider.value)) /
+      (globalConfig.translation.z +
+        obj.config.translation.z +
+        parseInt(zTranslateSlider.value)) /
       1000;
 
     rotateX = obj.config.rotation.x + parseInt(xRotateSlider.value);
     rotateY = obj.config.rotation.y + parseInt(yRotateSlider.value);
     rotateZ = obj.config.rotation.z + parseInt(zRotateSlider.value);
 
-    scaleX = obj.config.scale.x + parseFloat(xScalingSlider.value) - 1000;
-    scaleY = obj.config.scale.y + parseFloat(yScalingSlider.value) - 1000;
-    scaleZ = obj.config.scale.z + parseFloat(zScalingSlider.value) - 1000;
+    scaleX = obj.config.scale.x + parseFloat(xScaleSlider.value) - 1000;
+    scaleY = obj.config.scale.y + parseFloat(yScaleSlider.value) - 1000;
+    scaleZ = obj.config.scale.z + parseFloat(zScaleSlider.value) - 1000;
 
     distance =
       (parseInt(distanceSlider.min) +
@@ -167,7 +188,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     horizontalAngle = (parseInt(horizontalSlider.value) * Math.PI) / 180;
     verticalAngle = (parseInt(verticalSlider.value) * Math.PI) / 180;
     shaderOn = shaderCheckbox.checked;
-  } else {
+  } else if (drawMode == Draw.ANIMATION) {
     projection = projectionSelect.value;
     angle = fovSlider.value;
 
@@ -242,7 +263,6 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       (currentComponent != model.mainObject &&
         model.relationship.get(currentComponent).includes(obj.name)))
   ) {
-    console.log(obj.name);
     modelViewMatrix = translate(
       modelViewMatrix,
       -obj.x_middle,
@@ -298,7 +318,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     parentObject.pivot
   );
 
-  if (currentComponent == model.mainObject) {
+  if (currentComponent == model.mainObject || drawMode == Draw.WHOLE) {
     modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
   } else {
     modelViewMatrix = scaleWithPivot(
@@ -322,12 +342,12 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   gl.useProgram(programInfo.program);
 
   let dirVec = [
-    // projectionSelect.value == "perspective" ? 0.3 : -0.3,
     0.3,
     0.4,
     projectionSelect.value == "perspective" ? 0.4 : -0.4,
     1,
   ];
+
   dirVec = multiplyMatVec(invert(lookAtMatrix), dirVec);
   gl.uniform3fv(
     programInfo.uniformLocations.directionalVector,

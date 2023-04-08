@@ -41,18 +41,18 @@ zRotateSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
 
-const xScalingSlider = document.getElementById("x-scaling-slider");
-xScalingSlider.addEventListener("input", () => {
+const xScaleSlider = document.getElementById("x-scaling-slider");
+xScaleSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
 
-const yScalingSlider = document.getElementById("y-scaling-slider");
-yScalingSlider.addEventListener("input", () => {
+const yScaleSlider = document.getElementById("y-scaling-slider");
+yScaleSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
 
-const zScalingSlider = document.getElementById("z-scaling-slider");
-zScalingSlider.addEventListener("input", () => {
+const zScaleSlider = document.getElementById("z-scaling-slider");
+zScaleSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
 
@@ -87,9 +87,9 @@ const reset = () => {
   xRotateSlider.value = 0;
   yRotateSlider.value = 0;
   zRotateSlider.value = 0;
-  xScalingSlider.value = 1000;
-  yScalingSlider.value = 1000;
-  zScalingSlider.value = 1000;
+  xScaleSlider.value = 1000;
+  yScaleSlider.value = 1000;
+  zScaleSlider.value = 1000;
   distanceSlider.value =
     (parseInt(distanceSlider.max) + parseInt(distanceSlider.min)) / 2;
   horizontalSlider.value = 0;
@@ -125,13 +125,13 @@ saveModelButton.addEventListener("click", () => {
   // let zScale = 0;
 
   // if (loaded) {
-  //   xScale = Math.max(10,(xScalingSlider.value - 1000));
-  //   yScale = Math.max(10, obj.config.scaling.y + (yScalingSlider.value - 1000));
-  //   zScale = Math.max(10, obj.config.scaling.z + (zScalingSlider.value - 1000));
+  //   xScale = Math.max(10,(xScaleSlider.value - 1000));
+  //   yScale = Math.max(10, obj.config.scaling.y + (yScaleSlider.value - 1000));
+  //   zScale = Math.max(10, obj.config.scaling.z + (zScaleSlider.value - 1000));
   // } else {
-  //   xScale = xScalingSlider.value;
-  //   yScale = yScalingSlider.value;
-  //   zScale = zScalingSlider.value;
+  //   xScale = xScaleSlider.value;
+  //   yScale = yScaleSlider.value;
+  //   zScale = zScaleSlider.value;
   // }
 
   // // update config
