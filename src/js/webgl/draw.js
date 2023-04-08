@@ -94,11 +94,11 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     angle = componentFovSlider.value;
 
     if (
-      obj.name == currentComponent ||
-      model.findChildren(currentComponent).includes(obj)
-      //    &&
-      // currentComponent != model.mainObject
+      (obj.name == currentComponent ||
+        model.findChildren(currentComponent).includes(obj)) &&
+      currentComponent != model.mainObject
     ) {
+      // if (currentComponent != model.mainObject) {
       obj.config.translation.x = parseInt(componentXTranslateSlider.value);
       obj.config.translation.y = parseInt(componentYTranslateSlider.value);
       obj.config.translation.z = parseInt(componentZTranslateSlider.value);
@@ -108,13 +108,25 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       obj.config.scale.x = parseFloat(componentXScaleSlider.value);
       obj.config.scale.y = parseFloat(componentYScaleSlider.value);
       obj.config.scale.z = parseFloat(componentZScaleSlider.value);
-      console.log(obj.config.translation.x);
+    }
+
+    if (obj.name == model.mainObject && currentComponent == obj.name) {
+      globalConfig.translation.x = parseInt(componentXTranslateSlider.value);
+      globalConfig.translation.y = parseInt(componentYTranslateSlider.value);
+      globalConfig.translation.z = parseInt(componentZTranslateSlider.value);
+      globalConfig.rotation.x = parseInt(componentXRotateSlider.value);
+      globalConfig.rotation.y = parseInt(componentYRotateSlider.value);
+      globalConfig.rotation.z = parseInt(componentZRotateSlider.value);
+      globalConfig.scale.x = parseFloat(componentXScaleSlider.value);
+      globalConfig.scale.y = parseFloat(componentYScaleSlider.value);
+      globalConfig.scale.z = parseFloat(componentZScaleSlider.value);
+      console.log(globalConfig.translation.x);
     }
 
     translateX = (globalConfig.translation.x + obj.config.translation.x) / 1000;
     translateY = (globalConfig.translation.y + obj.config.translation.y) / 1000;
     translateZ = (globalConfig.translation.z + obj.config.translation.z) / 1000;
-
+    console.log(obj.name, translateX, obj.config.translation.x);
     rotateX = obj.config.rotation.x;
     rotateY = obj.config.rotation.y;
     rotateZ = obj.config.rotation.z;
@@ -134,18 +146,6 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       (parseInt(componentHorizontalSlider.value) * Math.PI) / 180;
     verticalAngle = (parseInt(componentVerticalSlider.value) * Math.PI) / 180;
     shaderOn = componentShaderCheckbox.checked;
-
-    if (obj.name == model.mainObject && currentComponent == obj.name) {
-      globalConfig.translation.x = translateX;
-      globalConfig.translation.y = translateY;
-      globalConfig.translation.z = translateZ;
-      globalConfig.rotation.x = rotateX;
-      globalConfig.rotation.y = rotateY;
-      globalConfig.rotation.z = rotateZ;
-      globalConfig.scale.x = scaleX;
-      globalConfig.scale.y = scaleY;
-      globalConfig.scale.z = scaleZ;
-    }
   } else if (
     drawMode == Draw.WHOLE ||
     (drawMode == Draw.ANIMATION && !model.animation.has(obj.name))
