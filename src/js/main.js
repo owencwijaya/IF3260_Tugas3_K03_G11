@@ -139,16 +139,6 @@ const render = (now) => {
     // console.log(parentObject.name);
     // console.log(parentObject.config);
 
-    for (let i = 0; i < model.names.length; i++) {
-      draw(
-        gl,
-        programInfo,
-        model.cubeList[i],
-        model.textureList[i],
-        Draw.WHOLE
-      );
-    }
-
     draw(
       componentGl,
       componentProgramInfo,
@@ -166,6 +156,16 @@ const render = (now) => {
         Draw.COMPONENT
       );
     });
+
+    for (let i = 0; i < model.names.length; i++) {
+      draw(
+        gl,
+        programInfo,
+        model.cubeList[i],
+        model.textureList[i],
+        Draw.WHOLE
+      );
+    }
   }
 
   cubeRotation += deltaTime;
