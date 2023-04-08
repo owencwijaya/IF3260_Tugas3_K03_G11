@@ -108,6 +108,15 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       obj.config.scale.x = parseFloat(componentXScaleSlider.value);
       obj.config.scale.y = parseFloat(componentYScaleSlider.value);
       obj.config.scale.z = parseFloat(componentZScaleSlider.value);
+
+      if (!model.movedMap.get(obj.name)) {
+        const parentObject =
+          model.cubeList[model.getObjectIdxFromName(model.mainObject)];
+        model.movedMap.set(
+          obj.name,
+          JSON.stringify(obj.config) != JSON.stringify(parentObject.config)
+        );
+      }
     }
 
     if (obj.name == model.mainObject && currentComponent == obj.name) {
@@ -120,20 +129,19 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       globalConfig.scale.x = parseFloat(componentXScaleSlider.value);
       globalConfig.scale.y = parseFloat(componentYScaleSlider.value);
       globalConfig.scale.z = parseFloat(componentZScaleSlider.value);
-      console.log(globalConfig.translation.x);
     }
 
     translateX = (globalConfig.translation.x + obj.config.translation.x) / 1000;
     translateY = (globalConfig.translation.y + obj.config.translation.y) / 1000;
     translateZ = (globalConfig.translation.z + obj.config.translation.z) / 1000;
-    console.log(obj.name, translateX, obj.config.translation.x);
-    rotateX = obj.config.rotation.x;
-    rotateY = obj.config.rotation.y;
-    rotateZ = obj.config.rotation.z;
 
-    scaleX = obj.config.scale.x;
-    scaleY = obj.config.scale.y;
-    scaleZ = obj.config.scale.z;
+    rotateX = globalConfig.rotation.x + obj.config.rotation.x;
+    rotateY = globalConfig.rotation.y + obj.config.rotation.y;
+    rotateZ = globalConfig.rotation.z + obj.config.rotation.z;
+
+    scaleX = globalConfig.scale.x + obj.config.scale.x - 1000;
+    scaleY = globalConfig.scale.y + obj.config.scale.y - 1000;
+    scaleZ = globalConfig.scale.z + obj.config.scale.z - 1000;
 
     distance =
       (parseInt(componentDistanceSlider.min) +
@@ -171,13 +179,34 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
         parseInt(zTranslateSlider.value)) /
       1000;
 
-    rotateX = obj.config.rotation.x + parseInt(xRotateSlider.value);
-    rotateY = obj.config.rotation.y + parseInt(yRotateSlider.value);
-    rotateZ = obj.config.rotation.z + parseInt(zRotateSlider.value);
+    rotateX =
+      globalConfig.rotation.x +
+      obj.config.rotation.x +
+      parseInt(xRotateSlider.value);
+    rotateY =
+      globalConfig.rotation.y +
+      obj.config.rotation.y +
+      parseInt(yRotateSlider.value);
+    rotateZ =
+      globalConfig.rotation.z +
+      obj.config.rotation.z +
+      parseInt(zRotateSlider.value);
 
-    scaleX = obj.config.scale.x + parseFloat(xScaleSlider.value) - 1000;
-    scaleY = obj.config.scale.y + parseFloat(yScaleSlider.value) - 1000;
-    scaleZ = obj.config.scale.z + parseFloat(zScaleSlider.value) - 1000;
+    scaleX =
+      globalConfig.scale.x +
+      obj.config.scale.x +
+      parseFloat(xScaleSlider.value) -
+      2000;
+    scaleY =
+      globalConfig.scale.y +
+      obj.config.scale.y +
+      parseFloat(yScaleSlider.value) -
+      2000;
+    scaleZ =
+      globalConfig.scale.z +
+      obj.config.scale.z +
+      parseFloat(zScaleSlider.value) -
+      2000;
 
     distance =
       (parseInt(distanceSlider.min) +
@@ -278,26 +307,20 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     translateZ
   );
 
-  let parentObject =
-    model.cubeList[model.getObjectIdxFromName(currentComponent)];
+  let parentObject = model.cubeList[model.getObjectIdxFromName(obj.name)];
+  const mainObjectName = model.mainObject;
+
+  const parentName = model.findParent(obj.name);
+
+  if (
+    parentName != null &&
+    parentName != mainObjectName &&
+    model.animation.has(parentName)
+  ) {
+    parentObject = model.cubeList[model.getObjectIdxFromName(parentName)];
+  }
 
   if (drawMode == Draw.ANIMATION) {
-    const mainObjectName = model.mainObject;
-
-    if (model.animation.has(obj.name)) {
-      parentObject = model.cubeList[model.getObjectIdxFromName(obj.name)];
-    }
-
-    const parentName = model.findParent(obj.name);
-
-    if (
-      parentName != null &&
-      parentName != mainObjectName &&
-      model.animation.has(parentName)
-    ) {
-      parentObject = model.cubeList[model.getObjectIdxFromName(parentName)];
-    }
-
     const parentFrames = model.animation.get(mainObjectName);
     const frame = parentFrames[animationFrame % parentFrames.length];
     if (obj.name != mainObjectName) {
@@ -308,17 +331,52 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
         frame.rotation.z
       );
     }
+
+    modelViewMatrix = rotateWithPivot(
+      modelViewMatrix,
+      rotateX,
+      rotateY,
+      rotateZ,
+      parentObject.pivot
+    );
+  } else if (drawMode == Draw.COMPONENT) {
+    if (currentComponent == model.mainObject) {
+      if (!model.movedMap.get(obj.name)) {
+        parentObject =
+          model.cubeList[model.getObjectIdxFromName(model.mainObject)];
+      }
+      modelViewMatrix = rotate(
+        modelViewMatrix,
+        globalConfig.rotation.x,
+        globalConfig.rotation.y,
+        globalConfig.rotation.z
+      );
+    }
+
+    modelViewMatrix = rotateWithPivot(
+      modelViewMatrix,
+      obj.config.rotation.x,
+      obj.config.rotation.y,
+      obj.config.rotation.z,
+      parentObject.pivot
+    );
+  } else if (drawMode == Draw.WHOLE) {
+    modelViewMatrix = rotate(
+      modelViewMatrix,
+      globalConfig.rotation.x + parseInt(xRotateSlider.value),
+      globalConfig.rotation.y + parseInt(yRotateSlider.value),
+      globalConfig.rotation.z + parseInt(zRotateSlider.value)
+    );
+    modelViewMatrix = rotateWithPivot(
+      modelViewMatrix,
+      obj.config.rotation.x,
+      obj.config.rotation.y,
+      obj.config.rotation.z,
+      parentObject.pivot
+    );
   }
 
-  modelViewMatrix = rotateWithPivot(
-    modelViewMatrix,
-    rotateX,
-    rotateY,
-    rotateZ,
-    parentObject.pivot
-  );
-
-  if (currentComponent == model.mainObject || drawMode == Draw.WHOLE) {
+  if (currentComponent == model.mainObject) {
     modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
   } else {
     modelViewMatrix = scaleWithPivot(
