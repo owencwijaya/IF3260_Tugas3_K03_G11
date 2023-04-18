@@ -69,3 +69,96 @@ const loadTexture = (gl, url) => {
 
   return texture;
 };
+
+const generateBumpTextures = (gl, programInfo) => {
+  let normalTexture = loadTexture(gl, "js/model/texture/bump/bump_normal.png");
+  let diffuseTexture = loadTexture(
+    gl,
+    "js/model/texture/bump/bump_diffuse.png"
+  );
+  let depthTexture = loadTexture(gl, "js/model/texture/bump/bump_depth.png");
+
+  gl.useProgram(programInfo.program);
+  gl.activeTexture(gl.TEXTURE1);
+  gl.bindTexture(gl.TEXTURE_2D, normalTexture);
+  gl.uniform1i(programInfo.uniformLocations.uNormalTex, 1);
+  gl.activeTexture(gl.TEXTURE2);
+  gl.bindTexture(gl.TEXTURE_2D, diffuseTexture);
+  gl.uniform1i(programInfo.uniformLocations.uDiffuseTex, 2);
+  gl.activeTexture(gl.TEXTURE3);
+  gl.bindTexture(gl.TEXTURE_2D, depthTexture);
+  gl.uniform1i(programInfo.uniformLocations.uDepthTex, 3);
+};
+
+const generateReflectionTextures = (gl, programInfo) => {
+  gl.useProgram(programInfo.program);
+  gl.activeTexture(gl.TEXTURE0);
+  let texture = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
+
+  const faceInfos = [
+    {
+      target: gl.TEXTURE_CUBE_MAP_POSITIVE_X,
+      url: "js/model/texture/reflection/pos-x.jpg",
+    },
+    {
+      target: gl.TEXTURE_CUBE_MAP_NEGATIVE_X,
+      url: "js/model/texture/reflection/neg-x.jpg",
+    },
+    {
+      target: gl.TEXTURE_CUBE_MAP_POSITIVE_Y,
+      url: "js/model/texture/reflection/pos-y.jpg",
+    },
+    {
+      target: gl.TEXTURE_CUBE_MAP_NEGATIVE_Y,
+      url: "js/model/texture/reflection/neg-y.jpg",
+    },
+    {
+      target: gl.TEXTURE_CUBE_MAP_POSITIVE_Z,
+      url: "js/model/texture/reflection/pos-z.jpg",
+    },
+    {
+      target: gl.TEXTURE_CUBE_MAP_NEGATIVE_Z,
+      url: "js/model/texture/reflection/neg-z.jpg",
+    },
+  ];
+
+  faceInfos.forEach((faceInfo) => {
+    const level = 0;
+    const internalFormat = gl.RGBA;
+    const width = 512;
+    const height = 512;
+    const format = gl.RGBA;
+    const type = gl.UNSIGNED_BYTE;
+
+    // prettier-ignore
+    gl.texImage2D(faceInfo.target, level, internalFormat, width, height, 0, format, type, null);
+
+    const image = new Image();
+    image.src = faceInfo.url;
+    image.addEventListener("load", function () {
+      gl.bindTexture(gl.TEXTURE_CUBE_MAP, texture);
+      gl.texImage2D(
+        faceInfo.target,
+        level,
+        internalFormat,
+        format,
+        type,
+        image
+      );
+      gl.generateMipmap(gl.TEXTURE_CUBE_MAP);
+    });
+  });
+
+  gl.generateMipmap(gl.TEXTURE_CUBE_MAP);
+  gl.texParameteri(
+    gl.TEXTURE_CUBE_MAP,
+    gl.TEXTURE_MIN_FILTER,
+    gl.LINEAR_MIPMAP_LINEAR
+  );
+
+  console.log(texture);
+  console.log(programInfo.uniformLocations.cubeTexture);
+
+  gl.uniform1i(programInfo.uniformLocations.cubeTexture, 0);
+};

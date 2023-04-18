@@ -67,6 +67,9 @@ const programInfo = {
     uNormalTex: gl.getUniformLocation(shaderProgram, "uNormalTex"),
     uDiffuseTex: gl.getUniformLocation(shaderProgram, "uDiffuseTex"),
     uDepthTex: gl.getUniformLocation(shaderProgram, "uDepthTex"),
+    worldMatrix: gl.getUniformLocation(shaderProgram, "uWorldMatrix"),
+    cameraPosition: gl.getUniformLocation(shaderProgram, "uCameraPosition"),
+    cubeTexture: gl.getUniformLocation(shaderProgram, "uCubeTexture"),
   },
 };
 
@@ -136,48 +139,28 @@ const componentProgramInfo = {
       "uDirectionalVector"
     ),
     type: componentGl.getUniformLocation(componentShaderProgram, "type"),
+    worldMatrix: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uWorldMatrix"
+    ),
+    cameraPosition: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uCameraPosition"
+    ),
+    cubeTexture: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uCubeTexture"
+    ),
   },
 };
 
 let model = new Steve();
-// let model = new Spider();
-// let model = new Chicken();
 
-let normalTexture = loadTexture(gl, "js/model/texture/bump/bump_normal.png");
-let diffuseTexture = loadTexture(gl, "js/model/texture/bump/bump_diffuse.png");
-let depthTexture = loadTexture(gl, "js/model/texture/bump/bump_depth.png");
+generateBumpTextures(gl, programInfo);
+generateBumpTextures(componentGl, componentProgramInfo);
 
-gl.useProgram(programInfo.program);
-gl.activeTexture(gl.TEXTURE1);
-gl.bindTexture(gl.TEXTURE_2D, normalTexture);
-gl.uniform1i(programInfo.uniformLocations.uNormalTex, 1);
-gl.activeTexture(gl.TEXTURE2);
-gl.bindTexture(gl.TEXTURE_2D, diffuseTexture);
-gl.uniform1i(programInfo.uniformLocations.uDiffuseTex, 2);
-gl.activeTexture(gl.TEXTURE3);
-gl.bindTexture(gl.TEXTURE_2D, depthTexture);
-gl.uniform1i(programInfo.uniformLocations.uDepthTex, 3);
-
-normalTexture = loadTexture(
-  componentGl,
-  "js/model/texture/bump/bump_normal.png"
-);
-diffuseTexture = loadTexture(
-  componentGl,
-  "js/model/texture/bump/bump_diffuse.png"
-);
-depthTexture = loadTexture(componentGl, "js/model/texture/bump/bump_depth.png");
-
-componentGl.useProgram(componentProgramInfo.program);
-componentGl.activeTexture(componentGl.TEXTURE1);
-componentGl.bindTexture(componentGl.TEXTURE_2D, normalTexture);
-componentGl.uniform1i(componentProgramInfo.uniformLocations.uNormalTex, 1);
-componentGl.activeTexture(componentGl.TEXTURE2);
-componentGl.bindTexture(componentGl.TEXTURE_2D, diffuseTexture);
-componentGl.uniform1i(componentProgramInfo.uniformLocations.uDiffuseTex, 2);
-componentGl.activeTexture(componentGl.TEXTURE3);
-componentGl.bindTexture(componentGl.TEXTURE_2D, depthTexture);
-componentGl.uniform1i(componentProgramInfo.uniformLocations.uDepthTex, 3);
+generateReflectionTextures(gl, programInfo);
+generateReflectionTextures(componentGl, componentProgramInfo);
 
 resetComponentSelect(model);
 

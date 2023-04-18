@@ -14,14 +14,17 @@ const vertexShaderSource = `
     uniform mat4 uModelViewMatrix;
     uniform mat4 uProjectionMatrix;
     uniform mat4 uNormalMatrix;
+    uniform mat4 uWorldMatrix;
 
     uniform vec3 uAmbientLight;
     uniform vec3 uDirectionalVector;
 
-    varying vec2 frag_uv;
     varying vec3 lightPos;
     varying vec3 viewPos;
     varying vec3 fragmentPos;
+
+    varying vec3 vWorldPosition;
+    varying vec3 vWorldNormal;
 
     mat3 transpose(in mat3 inMatrix)
     {
@@ -56,9 +59,9 @@ const vertexShaderSource = `
         lightPos = tbn * uDirectionalVector;
         viewPos = tbn * vec3(0, 0, 0);
         fragmentPos = tbn * vec3(uModelViewMatrix * vec4(aVertexPosition, 1.0));
-      
-        frag_uv = aVertexUV;
-    
+
+        vWorldPosition = (uWorldMatrix * vec4(aVertexPosition, 1.0)).xyz;
+        vWorldNormal = mat3(uWorldMatrix) * aVertexNormal;
     }
 `;
 
@@ -74,11 +77,15 @@ const fragmentShaderSource = `
     uniform sampler2D uDepthTex;
     uniform int type;
 
-    varying vec2 frag_uv;
     varying vec3 lightPos;
     varying vec3 viewPos;
     varying vec3 fragmentPos;
     uniform vec3 uDirectionalVector;
+    uniform vec3 uCameraPosition;
+    uniform samplerCube uCubeTexture;
+
+    varying vec3 vWorldPosition;
+    varying vec3 vWorldNormal;
 
     vec2 parallax_uv(vec2 uv, vec3 view_dir){
       float depth = texture2D(uDepthTex, uv).r;    
@@ -86,12 +93,11 @@ const fragmentShaderSource = `
       return uv - p;  
     }
 
-
     void main() {
       if (type == 0) {
         highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
         gl_FragColor = vec4(texelColor.rgb * vLighting, texelColor.a);
-      } else {
+      } else if (type == 1) {
         vec3 light_dir = normalize(lightPos - fragmentPos);
         vec3 view_dir = normalize(viewPos - fragmentPos);
         vec2 uv = parallax_uv(vTextureCoord, view_dir);
@@ -101,6 +107,12 @@ const fragmentShaderSource = `
         vec3 norm = normalize(texture2D(uNormalTex, uv).rgb * 2.0 - 1.0);
         float diffuse = max(dot(light_dir, norm), 0.0);
         gl_FragColor = vec4(diffuse * albedo + ambient, 1.0);
+      } else if (type == 2) {
+        vec3 worldNormal = normalize(vWorldNormal);
+        vec3 eyeToSurfaceDir = normalize(vWorldPosition - uCameraPosition);
+        vec3 direction = reflect(eyeToSurfaceDir, worldNormal);
+
+        gl_FragColor = textureCube(uCubeTexture, direction);
       }
     }
 `;

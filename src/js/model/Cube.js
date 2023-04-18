@@ -137,10 +137,6 @@ class Cube {
       // kiri
       0, 1, 1, 0, 1, 1, 0, 0
     ]
-
-    this.normal_texture = "js/model/texture/bump/bump_normal.png";
-    this.diffuse_texture =  "js/model/texture/bump/bump_diffuse.png";
-    this.depth_texture = "js/model/texture/bump/bump_depth.png";
   }
 }
 

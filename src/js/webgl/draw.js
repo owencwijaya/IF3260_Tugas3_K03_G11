@@ -315,6 +315,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   const projectionMatrixLoc = programInfo.uniformLocations.projectionMatrix;
   const modelViewMatrixLoc = programInfo.uniformLocations.modelViewMatrix;
   const normalMatrixLoc = programInfo.uniformLocations.normalMatrix;
+  const worldMatrixLoc = programInfo.uniformLocations.worldMatrix;
 
   const factor = projection == "perspective" ? -1 : 1;
 
@@ -482,23 +483,30 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   gl.uniformMatrix4fv(projectionMatrixLoc, gl.FALSE, projectionMatrix);
   gl.uniformMatrix4fv(modelViewMatrixLoc, gl.FALSE, modelViewMatrix);
   gl.uniformMatrix4fv(normalMatrixLoc, gl.FALSE, normalMatrix);
+  gl.uniformMatrix4fv(
+    worldMatrixLoc,
+    gl.FALSE,
+    multiply(modelViewMatrix, invert(lookAtMatrix))
+  );
 
+  gl.uniform3fv(programInfo.uniformLocations.cameraPosition, eye);
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
   if (parseInt(textureSelect.value) == 0) {
-    gl.activeTexture(gl.TEXTURE0);
+    gl.activeTexture(gl.TEXTURE4);
     gl.bindTexture(gl.TEXTURE_2D, texture);
-    gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
+    gl.uniform1i(programInfo.uniformLocations.uSampler, 4);
   }
 
-  gl.uniform1i(
-    programInfo.uniformLocations.type,
-    parseInt(
-      drawMode == Draw.COMPONENT
-        ? componentTextureSelect.value
-        : textureSelect.value
-    )
-  );
+  const renderMode =
+    (drawMode == Draw.COMPONENT &&
+      textureSelect.value != 0 &&
+      componentTextureSelect.value == 0) ||
+    drawMode != Draw.COMPONENT
+      ? textureSelect.value
+      : componentTextureSelect.value;
+
+  gl.uniform1i(programInfo.uniformLocations.type, parseInt(renderMode));
 
   {
     const vertexCount = obj.indices.length;
