@@ -124,55 +124,35 @@ fovSlider.addEventListener("input", () => {
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", reset);
 
+const replacer = (key, value) => {
+  if (value instanceof Map) {
+    return {
+      dataType: "Map",
+      value: Array.from(value.entries()),
+    };
+  } else {
+    return value;
+  }
+};
+
+const reviver = (key, value) => {
+  if (typeof value === "object" && value !== null) {
+    if (value.dataType === "Map") {
+      return new Map(value.value);
+    }
+  }
+  return value;
+};
+
 const saveModelButton = document.getElementById("save-model-button");
 saveModelButton.addEventListener("click", () => {
-  // let xScale = 0;
-  // let yScale = 0;
-  // let zScale = 0;
-
-  // if (loaded) {
-  //   xScale = Math.max(10,(xScaleSlider.value - 1000));
-  //   yScale = Math.max(10, obj.config.scaling.y + (yScaleSlider.value - 1000));
-  //   zScale = Math.max(10, obj.config.scaling.z + (zScaleSlider.value - 1000));
-  // } else {
-  //   xScale = xScaleSlider.value;
-  //   yScale = yScaleSlider.value;
-  //   zScale = zScaleSlider.value;
-  // }
-
-  // // update config
-  // const newConfig = {
-  //   translation: {
-  //     x: obj.config.translation.x + parseInt(xTranslateSlider.value),
-  //     y: obj.config.translation.y + parseInt(yTranslateSlider.value),
-  //     z: obj.config.translation.z + parseInt(zTranslateSlider.value),
-  //   },
-  //   rotation: {
-  //     x: obj.config.rotation.x + parseInt(xRotateSlider.value),
-  //     y: obj.config.rotation.y + parseInt(yRotateSlider.value),
-  //     z: obj.config.rotation.z + parseInt(zRotateSlider.value),
-  //   },
-  //   scaling: {
-  //     x: parseInt(xScale),
-  //     y: parseInt(yScale),
-  //     z: parseInt(zScale),
-  //   },
-  // };
-  // if (obj instanceof HollowCube) {
-  //   savedObj = new HollowCube(obj.color, newConfig);
-  // } else if (obj instanceof HollowTrianglePrism) {
-  //   savedObj = new HollowTrianglePrism(obj.color, newConfig);
-  // } else if (obj instanceof HollowDiamond) {
-  //   savedObj = new HollowDiamond(obj.color, newConfig);
-  // }
+  const content = JSON.stringify(model, replacer, "\t");
 
   const filename = document.getElementById("filename").value;
   if (filename == "") {
     alert("Please input the output file name!");
     return;
   }
-
-  const content = JSON.stringify(savedObj);
 
   const file = new Blob([content], {
     type: "json/javascript",
@@ -195,8 +175,18 @@ loadModelButton.addEventListener("change", () => {
   reader.readAsText(selectedFile, "UTF-8");
 
   reader.onload = (evt) => {
-    const content = JSON.parse(evt.target.result);
+    const content = JSON.parse(evt.target.result, reviver);
+    if (content.name == "Steve") {
+      model = new Steve();
+    } else if (content.name == "Spider") {
+      model = new Spider();
+    } else if (content.name == "Chicken") {
+      model = new Chicken();
+    }
 
+    model.createTextures();
+    model.createComponentTextures();
+    resetComponentSelect(model);
     reset();
   };
 
@@ -245,6 +235,7 @@ steveButton.addEventListener("click", () => {
   model.createTextures();
   model.createComponentTextures();
   reset();
+  resetComponentSelect(model);
   requestAnimationFrame(render);
 });
 
@@ -253,6 +244,7 @@ spiderButton.addEventListener("click", () => {
   model.createTextures();
   model.createComponentTextures();
   reset();
+  resetComponentSelect(model);
   requestAnimationFrame(render);
 });
 
@@ -261,5 +253,6 @@ chickenButton.addEventListener("click", () => {
   model.createTextures();
   model.createComponentTextures();
   reset();
+  resetComponentSelect(model);
   requestAnimationFrame(render);
 });

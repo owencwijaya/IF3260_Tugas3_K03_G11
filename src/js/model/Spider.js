@@ -34,7 +34,7 @@ class Spider {
     const leg2 = new Cube(
       "Leg2",
       [0.45, 0.45, 0.45],
-      [0.1, 0.45, 0.40],
+      [0.1, 0.45, 0.4],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
@@ -62,7 +62,7 @@ class Spider {
     const leg6 = new Cube(
       "Leg6",
       [-0.45, 0.45, 0.45],
-      [-0.1, 0.45, 0.40],
+      [-0.1, 0.45, 0.4],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
@@ -100,24 +100,46 @@ class Spider {
     this.movedMap = new Map();
     this.mainObject = "Body";
 
+    this.createTextures();
+    this.createComponentTextures();
+
     this.cubeList.forEach((obj) => {
-      this.textureList.push(loadTexture(gl, obj.texturePath));
-      this.componentTextureList.push(loadTexture(componentGl, obj.texturePath));
       this.names.push(obj.name);
       this.movedMap.set(obj.name, false);
     });
 
     this.relationship = this.createRelationship();
     this.animation = this.createAnimation();
+    this.name = "Spider";
+  }
+
+  createTextures() {
+    this.textureList = [];
+    this.cubeList.forEach((obj) => {
+      this.textureList.push(loadTexture(gl, obj.texturePath));
+    });
+  }
+
+  createComponentTextures() {
+    this.componentTextureList = [];
+    this.cubeList.forEach((obj) => {
+      this.componentTextureList.push(loadTexture(componentGl, obj.texturePath));
+    });
   }
 
   createRelationship() {
     let relationships = new Map();
-    relationships.set("Body", [
-      "Head",
-      "Neck"
+    relationships.set("Body", ["Head", "Neck"]);
+    relationships.set("Neck", [
+      "Leg1",
+      "Leg2",
+      "Leg3",
+      "Leg4",
+      "Leg5",
+      "Leg6",
+      "Leg7",
+      "Leg8",
     ]);
-    relationships.set("Neck", ["Leg1", "Leg2", "Leg3", "Leg4", "Leg5", "Leg6", "Leg7", "Leg8"]);
     return relationships;
   }
 
@@ -136,46 +158,27 @@ class Spider {
     let body = [];
     let head = [];
     let neck = [];
-    let leg1 = []
-    let leg2 = []
-    let leg3 = []
-    let leg4 = []
-    let leg5 = []
-    let leg6 = []
-    let leg7 = []
-    let leg8 = []
+    let leg1 = [];
+    let leg2 = [];
+    let leg3 = [];
+    let leg4 = [];
+    let leg5 = [];
+    let leg6 = [];
+    let leg7 = [];
+    let leg8 = [];
 
     for (let i = -60; i <= 60; i += 10) {
       body.push(createConfig([0, 0, 0], [0, i / 6, 0], [1000, 1000, 1000]));
       head.push(createConfig([0, 0, 0], [0, i / 3, 0], [1000, 1000, 1000]));
-      neck.push(
-        createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000])
-      );
-      leg1.push(
-        createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000])
-      );
-      leg2.push(
-        createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000])
-      );
-      leg3.push(
-        createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000])
-      );
-      leg4.push(
-        createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000])
-      );
-      leg5.push(
-        createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000])
-      );
-      leg6.push(
-        createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000])
-      );
-      leg7.push(
-        createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000])
-      );
-      leg8.push(
-        createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000])
-      );
-      
+      neck.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
+      leg1.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
+      leg2.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
+      leg3.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
+      leg4.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
+      leg5.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
+      leg6.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
+      leg7.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
+      leg8.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
     }
 
     body.push(...body.slice().reverse());
@@ -240,5 +243,4 @@ class Spider {
     }
     return null;
   }
-
 }

@@ -444,7 +444,6 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     );
   }
 
-  console.log("yes");
   let normalMatrix = invert(modelViewMatrix);
   normalMatrix = transpose(normalMatrix);
 

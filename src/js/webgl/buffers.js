@@ -1,5 +1,4 @@
 const initPositionBuffer = (gl, middle, length) => {
-  console.log(middle.length);
   const x_middle = middle[0];
   const y_middle = middle[1];
   const z_middle = middle[2];

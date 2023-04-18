@@ -128,21 +128,29 @@ class Chicken {
     this.mainObject = "Body";
 
     this.createTextures();
+    this.createComponentTextures();
+
+    this.cubeList.forEach((obj) => {
+      this.names.push(obj.name);
+      this.movedMap.set(obj.name, false);
+    });
     // prettier-ignore
     this.relationship = this.createRelationship();
     this.animation = this.createAnimation();
+    this.name = "Chicken";
   }
 
   createTextures() {
     this.textureList = [];
-    this.componentTextureList = [];
-    this.names = [];
-    this.movedMap = new Map();
     this.cubeList.forEach((obj) => {
       this.textureList.push(loadTexture(gl, obj.texturePath));
+    });
+  }
+
+  createComponentTextures() {
+    this.componentTextureList = [];
+    this.cubeList.forEach((obj) => {
       this.componentTextureList.push(loadTexture(componentGl, obj.texturePath));
-      this.names.push(obj.name);
-      this.movedMap.set(obj.name, false);
     });
   }
 

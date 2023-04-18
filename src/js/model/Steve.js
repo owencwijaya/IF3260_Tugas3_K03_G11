@@ -91,6 +91,7 @@ class Steve {
     // prettier-ignore
     this.relationship = this.createRelationship();
     this.animation = this.createAnimation();
+    this.name = "Steve";
   }
 
   createTextures() {
