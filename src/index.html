@@ -34,11 +34,104 @@
         <div id="help-modal" class="modal">
           <div class="modal-content">
             <span id="close-button">&times;</span>
-            <h1>Transformasi</h1>
+            <h1>Tampilan</h1>
             <p>
               Terdapat dua buah <i>canvas</i> di program. <i>Canvas</i> kiri
-              adalah <b>canvas untuk keseluruhan objek</b>
+              adalah <b>canvas untuk keseluruhan objek</b>, sedangkan
+              <i>canvas</i> kanan adalah canvas untuk komponen tertentu.
+              Komponen dapat dipilih melalui <i>tab component tree</i> yang ada
+              di sebelah kiri <i>canvas</i> komponen.
             </p>
+            <ul>
+              <li>
+                Pengguna dapat mengaktifkan <i>lighting</i> menggunakan
+                <i>checkbox</i>
+                <ul>
+                  <li>
+                    Pada tekstur <i>bump & reflective</i>, tampilan tanpa
+                    <i>lighting</i> akan menghasilkan permukaan datar
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Pengguna dapat menyalakan animasi yang sudah dibuat menggunakan
+                <i>checkbox</i> animasi
+              </li>
+              <li>
+                Pengguna dapat mengganti mode tampilan menggunakan
+                <i>dropdown</i> proyeksi. Proyeksi yang dapat digunakan adalah
+                <i>perspective projection, oblique, & orthographic</i>
+              </li>
+            </ul>
+            <h1>Transformasi</h1>
+
+            <ul>
+              <li>
+                Pengguna dapat melakukan rotasi, translasi, dan
+                <i>scaling</i> searah sumbu X, Y, dan Z menggunakan
+                <i>slider</i>
+              </li>
+              <li>
+                Pengguna dapat menggerakan jarak kamera menggunakan
+                <i>camera distance slider</i>
+              </li>
+              <li>
+                Pengguna dapat mengatur posisi kamera menggunakan
+                <i>horizontal slider</i> dan <i>vertical slider</i>
+              </li>
+              <li>
+                Pengguna dapat mengatur FOV kamera dengan <i>FOV slider</i>
+              </li>
+            </ul>
+
+            Transformasi juga dapat dilakukan pada <i>component canvas</i>,
+            dengan beberapa hal berikut:
+            <ul>
+              <li>
+                Transformasi dari <i>component canvas</i>bersifat
+                <i>stacking</i>, sehingga dapat berdampak pada canvas utama
+              </li>
+              <li>
+                Manipulasi transformasi pada komponen <i>parent</i> akan
+                menghasilkan transformasi mirip pada canvas utama, karena
+                seluruh komponen ikut dimanipulasi
+              </li>
+              <li>
+                Rotasi per komponen spesifik akan dilakukan pada titik pusat
+                yang sudah ditentukan
+              </li>
+            </ul>
+            <h1>Texture</h1>
+            Terdapat tiga buah mode tekstur yang dapat digunakan:
+            <ul>
+              <li>
+                <b>Standard</b> - Tekstur yang digunakan adalah tekstur
+                <i>default</i> dari objek
+              </li>
+              <li>
+                <b>Bump</b> - Tekstur yang digunakan adalah tekstur
+                <i>bump</i> yang mensimulasikan <i>parallax mapping</i>
+              </li>
+              <li>
+                <b>Reflection</b> - Tekstur yang digunakan adalah tekstur
+                <i>reflection</i> yang mensimulasikan <i>reflection mapping</i>
+              </li>
+            </ul>
+
+            Untuk mengganti tipe tekstur, pengguna dapat menggunakan
+            <i>dropdown</i>
+            di sebelah
+            <i>dropdown</i>
+            proyeksi. Tekstur dapat dibedakan pada canvas utama dan
+            <i>component canvas.</i> Pengguna juga dapat meng-<i>upload</i>
+            gambar tekstur menggunakan tombol <i>Upload Custom Texture</i>
+            <ul>
+              <li><b>Whole</b> untuk mengubah tekstur pada kedua canvas</li>
+              <li>
+                <b>Subtree</b> untuk mengubah tekstur hanya pada objek terpilih
+                dan subtree pada <i>component canvas</i>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
