@@ -5,7 +5,7 @@ class Chicken {
       [0, 0, 0], // middle
       [0, 0, 0], // pivot
       [1, 0.75, 0.75], // length
-      "js/model/texture/chicken/chicken-body.jpg", // texture path
+      "js/model/texture/chicken/chicken-body.jpg" // texture path
     );
 
     const leftWing = new Cube(
@@ -14,7 +14,7 @@ class Chicken {
       // [0, 0.65, 0.34],
       [0, 0.65, -0.5],
       [0.8, 0.6, 0.075],
-      "js/model/texture/chicken/chicken-body.jpg",
+      "js/model/texture/chicken/chicken-body.jpg"
     );
 
     const rightWing = new Cube(
@@ -22,7 +22,7 @@ class Chicken {
       [0, 0.05, -0.415],
       [0, 0.65, 0.5],
       [0.8, 0.6, 0.075],
-      "js/model/texture/chicken/chicken-body.jpg",
+      "js/model/texture/chicken/chicken-body.jpg"
     );
 
     const leftLeg = new Cube(
@@ -30,15 +30,7 @@ class Chicken {
       [0, -0.65, 0.175],
       [0, -0.05, 0.175],
       [0.1, 0.6, 0.15],
-      "js/model/texture/chicken/chicken-legs.jpg",
-    );
-
-    const rightLeg = new Cube(
-      "Right Leg",
-      [0, -0.65, -0.175],
-      [0, -0.05, -0.175],
-      [0.1, 0.6, 0.15],
-      "js/model/texture/chicken/chicken-legs.jpg",
+      "js/model/texture/chicken/chicken-legs.jpg"
     );
 
     const leftToe = new Cube(
@@ -46,7 +38,15 @@ class Chicken {
       [-0.1, -0.9, 0.175],
       [0, 0, 0],
       [0.2, 0.1, 0.25],
-      "js/model/texture/chicken/chicken-legs.jpg",
+      "js/model/texture/chicken/chicken-legs.jpg"
+    );
+
+    const rightLeg = new Cube(
+      "Right Leg",
+      [0, -0.65, -0.175],
+      [0, -0.05, -0.175],
+      [0.1, 0.6, 0.15],
+      "js/model/texture/chicken/chicken-legs.jpg"
     );
 
     const rightToe = new Cube(
@@ -54,7 +54,7 @@ class Chicken {
       [-0.1, -0.9, -0.175],
       [0, 0, 0],
       [0.2, 0.1, 0.25],
-      "js/model/texture/chicken/chicken-legs.jpg",
+      "js/model/texture/chicken/chicken-legs.jpg"
     );
 
     const head = new Cube(
@@ -62,7 +62,7 @@ class Chicken {
       [-0.5, 0.4, 0],
       [-0.5, 0.4, 0],
       [0.3, 0.65, 0.4],
-      "js/model/texture/chicken/chicken-body.jpg",
+      "js/model/texture/chicken/chicken-body.jpg"
     );
 
     const beakTop = new Cube(
@@ -70,7 +70,7 @@ class Chicken {
       [-0.7525, 0.4, 0],
       [0, 0, 0],
       [0.2, 0.1, 0.4],
-      "js/model/texture/chicken/chicken-beak-top.jpg",
+      "js/model/texture/chicken/chicken-beak-top.jpg"
     );
 
     const beakBottom = new Cube(
@@ -78,7 +78,7 @@ class Chicken {
       [-0.7525, 0.3, 0],
       [0, 0, 0],
       [0.2, 0.1, 0.4],
-      "js/model/texture/chicken/chicken-beak-bottom.jpg",
+      "js/model/texture/chicken/chicken-beak-bottom.jpg"
     );
 
     const wattles = new Cube(
@@ -86,7 +86,7 @@ class Chicken {
       [-0.7, 0.2, 0],
       [0, 0, 0],
       [0.1, 0.25, 0.2],
-      "js/model/texture/chicken/chicken-wattles.jpg",
+      "js/model/texture/chicken/chicken-wattles.jpg"
     );
 
     const leftEye = new Cube(
@@ -94,7 +94,7 @@ class Chicken {
       [-0.65, 0.55, 0.125],
       [0, 0, 0],
       [0.01, 0.125, 0.125],
-      "js/model/texture/chicken/chicken-eyes.jpg",
+      "js/model/texture/chicken/chicken-eyes.jpg"
     );
 
     const rightEye = new Cube(
@@ -102,7 +102,7 @@ class Chicken {
       [-0.65, 0.55, -0.125],
       [0, 0, 0],
       [0.01, 0.125, 0.125],
-      "js/model/texture/chicken/chicken-eyes.jpg",
+      "js/model/texture/chicken/chicken-eyes.jpg"
     );
 
     this.cubeList = [
@@ -110,8 +110,8 @@ class Chicken {
       leftWing,
       rightWing,
       leftLeg,
-      rightLeg,
       leftToe,
+      rightLeg,
       rightToe,
       head,
       beakTop,
@@ -157,7 +157,7 @@ class Chicken {
     ]);
 
     relationships.set("Head", [
-      "Beak Top", 
+      "Beak Top",
       "Beak Bottom",
       "Wattles",
       "Left Eye",
@@ -195,22 +195,95 @@ class Chicken {
     let wattles = [];
     let leftEye = [];
     let rightEye = [];
-    
-    
+
     for (let i = -90; i <= 0; i += 15) {
-      body.push(createConfig([0, 0.0005*i, 0], [0, 45, 0], [1000, 1000, 1000]));
-      leftWing.push(createConfig([0.0015*i, 0.0005*i, 0.0015*i], [i/3, 0, 0], [1000, 1000, 1000]));
-      rightWing.push(createConfig([-0.0015*i, 0.0005*i, -0.0015*i], [-i/3, 0, 0], [1000, 1000, 1000]));
-      head.push(createConfig([0.0005*i, 0.0005*i, 0.0005*i], [(i+45)/12, 0, 0], [1000, 1000, 1000]));
-      beakTop.push(createConfig([0.0005*i, 0.0005*i, 0.0005*i], [(i+45)/12, 0, 0], [1000, 1000, 1000]));
-      beakBottom.push(createConfig([0.0005*i, 0.0005*i, 0.0005*i], [(i+45)/12, 0, 0], [1000, 1000, 1000]));
-      wattles.push(createConfig([0.0005*i, 0.0005*i, 0.0005*i], [(i+45)/12, 0, 0], [1000, 1000, 1000]));
-      leftEye.push(createConfig([0.0005*i, 0.0005*i, 0.0005*i], [(i+45)/12, 0, 0], [1000, 1000, 1000]));
-      rightEye.push(createConfig([0.0005*i, 0.0005*i, 0.0005*i], [(i+45)/12, 0, 0], [1000, 1000, 1000]));
-      leftLeg.push(createConfig([0, 0.0005*i, 0], [0, 0, (i+30)/2], [1000, 1000, 1000]));
-      rightLeg.push(createConfig([0, 0.0005*i, 0], [0, 0, -(i+30)/2], [1000, 1000, 1000]));
-      leftToe.push(createConfig([0, 0.0005*i, 0], [0, 0, (i+30)/2], [1000, 1000, 1000]));
-      rightToe.push(createConfig([0, 0.0005*i, 0], [0, 0, -(i+30)/2], [1000, 1000, 1000]));
+      body.push(
+        createConfig([0, 0.0005 * i, 0], [0, 45, 0], [1000, 1000, 1000])
+      );
+      leftWing.push(
+        createConfig(
+          [0.0015 * i, 0.0005 * i, 0.0015 * i],
+          [i / 3, 0, 0],
+          [1000, 1000, 1000]
+        )
+      );
+      rightWing.push(
+        createConfig(
+          [-0.0015 * i, 0.0005 * i, -0.0015 * i],
+          [-i / 3, 0, 0],
+          [1000, 1000, 1000]
+        )
+      );
+      head.push(
+        createConfig(
+          [0.0005 * i, 0.0005 * i, 0.0005 * i],
+          [(i + 45) / 12, 0, 0],
+          [1000, 1000, 1000]
+        )
+      );
+      beakTop.push(
+        createConfig(
+          [0.0005 * i, 0.0005 * i, 0.0005 * i],
+          [(i + 45) / 12, 0, 0],
+          [1000, 1000, 1000]
+        )
+      );
+      beakBottom.push(
+        createConfig(
+          [0.0005 * i, 0.0005 * i, 0.0005 * i],
+          [(i + 45) / 12, 0, 0],
+          [1000, 1000, 1000]
+        )
+      );
+      wattles.push(
+        createConfig(
+          [0.0005 * i, 0.0005 * i, 0.0005 * i],
+          [(i + 45) / 12, 0, 0],
+          [1000, 1000, 1000]
+        )
+      );
+      leftEye.push(
+        createConfig(
+          [0.0005 * i, 0.0005 * i, 0.0005 * i],
+          [(i + 45) / 12, 0, 0],
+          [1000, 1000, 1000]
+        )
+      );
+      rightEye.push(
+        createConfig(
+          [0.0005 * i, 0.0005 * i, 0.0005 * i],
+          [(i + 45) / 12, 0, 0],
+          [1000, 1000, 1000]
+        )
+      );
+      leftLeg.push(
+        createConfig(
+          [0, 0.0005 * i, 0],
+          [0, 0, (i + 30) / 2],
+          [1000, 1000, 1000]
+        )
+      );
+      rightLeg.push(
+        createConfig(
+          [0, 0.0005 * i, 0],
+          [0, 0, -(i + 30) / 2],
+          [1000, 1000, 1000]
+        )
+      );
+      leftToe.push(
+        createConfig(
+          [0, 0.0005 * i, 0],
+          [0, 0, (i + 30) / 2],
+          [1000, 1000, 1000]
+        )
+      );
+      rightToe.push(
+        createConfig(
+          [0, 0.0005 * i, 0],
+          [0, 0, -(i + 30) / 2],
+          [1000, 1000, 1000]
+        )
+      );
     }
 
     body.push(...body.slice().reverse());
