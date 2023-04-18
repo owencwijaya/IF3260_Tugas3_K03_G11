@@ -2,11 +2,11 @@ let normalized = false; // gaperlu dinormalisasi
 let stride = 0; // berapa banyak byte dari 1 set of values, kalo 0 berarti ngikutin numComponents dan Type
 let offset = 0; // offset untuk buffer
 
-const setPositionAttribute = (gl, programInfo, vertices) => {
+const setPositionAttribute = (gl, programInfo, middle, length) => {
   const numComponents = 3; // keluarin 3 value per iterasi
   const type = gl.FLOAT;
 
-  const positionBuffer = initPositionBuffer(gl, vertices);
+  const positionBuffer = initPositionBuffer(gl, middle, length);
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
   gl.vertexAttribPointer(
@@ -21,11 +21,11 @@ const setPositionAttribute = (gl, programInfo, vertices) => {
   gl.enableVertexAttribArray(programInfo.attribLocations.vertexPosition);
 };
 
-const setNormalAttribute = (gl, programInfo, normals) => {
+const setNormalAttribute = (gl, programInfo) => {
   const numComponents = 3;
   const type = gl.FLOAT;
 
-  const normalBuffer = initNormalBuffer(gl, normals);
+  const normalBuffer = initNormalBuffer(gl);
   gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
 
   gl.vertexAttribPointer(
@@ -40,11 +40,11 @@ const setNormalAttribute = (gl, programInfo, normals) => {
   gl.enableVertexAttribArray(programInfo.attribLocations.vertexNormal);
 };
 
-const setTextureAttribute = (gl, programInfo, textures) => {
+const setTextureAttribute = (gl, programInfo) => {
   const numComponents = 2;
   const type = gl.FLOAT;
 
-  const textureBuffer = initTextureBuffer(gl, textures);
+  const textureBuffer = initTextureBuffer(gl);
   gl.bindBuffer(gl.ARRAY_BUFFER, textureBuffer);
 
   gl.vertexAttribPointer(
@@ -59,11 +59,11 @@ const setTextureAttribute = (gl, programInfo, textures) => {
   gl.enableVertexAttribArray(programInfo.attribLocations.textureCoord);
 };
 
-const setTangentAttribute = (gl, programInfo, tangents) => {
+const setTangentAttribute = (gl, programInfo) => {
   const numComponents = 3;
   const type = gl.FLOAT;
 
-  const tangentBuffer = initTangentBuffer(gl, tangents);
+  const tangentBuffer = initTangentBuffer(gl);
   gl.bindBuffer(gl.ARRAY_BUFFER, tangentBuffer);
 
   gl.vertexAttribPointer(
@@ -78,11 +78,11 @@ const setTangentAttribute = (gl, programInfo, tangents) => {
   gl.enableVertexAttribArray(programInfo.attribLocations.vertexTangent);
 };
 
-const setBitangentAttribute = (gl, programInfo, bitangents) => {
+const setBitangentAttribute = (gl, programInfo) => {
   const numComponents = 3;
   const type = gl.FLOAT;
 
-  const bitangentBuffer = initBitangentBuffer(gl, bitangents);
+  const bitangentBuffer = initBitangentBuffer(gl);
   gl.bindBuffer(gl.ARRAY_BUFFER, bitangentBuffer);
 
   gl.vertexAttribPointer(
@@ -97,11 +97,11 @@ const setBitangentAttribute = (gl, programInfo, bitangents) => {
   gl.enableVertexAttribArray(programInfo.attribLocations.vertexBitangent);
 };
 
-const setUVAttribute = (gl, programInfo, uv) => {
+const setUVAttribute = (gl, programInfo) => {
   const numComponents = 2;
   const type = gl.FLOAT;
 
-  const uvBuffer = initUVBuffer(gl, uv);
+  const uvBuffer = initUVBuffer(gl);
   gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
 
   gl.vertexAttribPointer(
@@ -350,9 +350,9 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   ) {
     modelViewMatrix = translate(
       modelViewMatrix,
-      -obj.x_middle,
+      -obj.middle[0],
       0,
-      -obj.z_middle
+      -obj.middle[2]
     );
   }
 
@@ -444,17 +444,19 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     );
   }
 
+  console.log("yes");
   let normalMatrix = invert(modelViewMatrix);
   normalMatrix = transpose(normalMatrix);
 
   // set indices buffer dan position / texture attribute
-  const indexBuffer = initIndexBuffer(gl, obj.indices);
+  const indexBuffer = initIndexBuffer(gl);
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
-  setPositionAttribute(gl, programInfo, obj.vertices);
-  setTextureAttribute(gl, programInfo, obj.textureCoordinates);
-  setTangentAttribute(gl, programInfo, obj.tangent);
-  setBitangentAttribute(gl, programInfo, obj.bitangent);
-  setUVAttribute(gl, programInfo, obj.uv);
+
+  setPositionAttribute(gl, programInfo, obj.middle, obj.length);
+  setTextureAttribute(gl, programInfo);
+  setTangentAttribute(gl, programInfo);
+  setBitangentAttribute(gl, programInfo);
+  setUVAttribute(gl, programInfo);
 
   gl.useProgram(programInfo.program);
 
@@ -473,7 +475,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
 
   // enable / disable normal attribute
   if (shaderOn) {
-    setNormalAttribute(gl, programInfo, obj.normalVertices);
+    setNormalAttribute(gl, programInfo);
     gl.uniform3fv(programInfo.uniformLocations.ambientLight, [0.4, 0.4, 0.4]);
   } else {
     gl.disableVertexAttribArray(programInfo.attribLocations.vertexNormal);
@@ -509,7 +511,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   gl.uniform1i(programInfo.uniformLocations.type, parseInt(renderMode));
 
   {
-    const vertexCount = obj.indices.length;
+    const vertexCount = 36;
     const type = gl.UNSIGNED_SHORT;
     const offset = 0;
     gl.drawElements(gl.TRIANGLES, vertexCount, type, offset);
