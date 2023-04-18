@@ -27,73 +27,73 @@ class Spider {
 
     const neck = new Cube(
       "Neck",
-      [0, 0.4, 0.5],
-      [0, 0.4, 0],
-      [0.35, 0.35, 0.4],
+      [0, 0.4, -0.53],
+      [0, 0.4, -0.53],
+      [0.35, 0.35, 0.35],
       "js/model/texture/spider/spider-neck.png"
     );
 
     const head = new Cube(
       "Head",
-      [0, 0.4, 0.8],
-      [0, 0.4, 0.8],
+      [0, 0.4, -0.9],
+      [0, 0.4, -0.9],
       [0.48, 0.48, 0.4],
       "js/model/texture/spider/spider-head.jpg"
     );
 
     const leg1 = new Cube(
       "Leg1",
-      [0.45, 0.45, 0.38],
-      [0.1, 0.45, 0.33],
+      [0.45, 0.45, -0.38],
+      [0.1, 0.45, -0.33],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg2 = new Cube(
       "Leg2",
-      [0.45, 0.45, 0.45],
-      [0.1, 0.45, 0.4],
+      [0.45, 0.45, -0.45],
+      [0.1, 0.45, -0.4],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg3 = new Cube(
       "Leg3",
-      [0.45, 0.45, 0.53],
-      [0.1, 0.45, 0.48],
+      [0.45, 0.45, -0.53],
+      [0.1, 0.45, -0.48],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg4 = new Cube(
       "Leg4",
-      [0.45, 0.45, 0.59],
-      [0.1, 0.45, 0.54],
+      [0.45, 0.45, -0.59],
+      [0.1, 0.45, -0.54],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg5 = new Cube(
       "Leg5",
-      [-0.45, 0.45, 0.38],
-      [-0.1, 0.45, 0.33],
+      [-0.45, 0.45, -0.38],
+      [-0.1, 0.45, -0.33],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg6 = new Cube(
       "Leg6",
-      [-0.45, 0.45, 0.45],
-      [-0.1, 0.45, 0.4],
+      [-0.45, 0.45, -0.45],
+      [-0.1, 0.45, -0.4],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg7 = new Cube(
       "Leg7",
-      [-0.45, 0.45, 0.53],
-      [-0.1, 0.45, 0.48],
+      [-0.45, 0.45, -0.53],
+      [-0.1, 0.45, -0.48],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg8 = new Cube(
       "Leg8",
-      [-0.45, 0.45, 0.59],
-      [-0.1, 0.45, 0.54],
+      [-0.45, 0.45, -0.59],
+      [-0.1, 0.45, -0.54],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
