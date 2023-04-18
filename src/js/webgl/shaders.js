@@ -109,7 +109,7 @@ const fragmentShaderSource = `
         gl_FragColor = vec4(diffuse * albedo + ambient, 1.0);
       } else if (type == 2) {
         vec3 worldNormal = normalize(vWorldNormal);
-        vec3 eyeToSurfaceDir = normalize(vWorldPosition - uCameraPosition);
+        vec3 eyeToSurfaceDir = -normalize(vWorldPosition - uCameraPosition);
         vec3 direction = reflect(eyeToSurfaceDir, worldNormal);
 
         gl_FragColor = textureCube(uCubeTexture, direction);

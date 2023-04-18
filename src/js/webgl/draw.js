@@ -322,7 +322,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   const eye = [
     Math.sin(horizontalAngle) * Math.sin(verticalAngle) * distance,
     Math.cos(verticalAngle) * distance,
-    Math.cos(horizontalAngle) * Math.sin(verticalAngle) * distance * -1,
+    Math.cos(horizontalAngle) * Math.sin(verticalAngle) * distance,
   ];
 
   const at = [0, 0, factor];
@@ -460,17 +460,17 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   gl.useProgram(programInfo.program);
 
   let dirVec = [
-    projectionSelect.value == "perspective" ? 0.3 : -0.3,
+    0.3,
     0.4,
-    0.4,
+    componentProjectionSelect.value == "perspective" ? -0.4 : 0.4,
     1,
   ];
 
   if (drawMode == Draw.COMPONENT) {
     dirVec = [
-      componentProjectionSelect.value == "perspective" ? 0.3 : -0.3,
+      0.3,
       0.4,
-      0.4,
+      componentProjectionSelect.value == "perspective" ? -0.4 : 0.4,
       1,
     ];
   }
