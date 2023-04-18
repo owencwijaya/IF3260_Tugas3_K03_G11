@@ -8,6 +8,7 @@ projectionSelect.addEventListener("change", () => {
 
 const textureSelect = document.getElementById("texture-select");
 textureSelect.addEventListener("change", () => {
+  customTextureButton.disabled = textureSelect.value != "0";
   requestAnimationFrame(render);
 });
 
@@ -208,11 +209,13 @@ const customTextureButton = document.getElementById("custom-texture-button");
 customTextureButton.addEventListener("change", () => {
   const image = customTextureButton.files[0];
   const path = URL.createObjectURL(image);
+
   model.cubeList.forEach((obj) => {
     obj.texturePath = path;
   });
 
   model.createTextures();
+  model.createComponentTextures();
 });
 
 const helpModal = document.getElementById("help-modal");

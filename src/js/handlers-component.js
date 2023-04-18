@@ -234,3 +234,11 @@ customTextureButtonSubtree.addEventListener("change", () => {
 
   model.createComponentTextures();
 });
+
+const componentTextureSelect = document.getElementById(
+  "component-texture-select"
+);
+componentTextureSelect.addEventListener("change", () => {
+  customTextureButtonSubtree.disabled = componentTextureSelect.value != "0";
+  requestAnimationFrame(render);
+});

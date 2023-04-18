@@ -493,7 +493,11 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
 
   gl.uniform1i(
     programInfo.uniformLocations.type,
-    parseInt(textureSelect.value)
+    parseInt(
+      drawMode == Draw.COMPONENT
+        ? componentTextureSelect.value
+        : textureSelect.value
+    )
   );
 
   {
