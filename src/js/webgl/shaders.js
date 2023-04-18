@@ -19,9 +19,9 @@ const vertexShaderSource = `
     uniform vec3 uDirectionalVector;
 
     varying vec2 frag_uv;
-    varying vec3 ts_light_pos;
-    varying vec3 ts_view_pos;
-    varying vec3 ts_frag_pos;
+    varying vec3 lightPos;
+    varying vec3 viewPos;
+    varying vec3 fragmentPos;
 
     mat3 transpose(in mat3 inMatrix)
     {
@@ -53,11 +53,9 @@ const vertexShaderSource = `
         vec3 normal = normalize(mat3(uNormalMatrix) * aVertexNormal);
         mat3 tbn = transpose(mat3(tangent, bitangent, normal));
 
-
-        ts_frag_pos = vec3(uModelViewMatrix * vec4(aVertexPosition, 1.0));
-        ts_light_pos = tbn * uDirectionalVector;
-        ts_view_pos = tbn * vec3(0, 0, 0);
-        ts_frag_pos = tbn * ts_frag_pos;
+        lightPos = tbn * uDirectionalVector;
+        viewPos = tbn * vec3(0, 0, 0);
+        fragmentPos = tbn * vec3(uModelViewMatrix * vec4(aVertexPosition, 1.0));
       
         frag_uv = aVertexUV;
     
@@ -77,9 +75,10 @@ const fragmentShaderSource = `
     uniform int type;
 
     varying vec2 frag_uv;
-    varying vec3 ts_light_pos;
-    varying vec3 ts_view_pos;
-    varying vec3 ts_frag_pos;
+    varying vec3 lightPos;
+    varying vec3 viewPos;
+    varying vec3 fragmentPos;
+    uniform vec3 uDirectionalVector;
 
     vec2 parallax_uv(vec2 uv, vec3 view_dir){
       float depth = texture2D(uDepthTex, uv).r;    
@@ -87,17 +86,18 @@ const fragmentShaderSource = `
       return uv - p;  
     }
 
+
     void main() {
       if (type == 0) {
         highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
         gl_FragColor = vec4(texelColor.rgb * vLighting, texelColor.a);
       } else {
-        vec3 light_dir = normalize(ts_light_pos - ts_frag_pos);
-        vec3 view_dir = normalize(ts_view_pos - ts_frag_pos);
-        vec2 uv = parallax_uv(frag_uv, view_dir);
-        vec3 albedo = texture2D(uSampler, uv).rgb;
+        vec3 light_dir = normalize(lightPos - fragmentPos);
+        vec3 view_dir = normalize(viewPos - fragmentPos);
+        vec2 uv = parallax_uv(vTextureCoord, view_dir);
+        vec3 albedo = texture2D(uDiffuseTex, uv).rgb;
         vec3 ambient = 0.3 * albedo;
-
+    
         vec3 norm = normalize(texture2D(uNormalTex, uv).rgb * 2.0 - 1.0);
         float diffuse = max(dot(light_dir, norm), 0.0);
         gl_FragColor = vec4(diffuse * albedo + ambient, 1.0);

@@ -479,36 +479,22 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     gl.uniform3fv(programInfo.uniformLocations.ambientLight, [1.0, 1.0, 1.0]);
   }
 
-  gl.uniform1i(programInfo.uniformLocations.type, textureSelect.value);
-
   gl.uniformMatrix4fv(projectionMatrixLoc, gl.FALSE, projectionMatrix);
   gl.uniformMatrix4fv(modelViewMatrixLoc, gl.FALSE, modelViewMatrix);
   gl.uniformMatrix4fv(normalMatrixLoc, gl.FALSE, normalMatrix);
 
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
-  if (textureSelect.value == 0) {
-    // minta map si texture
+  if (parseInt(textureSelect.value) == 0) {
     gl.activeTexture(gl.TEXTURE0);
-
-    // bind texture ke texture baru
     gl.bindTexture(gl.TEXTURE_2D, texture);
-
-    // kasitau shader kita ada bind texture
     gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
-  } else if (textureSelect.value == 1) {
-    gl.activeTexture(gl.TEXTURE1);
-    gl.bindTexture(gl.TEXTURE_2D, loadTexture(gl, obj.normal_texture));
-    gl.uniform1i(programInfo.uniformLocations.uNormalTex, 1);
-
-    gl.activeTexture(gl.TEXTURE2);
-    gl.bindTexture(gl.TEXTURE_2D, loadTexture(gl, obj.diffuse_texture));
-    gl.uniform1i(programInfo.uniformLocations.uDiffuseTex, 2);
-
-    gl.activeTexture(gl.TEXTURE3);
-    gl.bindTexture(gl.TEXTURE_2D, loadTexture(gl, obj.depth_texture));
-    gl.uniform1i(programInfo.uniformLocations.uDepthTex, 3);
   }
+
+  gl.uniform1i(
+    programInfo.uniformLocations.type,
+    parseInt(textureSelect.value)
+  );
 
   {
     const vertexCount = obj.indices.length;
