@@ -322,7 +322,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   const eye = [
     Math.sin(horizontalAngle) * Math.sin(verticalAngle) * distance,
     Math.cos(verticalAngle) * distance,
-    Math.cos(horizontalAngle) * Math.sin(verticalAngle) * distance * factor,
+    Math.cos(horizontalAngle) * Math.sin(verticalAngle) * distance * -1,
   ];
 
   const at = [0, 0, factor];
@@ -333,7 +333,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
 
   // setup projection matrix
   if (projection == "perspective") {
-    projectionMatrix = transpose(perspective(fov, aspect, 0.1, 100.0));
+    projectionMatrix = transpose(perspective(fov, -aspect, 0.1, 100.0));
   } else if (projection == "oblique") {
     const orthoMatrix = ortho(-2.0, 2.0, -2.0, 2.0, zNear, zFar);
     const obliqueMatrix = oblique(-angle, -angle);
@@ -460,17 +460,17 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   gl.useProgram(programInfo.program);
 
   let dirVec = [
-    0.3,
+    projectionSelect.value == "perspective" ? 0.3 : -0.3,
     0.4,
-    projectionSelect.value == "perspective" ? 0.4 : -0.4,
+    0.4,
     1,
   ];
 
   if (drawMode == Draw.COMPONENT) {
     dirVec = [
-      0.3,
+      componentProjectionSelect.value == "perspective" ? 0.3 : -0.3,
       0.4,
-      componentProjectionSelect.value == "perspective" ? 0.4 : -0.4,
+      0.4,
       1,
     ];
   }
