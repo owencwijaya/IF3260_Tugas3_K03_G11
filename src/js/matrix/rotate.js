@@ -91,15 +91,15 @@ const rotateZ = (modelViewMatrix, degs) => {
 const rotate = (modelViewMatrix, rotateX, rotateY, rotateZ) => {
   const factor = projectionSelect.value == "perspective" ? -1 : 1;
   modelViewMatrix = multiply(
-    rotateZMatrix(factor * degreesToRadians(rotateZ)),
+    rotateZMatrix(degreesToRadians(rotateZ)),
     modelViewMatrix
   );
   modelViewMatrix = multiply(
-    rotateYMatrix(factor * degreesToRadians(rotateY)),
+    rotateYMatrix(degreesToRadians(rotateY)),
     modelViewMatrix
   );
   modelViewMatrix = multiply(
-    rotateXMatrix(factor * degreesToRadians(rotateX)),
+    rotateXMatrix(degreesToRadians(rotateX)),
     modelViewMatrix
   );
 

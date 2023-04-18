@@ -185,7 +185,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       globalConfig.scale.y = parseFloat(componentYScaleSlider.value);
       globalConfig.scale.z = parseFloat(componentZScaleSlider.value);
     }
-
+    console.log(obj.name);
     translateX = (globalConfig.translation.x + obj.config.translation.x) / 1000;
     translateY = (globalConfig.translation.y + obj.config.translation.y) / 1000;
     translateZ = (globalConfig.translation.z + obj.config.translation.z) / 1000;
@@ -342,25 +342,25 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     projectionMatrix = transpose(ortho(-2.0, 2.0, -2.0, 2.0, zNear, zFar));
   }
 
-  if (
-    drawMode == Draw.COMPONENT &&
-    (obj.name == currentComponent ||
-      (currentComponent != model.mainObject &&
-        model.relationship.get(currentComponent).includes(obj.name)))
-  ) {
-    modelViewMatrix = translate(
-      modelViewMatrix,
-      -obj.middle[0],
-      0,
-      -obj.middle[2]
-    );
-  }
+  // if (
+  //   drawMode == Draw.COMPONENT &&
+  //   (obj.name == currentComponent ||
+  //     (currentComponent != model.mainObject &&
+  //       model.relationship.get(currentComponent).includes(obj.name)))
+  // ) {
+  //   modelViewMatrix = translate(
+  //     modelViewMatrix,
+  //     -obj.middle[0],
+  //     0,
+  //     -obj.middle[2]
+  //   );
+  // }
 
   modelViewMatrix = translate(
     modelViewMatrix,
     translateX,
     translateY,
-    translateZ
+    factor * translateZ
   );
 
   let parentObject = model.cubeList[model.getObjectIdxFromName(obj.name)];
@@ -382,17 +382,17 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     if (obj.name != mainObjectName) {
       modelViewMatrix = rotate(
         modelViewMatrix,
-        frame.rotation.x,
-        frame.rotation.y,
-        frame.rotation.z
+        factor * frame.rotation.x,
+        factor * frame.rotation.y,
+        factor * frame.rotation.z
       );
     }
 
     modelViewMatrix = rotateWithPivot(
       modelViewMatrix,
-      rotateX,
-      rotateY,
-      rotateZ,
+      factor * rotateX,
+      factor * rotateY,
+      factor * rotateZ,
       parentObject.pivot
     );
   } else if (drawMode == Draw.COMPONENT) {
@@ -403,31 +403,31 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       }
       modelViewMatrix = rotate(
         modelViewMatrix,
-        globalConfig.rotation.x,
-        globalConfig.rotation.y,
-        globalConfig.rotation.z
+        factor * globalConfig.rotation.x,
+        factor * globalConfig.rotation.y,
+        factor * globalConfig.rotation.z
       );
     }
 
     modelViewMatrix = rotateWithPivot(
       modelViewMatrix,
-      obj.config.rotation.x,
-      obj.config.rotation.y,
-      obj.config.rotation.z,
+      factor * obj.config.rotation.x,
+      factor * obj.config.rotation.y,
+      factor * obj.config.rotation.z,
       parentObject.pivot
     );
   } else if (drawMode == Draw.WHOLE) {
     modelViewMatrix = rotate(
       modelViewMatrix,
-      globalConfig.rotation.x + parseInt(xRotateSlider.value),
-      globalConfig.rotation.y + parseInt(yRotateSlider.value),
-      globalConfig.rotation.z + parseInt(zRotateSlider.value)
+      factor * (globalConfig.rotation.x + parseInt(xRotateSlider.value)),
+      factor * (globalConfig.rotation.y + parseInt(yRotateSlider.value)),
+      factor * (globalConfig.rotation.z + parseInt(zRotateSlider.value))
     );
     modelViewMatrix = rotateWithPivot(
       modelViewMatrix,
-      obj.config.rotation.x,
-      obj.config.rotation.y,
-      obj.config.rotation.z,
+      factor * obj.config.rotation.x,
+      factor * obj.config.rotation.y,
+      factor * obj.config.rotation.z,
       parentObject.pivot
     );
   }
@@ -465,6 +465,15 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     projectionSelect.value == "perspective" ? 0.4 : -0.4,
     1,
   ];
+
+  if (drawMode == Draw.COMPONENT) {
+    dirVec = [
+      0.3,
+      0.4,
+      componentProjectionSelect.value == "perspective" ? 0.4 : -0.4,
+      1,
+    ];
+  }
 
   dirVec = multiplyMatVec(invert(lookAtMatrix), dirVec);
   gl.uniform3fv(

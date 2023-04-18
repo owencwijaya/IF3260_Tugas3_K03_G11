@@ -1,5 +1,4 @@
 const translateMatrix = (xValue, yValue, zValue) => {
-  const factor = projectionSelect.value == "perspective" ? -1 : 1;
   return new Float32Array([
     1,
     0,
@@ -12,7 +11,7 @@ const translateMatrix = (xValue, yValue, zValue) => {
     0,
     0,
     1,
-    factor * zValue,
+    zValue,
     0,
     0,
     0,

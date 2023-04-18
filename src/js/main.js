@@ -175,9 +175,6 @@ const render = (now) => {
   const parentIdx = model.getObjectIdxFromName(currentComponent);
   const parentObject = model.cubeList[parentIdx];
 
-  // console.log(parentObject.name);
-  // console.log(parentObject.config);
-
   draw(
     componentGl,
     componentProgramInfo,
