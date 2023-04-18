@@ -138,9 +138,9 @@ const componentProgramInfo = {
     type: componentGl.getUniformLocation(componentShaderProgram, "type"),
   },
 };
-let model = new Steve();
+// let model = new Steve();
 // let model = new Spider();
-// let model = new Chicken();
+let model = new Chicken();
 
 resetComponentSelect(model);
 
