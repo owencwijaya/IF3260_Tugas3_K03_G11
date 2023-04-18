@@ -44,56 +44,56 @@ class Spider {
     const leg1 = new Cube(
       "Leg1",
       [0.45, 0.45, -0.38],
-      [0.1, 0.45, -0.33],
+      [0.15, 0.45, -0.38],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg2 = new Cube(
       "Leg2",
-      [0.45, 0.45, -0.45],
-      [0.1, 0.45, -0.4],
+      [0.45, 0.45, -0.47],
+      [0.15, 0.45, -0.47],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg3 = new Cube(
       "Leg3",
-      [0.45, 0.45, -0.53],
-      [0.1, 0.45, -0.48],
+      [0.45, 0.45, -0.57],
+      [0.15, 0.45, -0.57],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg4 = new Cube(
       "Leg4",
-      [0.45, 0.45, -0.59],
-      [0.1, 0.45, -0.54],
+      [0.45, 0.45, -0.65],
+      [0.15, 0.45, -0.65],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg5 = new Cube(
       "Leg5",
       [-0.45, 0.45, -0.38],
-      [-0.1, 0.45, -0.33],
+      [-0.15, 0.45, -0.38],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg6 = new Cube(
       "Leg6",
-      [-0.45, 0.45, -0.45],
-      [-0.1, 0.45, -0.4],
+      [-0.45, 0.45, -0.47],
+      [-0.15, 0.45, -0.47],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg7 = new Cube(
       "Leg7",
-      [-0.45, 0.45, -0.53],
-      [-0.1, 0.45, -0.48],
+      [-0.45, 0.45, -0.57],
+      [-0.15, 0.45, -0.57],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
     const leg8 = new Cube(
       "Leg8",
-      [-0.45, 0.45, -0.59],
-      [-0.1, 0.45, -0.54],
+      [-0.45, 0.45, -0.65],
+      [-0.15, 0.45, -0.65],
       [0.7, 0.1, 0.1],
       "js/model/texture/spider/spider-leg.png"
     );
@@ -183,19 +183,32 @@ class Spider {
     let leg6 = [];
     let leg7 = [];
     let leg8 = [];
+    
+    body.push(createConfig([0, 0, 0], [0, 26, 0], [1000, 1000, 1000]));
+    
+    for (let i = -24; i <= 24; i += 3) { 
+      head.push(createConfig([0, 0, 0], [0, i, 0], [1000, 1000, 1000]));
+      neck.push(createConfig([0, 0, 0], [0, 0, 0], [1000, 1000, 1000]));
+    }
 
-    for (let i = -60; i <= 60; i += 10) {
-      body.push(createConfig([0, 0, 0], [0, i / 6, 0], [1000, 1000, 1000]));
-      head.push(createConfig([0, 0, 0], [0, i / 3, 0], [1000, 1000, 1000]));
-      neck.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
-      leg1.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
-      leg2.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
-      leg3.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
-      leg4.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
-      leg5.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
-      leg6.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
-      leg7.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
-      leg8.push(createConfig([0, 0, 0], [i, i / 6, 0], [1000, 1000, 1000]));
+    for (let i = 6; i <= 24; i += 2) {
+      leg5.push(createConfig([0, 0, 0], [0, 0, i ], [1000, 1000, 1000]));
+      leg1.push(createConfig([0, 0, 0], [0, 0, -i ], [1000, 1000, 1000]));
+    }
+    
+    for (let i = 6; i <= 24; i += 3) {
+      leg6.push(createConfig([0, 0, 0], [0, 0, i ], [1000, 1000, 1000]));
+      leg2.push(createConfig([0, 0, 0], [0, 0, -i ], [1000, 1000, 1000]));
+    }
+
+    for (let i = 6; i <= 24; i += 4) {
+      leg7.push(createConfig([0, 0, 0], [0, 0, i ], [1000, 1000, 1000]));
+      leg3.push(createConfig([0, 0, 0], [0, 0, -i ], [1000, 1000, 1000]));
+    }
+
+    for (let i = 6; i <= 24; i += 6) {
+      leg8.push(createConfig([0, 0, 0], [0, 0, i ], [1000, 1000, 1000]));
+      leg4.push(createConfig([0, 0, 0], [0, 0, -i ], [1000, 1000, 1000]));
     }
 
     body.push(...body.slice().reverse());
