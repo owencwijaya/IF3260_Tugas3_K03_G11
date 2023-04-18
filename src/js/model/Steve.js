@@ -80,16 +80,23 @@ class Steve {
     this.movedMap = new Map();
     this.mainObject = "Body";
 
+    this.createTextures();
+    // prettier-ignore
+    this.relationship = this.createRelationship();
+    this.animation = this.createAnimation();
+  }
+
+  createTextures() {
+    this.textureList = [];
+    this.componentTextureList = [];
+    this.names = [];
+    this.movedMap = new Map();
     this.cubeList.forEach((obj) => {
       this.textureList.push(loadTexture(gl, obj.texturePath));
       this.componentTextureList.push(loadTexture(componentGl, obj.texturePath));
       this.names.push(obj.name);
       this.movedMap.set(obj.name, false);
     });
-
-    // prettier-ignore
-    this.relationship = this.createRelationship();
-    this.animation = this.createAnimation();
   }
 
   createRelationship() {

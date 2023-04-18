@@ -42,7 +42,7 @@
             <label for="shader-checkbox" style="margin-right: 10px"
               >Use shader</label
             >
-            <input type="checkbox" id="animation-checkbox" />
+            <input type="checkbox" id="animation-checkbox" checked />
             <label for="animation-checkbox" style="margin-right: 10px"
               >Use animation</label
             >
@@ -410,6 +410,13 @@
               />360
             </div>
           </div>
+
+          <div class="inline-flex">
+            <label class="file-button">
+              <input type="file" id="custom-texture-button" />
+              Upload Custom Texture (Whole)
+            </label>
+          </div>
         </div>
 
         <div class="component-column">
@@ -521,6 +528,13 @@
                 oninput="component_fov.value=value"
               />90
             </div>
+          </div>
+
+          <div class="inline-flex">
+            <label class="file-button">
+              <input type="file" id="custom-texture-button-subtree" />
+              Upload Custom Texture (Subtree)
+            </label>
           </div>
         </div>
       </div>

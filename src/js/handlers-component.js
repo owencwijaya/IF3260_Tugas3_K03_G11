@@ -208,3 +208,29 @@ const componentFovSlider = document.getElementById("component-fov-slider");
 componentFovSlider.addEventListener("input", () => {
   requestAnimationFrame(render);
 });
+
+const customTextureButtonSubtree = document.getElementById(
+  "custom-texture-button-subtree"
+);
+customTextureButtonSubtree.addEventListener("change", () => {
+  const image = customTextureButtonSubtree.files[0];
+  const path = URL.createObjectURL(image);
+
+  const children = model.findChildren(currentComponent);
+
+  let childrenNames = [];
+
+  children.forEach((obj) => {
+    childrenNames.push(obj.name);
+  });
+
+  childrenNames.push(currentComponent);
+
+  model.cubeList.forEach((obj) => {
+    if (childrenNames.includes(obj.name)) {
+      obj.texturePath = path;
+    }
+  });
+
+  model.createTextures();
+});

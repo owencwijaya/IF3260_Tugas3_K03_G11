@@ -199,6 +199,17 @@ loadModelButton.addEventListener("change", () => {
   loadModelButton.value = "";
 });
 
+const customTextureButton = document.getElementById("custom-texture-button");
+customTextureButton.addEventListener("change", () => {
+  const image = customTextureButton.files[0];
+  const path = URL.createObjectURL(image);
+  model.cubeList.forEach((obj) => {
+    obj.texturePath = path;
+  });
+
+  model.createTextures();
+});
+
 const helpModal = document.getElementById("help-modal");
 
 const helpButton = document.getElementById("help-button");
