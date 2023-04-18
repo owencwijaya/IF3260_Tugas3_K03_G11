@@ -232,5 +232,5 @@ customTextureButtonSubtree.addEventListener("change", () => {
     }
   });
 
-  model.createTextures();
+  model.createComponentTextures();
 });

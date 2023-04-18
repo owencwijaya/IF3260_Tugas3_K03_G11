@@ -49,6 +49,12 @@ const programInfo = {
     vertexPosition: gl.getAttribLocation(shaderProgram, "aVertexPosition"),
     vertexNormal: gl.getAttribLocation(shaderProgram, "aVertexNormal"),
     textureCoord: gl.getAttribLocation(shaderProgram, "aTextureCoord"),
+    vertexTangent: gl.getAttribLocation(shaderProgram, "aVertexTangent"),
+    vertexBitangent: gl.getAttribLocation(shaderProgram, "aVertexBitangent"),
+    vertexUV: gl.getAttribLocation(shaderProgram, "aVertexUV"),
+    uNormalTex: gl.getUniformLocation(shaderProgram, "uNormalTex"),
+    uDiffuseTex: gl.getUniformLocation(shaderProgram, "uDiffuseTex"),
+    uDepthTex: gl.getUniformLocation(shaderProgram, "uDepthTex"),
   },
   uniformLocations: {
     projectionMatrix: gl.getUniformLocation(shaderProgram, "uProjectionMatrix"),
@@ -60,6 +66,7 @@ const programInfo = {
       shaderProgram,
       "uDirectionalVector"
     ),
+    type: gl.getUniformLocation(shaderProgram, "type"),
   },
 };
 
@@ -77,6 +84,18 @@ const componentProgramInfo = {
     textureCoord: componentGl.getAttribLocation(
       componentShaderProgram,
       "aTextureCoord"
+    ),
+    vertexTangent: componentGl.getAttribLocation(
+      componentShaderProgram,
+      "aVertexTangent"
+    ),
+    vertexBitangent: componentGl.getAttribLocation(
+      componentShaderProgram,
+      "aVertexBitangent"
+    ),
+    vertexUV: componentGl.getAttribLocation(
+      componentShaderProgram,
+      "aVertexUV"
     ),
   },
   uniformLocations: {
@@ -96,6 +115,18 @@ const componentProgramInfo = {
       componentShaderProgram,
       "uSampler"
     ),
+    uNormalTex: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uNormalTex"
+    ),
+    uDiffuseTex: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uDiffuseTex"
+    ),
+    uDepthTex: componentGl.getUniformLocation(
+      componentShaderProgram,
+      "uDepthTex"
+    ),
     ambientLight: componentGl.getUniformLocation(
       componentShaderProgram,
       "uAmbientLight"
@@ -104,6 +135,7 @@ const componentProgramInfo = {
       componentShaderProgram,
       "uDirectionalVector"
     ),
+    type: componentGl.getUniformLocation(componentShaderProgram, "type"),
   },
 };
 let model = new Steve();
@@ -120,6 +152,30 @@ const render = (now) => {
   deltaTime = now - then;
   then = now;
 
+  const parentIdx = model.getObjectIdxFromName(currentComponent);
+  const parentObject = model.cubeList[parentIdx];
+
+  // console.log(parentObject.name);
+  // console.log(parentObject.config);
+
+  draw(
+    componentGl,
+    componentProgramInfo,
+    parentObject,
+    model.componentTextureList[parentIdx],
+    Draw.COMPONENT
+  );
+  let childrenObjs = model.findChildren(parentObject.name);
+  childrenObjs.forEach((element) => {
+    draw(
+      componentGl,
+      componentProgramInfo,
+      element,
+      model.componentTextureList[model.getObjectIdxFromName(element.name)],
+      Draw.COMPONENT
+    );
+  });
+
   if (animationCheckbox.checked) {
     for (let i = 0; i < model.names.length; i++) {
       draw(
@@ -133,30 +189,6 @@ const render = (now) => {
     }
     requestAnimationFrame(render);
   } else {
-    const parentIdx = model.getObjectIdxFromName(currentComponent);
-    const parentObject = model.cubeList[parentIdx];
-
-    // console.log(parentObject.name);
-    // console.log(parentObject.config);
-
-    draw(
-      componentGl,
-      componentProgramInfo,
-      parentObject,
-      model.componentTextureList[parentIdx],
-      Draw.COMPONENT
-    );
-    let childrenObjs = model.findChildren(parentObject.name);
-    childrenObjs.forEach((element) => {
-      draw(
-        componentGl,
-        componentProgramInfo,
-        element,
-        model.componentTextureList[model.getObjectIdxFromName(element.name)],
-        Draw.COMPONENT
-      );
-    });
-
     for (let i = 0; i < model.names.length; i++) {
       draw(
         gl,

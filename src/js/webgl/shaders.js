@@ -4,6 +4,9 @@ const vertexShaderSource = `
     attribute vec3 aVertexPosition;
     attribute vec3 aVertexNormal;
     attribute vec2 aTextureCoord;
+    attribute vec3 aVertexTangent;
+    attribute vec3 aVertexBitangent;
+    attribute vec2 aVertexUV;
 
     varying highp vec2 vTextureCoord;
     varying highp vec3 vLighting;
@@ -15,6 +18,27 @@ const vertexShaderSource = `
     uniform vec3 uAmbientLight;
     uniform vec3 uDirectionalVector;
 
+    varying vec2 frag_uv;
+    varying vec3 ts_light_pos;
+    varying vec3 ts_view_pos;
+    varying vec3 ts_frag_pos;
+
+    mat3 transpose(in mat3 inMatrix)
+    {
+        vec3 i0 = inMatrix[0];
+        vec3 i1 = inMatrix[1];
+        vec3 i2 = inMatrix[2];
+
+        mat3 outMatrix = mat3(
+            vec3(i0.x, i1.x, i2.x),
+            vec3(i0.y, i1.y, i2.y),
+            vec3(i0.z, i1.z, i2.z)
+        );
+
+        return outMatrix;
+    }
+
+
     void main() {
         gl_Position = uProjectionMatrix * uModelViewMatrix  * vec4(aVertexPosition, 1.0);
         vTextureCoord = aTextureCoord;
@@ -23,6 +47,20 @@ const vertexShaderSource = `
   
         highp float directional = max(dot(transformedNormal.xyz, uDirectionalVector), 0.0);
         vLighting = uAmbientLight + (directionalLightColor * directional);
+
+        vec3 tangent = normalize(mat3(uNormalMatrix) * aVertexTangent);
+        vec3 bitangent = normalize(mat3(uNormalMatrix) * aVertexBitangent);
+        vec3 normal = normalize(mat3(uNormalMatrix) * aVertexNormal);
+        mat3 tbn = transpose(mat3(tangent, bitangent, normal));
+
+
+        ts_frag_pos = vec3(uModelViewMatrix * vec4(aVertexPosition, 1.0));
+        ts_light_pos = tbn * uDirectionalVector;
+        ts_view_pos = tbn * vec3(0, 0, 0);
+        ts_frag_pos = tbn * ts_frag_pos;
+      
+        frag_uv = aVertexUV;
+    
     }
 `;
 
@@ -33,11 +71,37 @@ const fragmentShaderSource = `
     varying highp vec3 vLighting;
 
     uniform sampler2D uSampler;
+    uniform sampler2D uNormalTex;
+    uniform sampler2D uDiffuseTex;
+    uniform sampler2D uDepthTex;
+    uniform int type;
+
+    varying vec2 frag_uv;
+    varying vec3 ts_light_pos;
+    varying vec3 ts_view_pos;
+    varying vec3 ts_frag_pos;
+
+    vec2 parallax_uv(vec2 uv, vec3 view_dir){
+      float depth = texture2D(uDepthTex, uv).r;    
+      vec2 p = view_dir.xy * (depth * 0.01) / view_dir.z;
+      return uv - p;  
+    }
 
     void main() {
-      highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
+      if (type == 0) {
+        highp vec4 texelColor = texture2D(uSampler, vTextureCoord);
+        gl_FragColor = vec4(texelColor.rgb * vLighting, texelColor.a);
+      } else {
+        vec3 light_dir = normalize(ts_light_pos - ts_frag_pos);
+        vec3 view_dir = normalize(ts_view_pos - ts_frag_pos);
+        vec2 uv = parallax_uv(frag_uv, view_dir);
+        vec3 albedo = texture2D(uSampler, uv).rgb;
+        vec3 ambient = 0.3 * albedo;
 
-      gl_FragColor = vec4(texelColor.rgb * vLighting, texelColor.a);
+        vec3 norm = normalize(texture2D(uNormalTex, uv).rgb * 2.0 - 1.0);
+        float diffuse = max(dot(light_dir, norm), 0.0);
+        gl_FragColor = vec4(diffuse * albedo + ambient, 1.0);
+      }
     }
 `;
 

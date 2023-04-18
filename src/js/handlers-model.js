@@ -6,6 +6,11 @@ projectionSelect.addEventListener("change", () => {
   requestAnimationFrame(render);
 });
 
+const textureSelect = document.getElementById("texture-select");
+textureSelect.addEventListener("change", () => {
+  requestAnimationFrame(render);
+});
+
 // const colorPicker = document.getElementById("color-picker");
 // colorPicker.addEventListener("input", () => {
 //   requestAnimationFrame(render);

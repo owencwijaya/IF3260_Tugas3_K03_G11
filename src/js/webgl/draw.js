@@ -59,6 +59,61 @@ const setTextureAttribute = (gl, programInfo, textures) => {
   gl.enableVertexAttribArray(programInfo.attribLocations.textureCoord);
 };
 
+const setTangentAttribute = (gl, programInfo, tangents) => {
+  const numComponents = 3;
+  const type = gl.FLOAT;
+
+  const tangentBuffer = initTangentBuffer(gl, tangents);
+  gl.bindBuffer(gl.ARRAY_BUFFER, tangentBuffer);
+
+  gl.vertexAttribPointer(
+    programInfo.attribLocations.vertexTangent,
+    numComponents,
+    type,
+    normalized,
+    stride,
+    offset
+  );
+
+  gl.enableVertexAttribArray(programInfo.attribLocations.vertexTangent);
+};
+
+const setBitangentAttribute = (gl, programInfo, bitangents) => {
+  const numComponents = 3;
+  const type = gl.FLOAT;
+
+  const bitangentBuffer = initBitangentBuffer(gl, bitangents);
+  gl.bindBuffer(gl.ARRAY_BUFFER, bitangentBuffer);
+
+  gl.vertexAttribPointer(
+    programInfo.attribLocations.vertexBitangent,
+    numComponents,
+    type,
+    normalized,
+    stride,
+    offset
+  );
+
+  gl.enableVertexAttribArray(programInfo.attribLocations.vertexBitangent);
+};
+
+const setUVAttribute = (gl, programInfo, uv) => {
+  const numComponents = 2;
+  const type = gl.FLOAT;
+
+  const uvBuffer = initUVBuffer(gl, uv);
+  gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
+
+  gl.vertexAttribPointer(
+    programInfo.attribLocations.vertexUV,
+    numComponents,
+    type,
+    normalized,
+    stride,
+    offset
+  );
+  gl.enableVertexAttribArray(programInfo.attribLocations.vertexUV);
+};
 /**
  *
  * @param {*} gl context gl
@@ -396,6 +451,9 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
   setPositionAttribute(gl, programInfo, obj.vertices);
   setTextureAttribute(gl, programInfo, obj.textureCoordinates);
+  setTangentAttribute(gl, programInfo, obj.tangent);
+  setBitangentAttribute(gl, programInfo, obj.bitangent);
+  setUVAttribute(gl, programInfo, obj.uv);
 
   gl.useProgram(programInfo.program);
 
@@ -421,20 +479,36 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     gl.uniform3fv(programInfo.uniformLocations.ambientLight, [1.0, 1.0, 1.0]);
   }
 
+  gl.uniform1i(programInfo.uniformLocations.type, textureSelect.value);
+
   gl.uniformMatrix4fv(projectionMatrixLoc, gl.FALSE, projectionMatrix);
   gl.uniformMatrix4fv(modelViewMatrixLoc, gl.FALSE, modelViewMatrix);
   gl.uniformMatrix4fv(normalMatrixLoc, gl.FALSE, normalMatrix);
 
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
-  // minta map si texture
-  gl.activeTexture(gl.TEXTURE0);
+  if (textureSelect.value == 0) {
+    // minta map si texture
+    gl.activeTexture(gl.TEXTURE0);
 
-  // bind texture ke texture baru
-  gl.bindTexture(gl.TEXTURE_2D, texture);
+    // bind texture ke texture baru
+    gl.bindTexture(gl.TEXTURE_2D, texture);
 
-  // kasitau shader kita ada bind texture
-  gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
+    // kasitau shader kita ada bind texture
+    gl.uniform1i(programInfo.uniformLocations.uSampler, 0);
+  } else if (textureSelect.value == 1) {
+    gl.activeTexture(gl.TEXTURE1);
+    gl.bindTexture(gl.TEXTURE_2D, loadTexture(gl, obj.normal_texture));
+    gl.uniform1i(programInfo.uniformLocations.uNormalTex, 1);
+
+    gl.activeTexture(gl.TEXTURE2);
+    gl.bindTexture(gl.TEXTURE_2D, loadTexture(gl, obj.diffuse_texture));
+    gl.uniform1i(programInfo.uniformLocations.uDiffuseTex, 2);
+
+    gl.activeTexture(gl.TEXTURE3);
+    gl.bindTexture(gl.TEXTURE_2D, loadTexture(gl, obj.depth_texture));
+    gl.uniform1i(programInfo.uniformLocations.uDepthTex, 3);
+  }
 
   {
     const vertexCount = obj.indices.length;

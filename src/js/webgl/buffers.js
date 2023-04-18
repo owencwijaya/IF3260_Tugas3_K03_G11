@@ -35,3 +35,27 @@ const initNormalBuffer = (gl, normals) => {
 
   return normalBuffer;
 };
+
+const initTangentBuffer = (gl, tangents) => {
+  const tangentBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, tangentBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(tangents), gl.STATIC_DRAW);
+
+  return tangentBuffer;
+};
+
+const initBitangentBuffer = (gl, bitangents) => {
+  const bitangentBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, bitangentBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(bitangents), gl.STATIC_DRAW);
+
+  return bitangentBuffer;
+};
+
+const initUVBuffer = (gl, uvs) => {
+  const uvBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(uvs), gl.STATIC_DRAW);
+
+  return uvBuffer;
+};

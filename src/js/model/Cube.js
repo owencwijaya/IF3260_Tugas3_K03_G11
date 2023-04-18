@@ -92,6 +92,55 @@ class Cube {
       // kiri
       -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 0.0, 0.0,
     ];
+
+    this.tangent = [
+      // depan
+      1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,
+      // belakang
+      -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0,
+      // atas
+      1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 
+      // bawah
+      1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0,
+      // kanan
+      0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1,
+      // kiri
+      0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 
+    ]
+
+    this.bitangent = [
+      // depan
+      0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 
+      // belakang
+      0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 
+      // atas
+      0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
+      // bawah
+      0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 
+      // kanan
+      0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 
+      // kiri
+      0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 
+    ]
+
+    this.uv = [
+      // depan
+      0, 1, 1, 0, 0, 0, 1, 1,
+      // belakang
+      1, 1, 0, 0, 1, 0, 0, 1, 
+      // atas
+      0, 0, 1, 1, 0, 1, 1, 0, 
+      // bawah
+      0, 1, 1, 0, 0, 0, 1, 1, 
+      // kanan
+      1, 1, 0, 0, 0, 1, 1, 0,
+      // kiri
+      0, 1, 1, 0, 1, 1, 0, 0
+    ]
+
+    this.normal_texture = "js/model/texture/bump/bump_normal.png";
+    this.diffuse_texture =  "js/model/texture/bump/bump_diffuse.png";
+    this.depth_texture = "js/model/texture/bump/bump_depth.png";
   }
 }
 
