@@ -175,28 +175,37 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     }
 
     if (obj.name == model.mainObject && currentComponent == obj.name) {
-      globalConfig.translation.x = parseInt(componentXTranslateSlider.value);
-      globalConfig.translation.y = parseInt(componentYTranslateSlider.value);
-      globalConfig.translation.z = parseInt(componentZTranslateSlider.value);
-      globalConfig.rotation.x = parseInt(componentXRotateSlider.value);
-      globalConfig.rotation.y = parseInt(componentYRotateSlider.value);
-      globalConfig.rotation.z = parseInt(componentZRotateSlider.value);
-      globalConfig.scale.x = parseFloat(componentXScaleSlider.value);
-      globalConfig.scale.y = parseFloat(componentYScaleSlider.value);
-      globalConfig.scale.z = parseFloat(componentZScaleSlider.value);
+      model.globalConfig.translation.x = parseInt(
+        componentXTranslateSlider.value
+      );
+      model.globalConfig.translation.y = parseInt(
+        componentYTranslateSlider.value
+      );
+      model.globalConfig.translation.z = parseInt(
+        componentZTranslateSlider.value
+      );
+      model.globalConfig.rotation.x = parseInt(componentXRotateSlider.value);
+      model.globalConfig.rotation.y = parseInt(componentYRotateSlider.value);
+      model.globalConfig.rotation.z = parseInt(componentZRotateSlider.value);
+      model.globalConfig.scale.x = parseFloat(componentXScaleSlider.value);
+      model.globalConfig.scale.y = parseFloat(componentYScaleSlider.value);
+      model.globalConfig.scale.z = parseFloat(componentZScaleSlider.value);
     }
-    console.log(obj.name);
-    translateX = (globalConfig.translation.x + obj.config.translation.x) / 1000;
-    translateY = (globalConfig.translation.y + obj.config.translation.y) / 1000;
-    translateZ = (globalConfig.translation.z + obj.config.translation.z) / 1000;
 
-    rotateX = globalConfig.rotation.x + obj.config.rotation.x;
-    rotateY = globalConfig.rotation.y + obj.config.rotation.y;
-    rotateZ = globalConfig.rotation.z + obj.config.rotation.z;
+    translateX =
+      (model.globalConfig.translation.x + obj.config.translation.x) / 1000;
+    translateY =
+      (model.globalConfig.translation.y + obj.config.translation.y) / 1000;
+    translateZ =
+      (model.globalConfig.translation.z + obj.config.translation.z) / 1000;
 
-    scaleX = globalConfig.scale.x + obj.config.scale.x - 1000;
-    scaleY = globalConfig.scale.y + obj.config.scale.y - 1000;
-    scaleZ = globalConfig.scale.z + obj.config.scale.z - 1000;
+    rotateX = model.globalConfig.rotation.x + obj.config.rotation.x;
+    rotateY = model.globalConfig.rotation.y + obj.config.rotation.y;
+    rotateZ = model.globalConfig.rotation.z + obj.config.rotation.z;
+
+    scaleX = model.globalConfig.scale.x + obj.config.scale.x - 1000;
+    scaleY = model.globalConfig.scale.y + obj.config.scale.y - 1000;
+    scaleZ = model.globalConfig.scale.z + obj.config.scale.z - 1000;
 
     distance =
       (parseInt(componentDistanceSlider.min) +
@@ -217,48 +226,48 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     angle = fovSlider.value;
 
     translateX =
-      (globalConfig.translation.x +
+      (model.globalConfig.translation.x +
         obj.config.translation.x +
         parseInt(xTranslateSlider.value)) /
       1000;
 
     translateY =
-      (globalConfig.translation.y +
+      (model.globalConfig.translation.y +
         obj.config.translation.y +
         parseInt(yTranslateSlider.value)) /
       1000;
 
     translateZ =
-      (globalConfig.translation.z +
+      (model.globalConfig.translation.z +
         obj.config.translation.z +
         parseInt(zTranslateSlider.value)) /
       1000;
 
     rotateX =
-      globalConfig.rotation.x +
+      model.globalConfig.rotation.x +
       obj.config.rotation.x +
       parseInt(xRotateSlider.value);
     rotateY =
-      globalConfig.rotation.y +
+      model.globalConfig.rotation.y +
       obj.config.rotation.y +
       parseInt(yRotateSlider.value);
     rotateZ =
-      globalConfig.rotation.z +
+      model.globalConfig.rotation.z +
       obj.config.rotation.z +
       parseInt(zRotateSlider.value);
 
     scaleX =
-      globalConfig.scale.x +
+      model.globalConfig.scale.x +
       obj.config.scale.x +
       parseFloat(xScaleSlider.value) -
       2000;
     scaleY =
-      globalConfig.scale.y +
+      model.globalConfig.scale.y +
       obj.config.scale.y +
       parseFloat(yScaleSlider.value) -
       2000;
     scaleZ =
-      globalConfig.scale.z +
+      model.globalConfig.scale.z +
       obj.config.scale.z +
       parseFloat(zScaleSlider.value) -
       2000;
@@ -403,9 +412,9 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       }
       modelViewMatrix = rotate(
         modelViewMatrix,
-        factor * globalConfig.rotation.x,
-        factor * globalConfig.rotation.y,
-        factor * globalConfig.rotation.z
+        factor * model.globalConfig.rotation.x,
+        factor * model.globalConfig.rotation.y,
+        factor * model.globalConfig.rotation.z
       );
     }
 
@@ -419,9 +428,9 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   } else if (drawMode == Draw.WHOLE) {
     modelViewMatrix = rotate(
       modelViewMatrix,
-      factor * (globalConfig.rotation.x + parseInt(xRotateSlider.value)),
-      factor * (globalConfig.rotation.y + parseInt(yRotateSlider.value)),
-      factor * (globalConfig.rotation.z + parseInt(zRotateSlider.value))
+      factor * (model.globalConfig.rotation.x + parseInt(xRotateSlider.value)),
+      factor * (model.globalConfig.rotation.y + parseInt(yRotateSlider.value)),
+      factor * (model.globalConfig.rotation.z + parseInt(zRotateSlider.value))
     );
     modelViewMatrix = rotateWithPivot(
       modelViewMatrix,

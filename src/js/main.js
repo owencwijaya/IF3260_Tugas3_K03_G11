@@ -4,24 +4,6 @@ let then = 0;
 
 let loaded = false;
 
-let globalConfig = {
-  translation: {
-    x: 0,
-    y: 0,
-    z: 0,
-  },
-  rotation: {
-    x: 0,
-    y: 0,
-    z: 0,
-  },
-  scale: {
-    x: 1000,
-    y: 1000,
-    z: 1000,
-  },
-};
-
 const gl_canvas = document.getElementById("gl-canvas");
 const component_canvas = document.getElementById("component-canvas");
 

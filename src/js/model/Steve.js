@@ -1,5 +1,22 @@
 class Steve {
   constructor() {
+    this.globalConfig = {
+      translation: {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      rotation: {
+        x: 0,
+        y: 0,
+        z: 0,
+      },
+      scale: {
+        x: 1000,
+        y: 1000,
+        z: 1000,
+      },
+    };
     const body = new Cube(
       "Body",
       [0, 0.4, 0],

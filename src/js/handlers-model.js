@@ -141,6 +141,15 @@ const reviver = (key, value) => {
 
 const saveModelButton = document.getElementById("save-model-button");
 saveModelButton.addEventListener("click", () => {
+  model.globalConfig.translation.x += parseInt(xTranslateSlider.value);
+  model.globalConfig.translation.y += parseInt(yTranslateSlider.value);
+  model.globalConfig.translation.z += parseInt(zTranslateSlider.value);
+  model.globalConfig.rotation.x += parseInt(xRotateSlider.value);
+  model.globalConfig.rotation.y += parseInt(yRotateSlider.value);
+  model.globalConfig.rotation.z += parseInt(zRotateSlider.value);
+  model.globalConfig.scale.x += parseInt(xScaleSlider.value) - 1000;
+  model.globalConfig.scale.y += parseInt(yScaleSlider.value) - 1000;
+  model.globalConfig.scale.z += parseInt(zScaleSlider.value) - 1000;
   const content = JSON.stringify(model, replacer, "\t");
 
   const filename = document.getElementById("filename").value;
@@ -181,8 +190,17 @@ loadModelButton.addEventListener("change", () => {
 
     model.createTextures();
     model.createComponentTextures();
+
+    model.globalConfig = content.globalConfig;
+    model.movedMap = content.movedMap;
+
+    for (let i = 0; i < model.cubeList.length; i++) {
+      model.cubeList[i] = content.cubeList[i];
+    }
+
     resetComponentSelect(model);
     reset();
+    requestAnimationFrame(render);
   };
 
   alert("Successfully loaded file!");
