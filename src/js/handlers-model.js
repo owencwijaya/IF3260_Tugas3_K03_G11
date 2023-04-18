@@ -235,3 +235,31 @@ window.onclick = function (event) {
     helpModal.style.display = "none";
   }
 };
+
+const steveButton = document.getElementById("steve-button");
+const spiderButton = document.getElementById("spider-button");
+const chickenButton = document.getElementById("chicken-button");
+
+steveButton.addEventListener("click", () => {
+  model = new Steve();
+  model.createTextures();
+  model.createComponentTextures();
+  reset();
+  requestAnimationFrame(render);
+});
+
+spiderButton.addEventListener("click", () => {
+  model = new Spider();
+  model.createTextures();
+  model.createComponentTextures();
+  reset();
+  requestAnimationFrame(render);
+});
+
+chickenButton.addEventListener("click", () => {
+  model = new Chicken();
+  model.createTextures();
+  model.createComponentTextures();
+  reset();
+  requestAnimationFrame(render);
+});
