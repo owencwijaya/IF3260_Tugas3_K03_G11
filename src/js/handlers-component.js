@@ -117,12 +117,15 @@ const resetComponentSelect = (obj) => {
       componentYScaleSlider.value = comp.config.scale.y;
       componentZScaleSlider.value = comp.config.scale.z;
 
-      document.getElementById("component_xtranslation").value =
-        comp.config.translation.x.toFixed(2);
-      document.getElementById("component_ytranslation").value =
-        comp.config.translation.y.toFixed(2);
-      document.getElementById("component_ztranslation").value =
-        comp.config.translation.z.toFixed(2);
+      document.getElementById("component_xtranslation").value = (
+        comp.config.translation.x / 1000
+      ).toFixed(2);
+      document.getElementById("component_ytranslation").value = (
+        comp.config.translation.y / 1000
+      ).toFixed(2);
+      document.getElementById("component_ztranslation").value = (
+        comp.config.translation.z / 1000
+      ).toFixed(2);
 
       document.getElementById("component_xrotation").value =
         comp.config.rotation.x;

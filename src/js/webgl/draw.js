@@ -409,26 +409,26 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     );
   } else if (drawMode == Draw.COMPONENT) {
     if (currentComponent == model.mainObject) {
-      if (!model.movedMap.get(obj.name)) {
-        parentObject =
-          model.cubeList[model.getObjectIdxFromName(model.mainObject)];
-      }
-      modelViewMatrix = rotate(
+      modelViewMatrix = rotateWithPivot(
         modelViewMatrix,
         model.globalConfig.rotation.x,
         model.globalConfig.rotation.y,
-        model.globalConfig.rotation.z
+        model.globalConfig.rotation.z,
+        [
+          -obj.config.translation.x / 1000,
+          -obj.config.translation.y / 1000,
+          -obj.config.translation.z / 1000,
+        ]
+      );
+    } else {
+      modelViewMatrix = rotateWithPivot(
+        modelViewMatrix,
+        obj.config.rotation.x,
+        obj.config.rotation.y,
+        obj.config.rotation.z,
+        parentObject.pivot
       );
     }
-
-    modelViewMatrix = rotateWithPivot(
-      modelViewMatrix,
-      obj.config.rotation.x,
-      obj.config.rotation.y,
-      obj.config.rotation.z,
-      parentObject.pivot
-    );
-
     if (currentComponent == model.mainObject) {
       modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
     } else {
