@@ -197,6 +197,8 @@ loadModelButton.addEventListener("change", () => {
       model = new Spider();
     } else if (loadedModel.name == "Chicken") {
       model = new Chicken();
+    } else if (loadedModel.name == "Dragon") {
+      model = new Dragon();
     }
 
     model.createTextures();
@@ -310,6 +312,7 @@ window.onclick = function (event) {
 const steveButton = document.getElementById("steve-button");
 const spiderButton = document.getElementById("spider-button");
 const chickenButton = document.getElementById("chicken-button");
+const dragonButton = document.getElementById("dragon-button");
 
 steveButton.addEventListener("click", () => {
   model = new Steve();
@@ -333,6 +336,16 @@ spiderButton.addEventListener("click", () => {
 
 chickenButton.addEventListener("click", () => {
   model = new Chicken();
+  model.createTextures();
+  model.createComponentTextures();
+  reset();
+  componentReset();
+  resetComponentSelect(model);
+  requestAnimationFrame(render);
+});
+
+dragonButton.addEventListener("click", () => {
+  model = new Dragon();
   model.createTextures();
   model.createComponentTextures();
   reset();

@@ -1,0 +1,5433 @@
+[
+	{
+		"translation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"rotation": {
+			"x": 0,
+			"y": 0,
+			"z": 0
+		},
+		"scale": {
+			"x": 1000,
+			"y": 1000,
+			"z": 1000
+		}
+	},
+	{
+		"globalConfig": {
+			"translation": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"rotation": {
+				"x": 0,
+				"y": 0,
+				"z": 0
+			},
+			"scale": {
+				"x": 1000,
+				"y": 1000,
+				"z": 1000
+			}
+		},
+		"cubeList": [
+			{
+				"name": "Body",
+				"middle": [
+					0,
+					0,
+					0.6
+				],
+				"length": [
+					0.6,
+					0.6,
+					1.2
+				],
+				"pivot": [
+					0,
+					0,
+					0
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Neck",
+				"middle": [
+					0,
+					0,
+					-0.2
+				],
+				"length": [
+					0.2,
+					0.2,
+					0.4
+				],
+				"pivot": [
+					0,
+					0,
+					-0.2
+				],
+				"texturePath": "js/model/texture/dragon/dragon_skin.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Head",
+				"middle": [
+					0,
+					0,
+					-0.6
+				],
+				"length": [
+					0.4,
+					0.4,
+					0.4
+				],
+				"pivot": [
+					0,
+					0,
+					-0.2
+				],
+				"texturePath": "js/model/texture/dragon/dragon_head.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Top Beak",
+				"middle": [
+					0,
+					-0.05,
+					-0.95
+				],
+				"length": [
+					0.3,
+					0.1,
+					0.3
+				],
+				"pivot": [
+					0,
+					-0.05,
+					-0.2
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Bottom Beak",
+				"middle": [
+					0,
+					-0.15,
+					-0.95
+				],
+				"length": [
+					0.3,
+					0.1,
+					0.3
+				],
+				"pivot": [
+					0,
+					-0.15,
+					-0.2
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Right Inner Wing",
+				"middle": [
+					-0.4,
+					0.15,
+					0.4
+				],
+				"length": [
+					-0.2,
+					0.1,
+					0.4
+				],
+				"pivot": [
+					-0.4,
+					0.15,
+					0.4
+				],
+				"texturePath": "js/model/texture/dragon/dragon_skin.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Right Outer Wing",
+				"middle": [
+					-0.75,
+					0.15,
+					0.8
+				],
+				"length": [
+					-0.5,
+					0.1,
+					1.4
+				],
+				"pivot": [
+					-0.4,
+					0.15,
+					0.4
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Left Inner Wing",
+				"middle": [
+					0.4,
+					0.15,
+					0.4
+				],
+				"length": [
+					0.2,
+					0.1,
+					0.4
+				],
+				"pivot": [
+					0.4,
+					0.15,
+					0.4
+				],
+				"texturePath": "js/model/texture/dragon/dragon_skin.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Left Outer Wing",
+				"middle": [
+					0.75,
+					0.15,
+					0.8
+				],
+				"length": [
+					0.5,
+					0.1,
+					1.4
+				],
+				"pivot": [
+					0.4,
+					0.15,
+					0.4
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Front Tail",
+				"middle": [
+					0,
+					0.15,
+					1.35
+				],
+				"length": [
+					0.3,
+					0.3,
+					0.3
+				],
+				"pivot": [
+					0,
+					0.15,
+					1.35
+				],
+				"texturePath": "js/model/texture/dragon/dragon_skin.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Back Tail",
+				"middle": [
+					0,
+					0.2,
+					1.95
+				],
+				"length": [
+					0.2,
+					0.2,
+					1.2
+				],
+				"pivot": [
+					0,
+					0.2,
+					1.35
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Right Front Upper Leg",
+				"middle": [
+					-0.3,
+					-0.3,
+					0.1
+				],
+				"length": [
+					-0.15,
+					0.15,
+					0.15
+				],
+				"pivot": [
+					-0.3,
+					-0.3,
+					0.1
+				],
+				"texturePath": "js/model/texture/dragon/dragon_skin.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Right Front Lower Leg",
+				"middle": [
+					-0.3,
+					-0.525,
+					0.1
+				],
+				"length": [
+					-0.15,
+					0.3,
+					0.15
+				],
+				"pivot": [
+					-0.3,
+					-0.3,
+					0.1
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Left Front Upper Leg",
+				"middle": [
+					0.3,
+					-0.3,
+					0.1
+				],
+				"length": [
+					0.15,
+					0.15,
+					0.15
+				],
+				"pivot": [
+					0.3,
+					-0.3,
+					0.1
+				],
+				"texturePath": "js/model/texture/dragon/dragon_skin.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Left Front Lower Leg",
+				"middle": [
+					0.3,
+					-0.525,
+					0.1
+				],
+				"length": [
+					0.15,
+					0.3,
+					0.15
+				],
+				"pivot": [
+					0.3,
+					-0.3,
+					0.1
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Right Back Upper Leg",
+				"middle": [
+					-0.3,
+					-0.3,
+					1.1
+				],
+				"length": [
+					-0.25,
+					0.25,
+					0.25
+				],
+				"pivot": [
+					-0.3,
+					-0.3,
+					1.1
+				],
+				"texturePath": "js/model/texture/dragon/dragon_skin.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Right Back Lower Leg",
+				"middle": [
+					-0.3,
+					-0.575,
+					1.1
+				],
+				"length": [
+					-0.15,
+					0.3,
+					0.15
+				],
+				"pivot": [
+					-0.3,
+					-0.3,
+					1.1
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Left Back Upper Leg",
+				"middle": [
+					0.3,
+					-0.3,
+					1.1
+				],
+				"length": [
+					0.25,
+					0.25,
+					0.25
+				],
+				"pivot": [
+					0.3,
+					-0.3,
+					1.1
+				],
+				"texturePath": "js/model/texture/dragon/dragon_skin.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			},
+			{
+				"name": "Left Back Lower Leg",
+				"middle": [
+					0.3,
+					-0.575,
+					1.1
+				],
+				"length": [
+					0.15,
+					0.3,
+					0.15
+				],
+				"pivot": [
+					0.3,
+					-0.3,
+					1.1
+				],
+				"texturePath": "js/model/texture/dragon/dragon_color.png",
+				"config": {
+					"translation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"rotation": {
+						"x": 0,
+						"y": 0,
+						"z": 0
+					},
+					"scale": {
+						"x": 1000,
+						"y": 1000,
+						"z": 1000
+					}
+				}
+			}
+		],
+		"textureList": [
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{}
+		],
+		"componentTextureList": [
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{},
+			{}
+		],
+		"names": [
+			"Body",
+			"Neck",
+			"Head",
+			"Top Beak",
+			"Bottom Beak",
+			"Right Inner Wing",
+			"Right Outer Wing",
+			"Left Inner Wing",
+			"Left Outer Wing",
+			"Front Tail",
+			"Back Tail",
+			"Right Front Upper Leg",
+			"Right Front Lower Leg",
+			"Left Front Upper Leg",
+			"Left Front Lower Leg",
+			"Right Back Upper Leg",
+			"Right Back Lower Leg",
+			"Left Back Upper Leg",
+			"Left Back Lower Leg"
+		],
+		"movedMap": {
+			"dataType": "Map",
+			"value": [
+				[
+					"Body",
+					false
+				],
+				[
+					"Neck",
+					false
+				],
+				[
+					"Head",
+					false
+				],
+				[
+					"Top Beak",
+					false
+				],
+				[
+					"Bottom Beak",
+					false
+				],
+				[
+					"Right Inner Wing",
+					false
+				],
+				[
+					"Right Outer Wing",
+					false
+				],
+				[
+					"Left Inner Wing",
+					false
+				],
+				[
+					"Left Outer Wing",
+					false
+				],
+				[
+					"Front Tail",
+					false
+				],
+				[
+					"Back Tail",
+					false
+				],
+				[
+					"Right Front Upper Leg",
+					false
+				],
+				[
+					"Right Front Lower Leg",
+					false
+				],
+				[
+					"Left Front Upper Leg",
+					false
+				],
+				[
+					"Left Front Lower Leg",
+					false
+				],
+				[
+					"Right Back Upper Leg",
+					false
+				],
+				[
+					"Right Back Lower Leg",
+					false
+				],
+				[
+					"Left Back Upper Leg",
+					false
+				],
+				[
+					"Left Back Lower Leg",
+					false
+				]
+			]
+		},
+		"mainObject": "Body",
+		"relationship": {
+			"dataType": "Map",
+			"value": [
+				[
+					"Body",
+					[
+						"Neck",
+						"Front Tail",
+						"Right Inner Wing",
+						"Left Inner Wing",
+						"Right Front Upper Leg",
+						"Left Front Upper Leg",
+						"Right Back Upper Leg",
+						"Left Back Upper Leg"
+					]
+				],
+				[
+					"Neck",
+					[
+						"Head"
+					]
+				],
+				[
+					"Head",
+					[
+						"Top Beak",
+						"Bottom Beak"
+					]
+				],
+				[
+					"Front Tail",
+					[
+						"Back Tail"
+					]
+				],
+				[
+					"Right Inner Wing",
+					[
+						"Right Outer Wing"
+					]
+				],
+				[
+					"Left Inner Wing",
+					[
+						"Left Outer Wing"
+					]
+				],
+				[
+					"Right Front Upper Leg",
+					[
+						"Right Front Lower Leg"
+					]
+				],
+				[
+					"Left Front Upper Leg",
+					[
+						"Left Front Lower Leg"
+					]
+				],
+				[
+					"Right Back Upper Leg",
+					[
+						"Right Back Lower Leg"
+					]
+				],
+				[
+					"Left Back Upper Leg",
+					[
+						"Left Back Lower Leg"
+					]
+				]
+			]
+		},
+		"animation": {
+			"dataType": "Map",
+			"value": [
+				[
+					"Body",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -15,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -10,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -5,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 5,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 10,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 15,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 20,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 30,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 30,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 20,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 15,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 10,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 5,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -5,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -10,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -15,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Head",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 13.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 16.666666666666668,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 20,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 20,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 16.666666666666668,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 13.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Top Beak",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 13.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 16.666666666666668,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 20,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 20,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 16.666666666666668,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 13.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Bottom Beak",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 3.3333333333333335,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 2.2222222222222223,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 1.1111111111111112,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -1.1111111111111112,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -2.2222222222222223,
+								"y": 6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -3.3333333333333335,
+								"y": 10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -4.444444444444445,
+								"y": 13.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -5.555555555555555,
+								"y": 16.666666666666668,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -6.666666666666667,
+								"y": 20,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -6.666666666666667,
+								"y": 20,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -5.555555555555555,
+								"y": 16.666666666666668,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -4.444444444444445,
+								"y": 13.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -3.3333333333333335,
+								"y": 10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -2.2222222222222223,
+								"y": 6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -1.1111111111111112,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 1.1111111111111112,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 2.2222222222222223,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 3.3333333333333335,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Right Front Lower Leg",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -25,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -16.666666666666668,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -8.333333333333334,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 8.333333333333334,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 16.666666666666668,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 41.666666666666664,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 50,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 50,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 41.666666666666664,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 16.666666666666668,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 8.333333333333334,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -8.333333333333334,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -16.666666666666668,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -25,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Right Back Lower Leg",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -25,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -16.666666666666668,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -8.333333333333334,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 8.333333333333334,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 16.666666666666668,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 41.666666666666664,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 50,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 50,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 41.666666666666664,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 16.666666666666668,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 8.333333333333334,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -8.333333333333334,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -16.666666666666668,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -25,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Left Front Lower Leg",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -25,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -16.666666666666668,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -8.333333333333334,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 8.333333333333334,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 16.666666666666668,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 41.666666666666664,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 50,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 50,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 41.666666666666664,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 16.666666666666668,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 8.333333333333334,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -8.333333333333334,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -16.666666666666668,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -25,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Left Back Lower Leg",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -25,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -16.666666666666668,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -8.333333333333334,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 8.333333333333334,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 16.666666666666668,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 41.666666666666664,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 50,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 50,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 41.666666666666664,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 25,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 16.666666666666668,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 8.333333333333334,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -8.333333333333334,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -16.666666666666668,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -25,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Back Tail",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -20,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -13.333333333333334,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -6.666666666666667,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 6.666666666666667,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 13.333333333333334,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 20,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 26.666666666666668,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 40,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 40,
+								"y": -10,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 33.333333333333336,
+								"y": -8.333333333333334,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 26.666666666666668,
+								"y": -6.666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 20,
+								"y": -5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 13.333333333333334,
+								"y": -3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 6.666666666666667,
+								"y": -1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -6.666666666666667,
+								"y": 1.6666666666666667,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -13.333333333333334,
+								"y": 3.3333333333333335,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": -20,
+								"y": 5,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Right Inner Wing",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -5,
+								"z": -3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": -2.2222222222222223
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -1.6666666666666667,
+								"z": -1.1111111111111112
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 1.6666666666666667,
+								"z": 1.1111111111111112
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 2.2222222222222223
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 5,
+								"z": 3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 4.444444444444445
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 8.333333333333334,
+								"z": 5.555555555555555
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 8.333333333333334,
+								"z": 5.555555555555555
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 4.444444444444445
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 5,
+								"z": 3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 2.2222222222222223
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 1.6666666666666667,
+								"z": 1.1111111111111112
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -1.6666666666666667,
+								"z": -1.1111111111111112
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": -2.2222222222222223
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -5,
+								"z": -3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Left Inner Wing",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 5,
+								"z": 3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 2.2222222222222223
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 1.6666666666666667,
+								"z": 1.1111111111111112
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -1.6666666666666667,
+								"z": -1.1111111111111112
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": -2.2222222222222223
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -5,
+								"z": -3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": -4.444444444444445
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -8.333333333333334,
+								"z": -5.555555555555555
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": -6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": -6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -8.333333333333334,
+								"z": -5.555555555555555
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": -4.444444444444445
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -5,
+								"z": -3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": -2.2222222222222223
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -1.6666666666666667,
+								"z": -1.1111111111111112
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 1.6666666666666667,
+								"z": 1.1111111111111112
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 2.2222222222222223
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 5,
+								"z": 3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Right Outer Wing",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": -10
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": -6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": -3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 10
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 13.333333333333334,
+								"z": 13.333333333333334
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 16.666666666666668,
+								"z": 16.666666666666668
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 20,
+								"z": 20
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 20,
+								"z": 20
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 16.666666666666668,
+								"z": 16.666666666666668
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 13.333333333333334,
+								"z": 13.333333333333334
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 10
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": -3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": -6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": -10
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				],
+				[
+					"Left Outer Wing",
+					[
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 10
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": -3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": -6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": -10
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -13.333333333333334,
+								"z": -13.333333333333334
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -16.666666666666668,
+								"z": -16.666666666666668
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -20,
+								"z": -20
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -20,
+								"z": -20
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -16.666666666666668,
+								"z": -16.666666666666668
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -13.333333333333334,
+								"z": -13.333333333333334
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -10,
+								"z": -10
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -6.666666666666667,
+								"z": -6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": -3.3333333333333335,
+								"z": -3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 3.3333333333333335,
+								"z": 3.3333333333333335
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 6.666666666666667,
+								"z": 6.666666666666667
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						},
+						{
+							"translation": {
+								"x": 0,
+								"y": 0,
+								"z": 0
+							},
+							"rotation": {
+								"x": 0,
+								"y": 10,
+								"z": 10
+							},
+							"scale": {
+								"x": 1000,
+								"y": 1000,
+								"z": 1000
+							}
+						}
+					]
+				]
+			]
+		},
+		"name": "Dragon"
+	}
+]
