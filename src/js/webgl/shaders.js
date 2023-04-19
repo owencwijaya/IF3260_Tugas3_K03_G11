@@ -91,7 +91,7 @@ const fragmentShaderSource = `
 
     vec2 parallax_uv(vec2 uv, vec3 view_dir){
       float depth = texture2D(uDepthTex, uv).r;    
-      vec2 p = view_dir.xy * (depth * 0.01) / view_dir.z;
+      vec2 p = view_dir.xy * (depth * 0.001) / view_dir.z;
       return uv - p;  
     }
 

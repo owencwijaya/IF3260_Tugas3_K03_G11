@@ -472,19 +472,16 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   gl.uniform3fv(programInfo.uniformLocations.cameraPosition, eye);
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
-  if (parseInt(textureSelect.value) == 0) {
+  const renderMode =
+    drawMode == Draw.COMPONENT
+      ? componentTextureSelect.value
+      : textureSelect.value;
+
+  if (renderMode == 0) {
     gl.activeTexture(gl.TEXTURE4);
     gl.bindTexture(gl.TEXTURE_2D, texture);
     gl.uniform1i(programInfo.uniformLocations.uSampler, 4);
   }
-
-  const renderMode =
-    (drawMode == Draw.COMPONENT &&
-      textureSelect.value != 0 &&
-      componentTextureSelect.value == 0) ||
-    drawMode != Draw.COMPONENT
-      ? textureSelect.value
-      : componentTextureSelect.value;
 
   // enable / disable normal attribute
   if (shaderOn) {
