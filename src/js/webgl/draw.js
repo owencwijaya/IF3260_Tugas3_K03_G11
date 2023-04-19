@@ -428,6 +428,18 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       obj.config.rotation.z,
       parentObject.pivot
     );
+
+    if (currentComponent == model.mainObject) {
+      modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
+    } else {
+      modelViewMatrix = scaleWithPivot(
+        modelViewMatrix,
+        obj,
+        scaleX,
+        scaleY,
+        scaleZ
+      );
+    }
   } else if (drawMode == Draw.WHOLE) {
     modelViewMatrix = rotate(
       modelViewMatrix,
@@ -442,18 +454,8 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       obj.config.rotation.z,
       parentObject.pivot
     );
-  }
 
-  if (currentComponent == model.mainObject) {
     modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
-  } else {
-    modelViewMatrix = scaleWithPivot(
-      modelViewMatrix,
-      obj,
-      scaleX,
-      scaleY,
-      scaleZ
-    );
   }
 
   let normalMatrix = invert(modelViewMatrix);

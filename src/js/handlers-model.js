@@ -192,19 +192,87 @@ loadModelButton.addEventListener("change", () => {
     model.createComponentTextures();
 
     model.globalConfig = content.globalConfig;
+    console.log(model.globalConfig);
+
+    const mainObject =
+      model.cubeList[model.getObjectIdxFromName(model.mainObject)];
     model.movedMap = content.movedMap;
+
+    xTranslateSlider.value =
+      content.globalConfig.translation.x - mainObject.config.translation.x;
+    yTranslateSlider.value =
+      content.globalConfig.translation.y - mainObject.config.translation.y;
+    zTranslateSlider.value =
+      content.globalConfig.translation.z - mainObject.config.translation.z;
+    xRotateSlider.value =
+      content.globalConfig.rotation.x - mainObject.config.rotation.x;
+    yRotateSlider.value =
+      content.globalConfig.rotation.y - mainObject.config.rotation.y;
+    zRotateSlider.value =
+      content.globalConfig.rotation.z - mainObject.config.rotation.z;
+    xScaleSlider.value =
+      content.globalConfig.scale.x - mainObject.config.scale.x + 1000;
+    yScaleSlider.value =
+      content.globalConfig.scale.y - mainObject.config.scale.y + 1000;
+    zScaleSlider.value =
+      content.globalConfig.scale.z - mainObject.config.scale.z + 1000;
+
+    componentXTranslateSlider.value = mainObject.config.translation.x;
+    componentYTranslateSlider.value = mainObject.config.translation.y;
+    componentZTranslateSlider.value = mainObject.config.translation.z;
+    componentXRotateSlider.value = mainObject.config.rotation.x;
+    componentYRotateSlider.value = mainObject.config.rotation.y;
+    componentZRotateSlider.value = mainObject.config.rotation.z;
+    componentXScaleSlider.value = mainObject.config.scale.x;
+    componentYScaleSlider.value = mainObject.config.scale.y;
+    componentZScaleSlider.value = mainObject.config.scale.z;
+
+    document.getElementById("xtranslation").value =
+      xTranslateSlider.value / 1000;
+    document.getElementById("ytranslation").value =
+      yTranslateSlider.value / 1000;
+    document.getElementById("ztranslation").value =
+      zTranslateSlider.value / 1000;
+
+    document.getElementById("xrotation").value = xRotateSlider.value;
+    document.getElementById("yrotation").value = yRotateSlider.value;
+    document.getElementById("zrotation").value = zRotateSlider.value;
+
+    document.getElementById("xscale").value = xScaleSlider.value / 1000;
+    document.getElementById("yscale").value = yScaleSlider.value / 1000;
+    document.getElementById("zscale").value = zScaleSlider.value / 1000;
+
+    document.getElementById("component_xtranslation").value =
+      componentXTranslateSlider.value / 1000;
+    document.getElementById("component_ytranslation").value =
+      componentYTranslateSlider.value / 1000;
+    document.getElementById("component_ztranslation").value =
+      componentZTranslateSlider.value / 1000;
+
+    document.getElementById("component_xrotation").value =
+      componentXRotateSlider.value;
+    document.getElementById("component_yrotation").value =
+      componentYRotateSlider.value;
+    document.getElementById("component_zrotation").value =
+      componentZRotateSlider.value;
+
+    document.getElementById("component_xscale").value =
+      componentXScaleSlider.value / 1000;
+    document.getElementById("component_yscale").value =
+      componentYScaleSlider.value / 1000;
+    document.getElementById("component_zscale").value =
+      componentZScaleSlider.value / 1000;
 
     for (let i = 0; i < model.cubeList.length; i++) {
       model.cubeList[i] = content.cubeList[i];
     }
 
     resetComponentSelect(model);
-    reset();
+
     requestAnimationFrame(render);
   };
 
   alert("Successfully loaded file!");
-  reset();
   loadModelButton.value = "";
 });
 
