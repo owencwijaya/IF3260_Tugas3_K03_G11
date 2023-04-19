@@ -139,25 +139,3 @@ const initBitangentBuffer = (gl) => {
 
   return bitangentBuffer;
 };
-
-const initUVBuffer = (gl) => {
-  const uvs = [
-    // depan
-    0, 1, 1, 0, 0, 0, 1, 1,
-    // belakang
-    1, 1, 0, 0, 1, 0, 0, 1,
-    // atas
-    0, 0, 1, 1, 0, 1, 1, 0,
-    // bawah
-    0, 1, 1, 0, 0, 0, 1, 1,
-    // kanan
-    1, 1, 0, 0, 0, 1, 1, 0,
-    // kiri
-    0, 1, 1, 0, 1, 1, 0, 0,
-  ];
-  const uvBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(uvs), gl.STATIC_DRAW);
-
-  return uvBuffer;
-};

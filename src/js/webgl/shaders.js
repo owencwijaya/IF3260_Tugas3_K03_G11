@@ -26,6 +26,8 @@ const vertexShaderSource = `
     varying vec3 vWorldPosition;
     varying vec3 vWorldNormal;
 
+    varying vec2 fragUV;
+
     mat3 transpose(in mat3 inMatrix)
     {
         vec3 i0 = inMatrix[0];

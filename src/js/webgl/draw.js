@@ -84,7 +84,6 @@ const setBitangentAttribute = (gl, programInfo) => {
 
   const bitangentBuffer = initBitangentBuffer(gl);
   gl.bindBuffer(gl.ARRAY_BUFFER, bitangentBuffer);
-
   gl.vertexAttribPointer(
     programInfo.attribLocations.vertexBitangent,
     numComponents,
@@ -97,23 +96,6 @@ const setBitangentAttribute = (gl, programInfo) => {
   gl.enableVertexAttribArray(programInfo.attribLocations.vertexBitangent);
 };
 
-const setUVAttribute = (gl, programInfo) => {
-  const numComponents = 2;
-  const type = gl.FLOAT;
-
-  const uvBuffer = initUVBuffer(gl);
-  gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
-
-  gl.vertexAttribPointer(
-    programInfo.attribLocations.vertexUV,
-    numComponents,
-    type,
-    normalized,
-    stride,
-    offset
-  );
-  gl.enableVertexAttribArray(programInfo.attribLocations.vertexUV);
-};
 /**
  *
  * @param {*} gl context gl
@@ -464,40 +446,20 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   setTextureAttribute(gl, programInfo);
   setTangentAttribute(gl, programInfo);
   setBitangentAttribute(gl, programInfo);
-  setUVAttribute(gl, programInfo);
 
   gl.useProgram(programInfo.program);
 
   let dirVec = [
-    0.3,
-    0.4,
-    componentProjectionSelect.value == "perspective" ? -0.4 : 0.4,
+    0.3, 0.4, -0.4,
+
     1,
   ];
-
-  if (drawMode == Draw.COMPONENT) {
-    dirVec = [
-      0.3,
-      0.4,
-      componentProjectionSelect.value == "perspective" ? -0.4 : 0.4,
-      1,
-    ];
-  }
 
   dirVec = multiplyMatVec(invert(lookAtMatrix), dirVec);
   gl.uniform3fv(
     programInfo.uniformLocations.directionalVector,
     dirVec.slice(0, 3)
   );
-
-  // enable / disable normal attribute
-  if (shaderOn) {
-    setNormalAttribute(gl, programInfo);
-    gl.uniform3fv(programInfo.uniformLocations.ambientLight, [0.4, 0.4, 0.4]);
-  } else {
-    gl.disableVertexAttribArray(programInfo.attribLocations.vertexNormal);
-    gl.uniform3fv(programInfo.uniformLocations.ambientLight, [1.0, 1.0, 1.0]);
-  }
 
   gl.uniformMatrix4fv(projectionMatrixLoc, gl.FALSE, projectionMatrix);
   gl.uniformMatrix4fv(modelViewMatrixLoc, gl.FALSE, modelViewMatrix);
@@ -524,6 +486,22 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     drawMode != Draw.COMPONENT
       ? textureSelect.value
       : componentTextureSelect.value;
+
+  // enable / disable normal attribute
+  if (shaderOn) {
+    setNormalAttribute(gl, programInfo);
+    gl.uniform3fv(programInfo.uniformLocations.ambientLight, [0.4, 0.4, 0.4]);
+  } else {
+    if (renderMode == 0) {
+      {
+        gl.disableVertexAttribArray(programInfo.attribLocations.vertexNormal);
+        gl.uniform3fv(
+          programInfo.uniformLocations.ambientLight,
+          [1.0, 1.0, 1.0]
+        );
+      }
+    }
+  }
 
   gl.uniform1i(programInfo.uniformLocations.type, parseInt(renderMode));
 

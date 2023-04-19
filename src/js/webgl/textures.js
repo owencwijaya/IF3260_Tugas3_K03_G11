@@ -157,8 +157,5 @@ const generateReflectionTextures = (gl, programInfo) => {
     gl.LINEAR_MIPMAP_LINEAR
   );
 
-  console.log(texture);
-  console.log(programInfo.uniformLocations.cubeTexture);
-
   gl.uniform1i(programInfo.uniformLocations.cubeTexture, 0);
 };
