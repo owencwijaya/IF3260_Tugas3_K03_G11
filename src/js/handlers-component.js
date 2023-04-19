@@ -104,6 +104,10 @@ const resetComponentSelect = (obj) => {
 
     buttonElement.addEventListener("click", () => {
       currentComponent = component.name;
+
+      model.cubeList.forEach((obj) => {
+        configMap.set(obj.name, JSON.parse(JSON.stringify(obj.config)));
+      });
       const componentIdx = model.getObjectIdxFromName(component.name);
       const comp = model.cubeList[componentIdx];
 

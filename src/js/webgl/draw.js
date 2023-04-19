@@ -141,28 +141,55 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
         obj.config.scale.x = parseFloat(componentXScaleSlider.value);
         obj.config.scale.y = parseFloat(componentYScaleSlider.value);
         obj.config.scale.z = parseFloat(componentZScaleSlider.value);
-        configMap.set(obj.name, JSON.parse(JSON.stringify(obj.config)));
+        // configMap.set(obj.name, JSON.parse(JSON.stringify(obj.config)));
       } else if (model.findChildren(currentComponent).includes(obj)) {
         const tempConfig = configMap.get(obj.name);
+        const parentConfig = configMap.get(currentComponent);
+        console.log(parentConfig);
+        console.log(obj.name, tempConfig);
 
         obj.config.translation.x =
-          tempConfig.translation.x + parseInt(componentXTranslateSlider.value);
+          tempConfig.translation.x +
+          parseInt(componentXTranslateSlider.value) -
+          parentConfig.translation.x;
         obj.config.translation.y =
-          tempConfig.translation.y + parseInt(componentYTranslateSlider.value);
+          tempConfig.translation.y +
+          parseInt(componentYTranslateSlider.value) -
+          parentConfig.translation.y;
         obj.config.translation.z =
-          tempConfig.translation.z + parseInt(componentZTranslateSlider.value);
+          tempConfig.translation.z +
+          parseInt(componentZTranslateSlider.value) -
+          parentConfig.translation.z;
         obj.config.rotation.x =
-          tempConfig.rotation.x + parseInt(componentXRotateSlider.value);
+          tempConfig.rotation.x +
+          parseInt(componentXRotateSlider.value) -
+          parentConfig.rotation.x;
+        console.log(
+          tempConfig.rotation.x,
+          parentConfig.rotation.x,
+          componentXRotateSlider.value
+        );
         obj.config.rotation.y =
-          tempConfig.rotation.y + parseInt(componentYRotateSlider.value);
+          tempConfig.rotation.y +
+          parseInt(componentYRotateSlider.value) -
+          parentConfig.rotation.y;
+
         obj.config.rotation.z =
-          tempConfig.rotation.z + parseInt(componentZRotateSlider.value);
+          tempConfig.rotation.z +
+          parseInt(componentZRotateSlider.value) -
+          parentConfig.rotation.z;
         obj.config.scale.x =
-          tempConfig.scale.x + parseFloat(componentXScaleSlider.value) - 1000;
+          tempConfig.scale.x +
+          parseFloat(componentXScaleSlider.value) -
+          parentConfig.scale.x;
         obj.config.scale.y =
-          tempConfig.scale.y + parseFloat(componentYScaleSlider.value) - 1000;
+          tempConfig.scale.y +
+          parseFloat(componentYScaleSlider.value) -
+          parentConfig.scale.y;
         obj.config.scale.z =
-          tempConfig.scale.z + parseFloat(componentZScaleSlider.value) - 1000;
+          tempConfig.scale.z +
+          parseFloat(componentZScaleSlider.value) -
+          parentConfig.scale.z;
       }
       if (!model.movedMap.get(obj.name)) {
         const parentObject =
