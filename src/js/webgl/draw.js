@@ -130,22 +130,40 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     projection = componentProjectionSelect.value;
     angle = componentFovSlider.value;
 
-    if (
-      (obj.name == currentComponent ||
-        model.findChildren(currentComponent).includes(obj)) &&
-      currentComponent != model.mainObject
-    ) {
-      // if (currentComponent != model.mainObject) {
-      obj.config.translation.x = parseInt(componentXTranslateSlider.value);
-      obj.config.translation.y = parseInt(componentYTranslateSlider.value);
-      obj.config.translation.z = parseInt(componentZTranslateSlider.value);
-      obj.config.rotation.x = parseInt(componentXRotateSlider.value);
-      obj.config.rotation.y = parseInt(componentYRotateSlider.value);
-      obj.config.rotation.z = parseInt(componentZRotateSlider.value);
-      obj.config.scale.x = parseFloat(componentXScaleSlider.value);
-      obj.config.scale.y = parseFloat(componentYScaleSlider.value);
-      obj.config.scale.z = parseFloat(componentZScaleSlider.value);
+    if (currentComponent != model.mainObject) {
+      if (obj.name == currentComponent) {
+        obj.config.translation.x = parseInt(componentXTranslateSlider.value);
+        obj.config.translation.y = parseInt(componentYTranslateSlider.value);
+        obj.config.translation.z = parseInt(componentZTranslateSlider.value);
+        obj.config.rotation.x = parseInt(componentXRotateSlider.value);
+        obj.config.rotation.y = parseInt(componentYRotateSlider.value);
+        obj.config.rotation.z = parseInt(componentZRotateSlider.value);
+        obj.config.scale.x = parseFloat(componentXScaleSlider.value);
+        obj.config.scale.y = parseFloat(componentYScaleSlider.value);
+        obj.config.scale.z = parseFloat(componentZScaleSlider.value);
+        configMap.set(obj.name, JSON.parse(JSON.stringify(obj.config)));
+      } else if (model.findChildren(currentComponent).includes(obj)) {
+        const tempConfig = configMap.get(obj.name);
 
+        obj.config.translation.x =
+          tempConfig.translation.x + parseInt(componentXTranslateSlider.value);
+        obj.config.translation.y =
+          tempConfig.translation.y + parseInt(componentYTranslateSlider.value);
+        obj.config.translation.z =
+          tempConfig.translation.z + parseInt(componentZTranslateSlider.value);
+        obj.config.rotation.x =
+          tempConfig.rotation.x + parseInt(componentXRotateSlider.value);
+        obj.config.rotation.y =
+          tempConfig.rotation.y + parseInt(componentYRotateSlider.value);
+        obj.config.rotation.z =
+          tempConfig.rotation.z + parseInt(componentZRotateSlider.value);
+        obj.config.scale.x =
+          tempConfig.scale.x + parseFloat(componentXScaleSlider.value) - 1000;
+        obj.config.scale.y =
+          tempConfig.scale.y + parseFloat(componentYScaleSlider.value) - 1000;
+        obj.config.scale.z =
+          tempConfig.scale.z + parseFloat(componentZScaleSlider.value) - 1000;
+      }
       if (!model.movedMap.get(obj.name)) {
         const parentObject =
           model.cubeList[model.getObjectIdxFromName(model.mainObject)];

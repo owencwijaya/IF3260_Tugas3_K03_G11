@@ -93,12 +93,15 @@ componentZScaleSlider.addEventListener("input", () => {
 const resetComponentSelect = (obj) => {
   componentTree.innerHTML = "";
   currentComponent = obj.mainObject;
-
+  configMap = new Map();
   obj.cubeList.forEach((component) => {
     const buttonElement = document.createElement("button");
     buttonElement.textContent = component.name;
     buttonElement.style.display = "block";
     buttonElement.style.marginLeft = obj.getDepth(component.name) * 10 + "px";
+
+    configMap.set(component.name, JSON.parse(JSON.stringify(component.config)));
+
     buttonElement.addEventListener("click", () => {
       currentComponent = component.name;
       const componentIdx = model.getObjectIdxFromName(component.name);

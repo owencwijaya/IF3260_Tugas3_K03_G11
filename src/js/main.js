@@ -137,6 +137,7 @@ const componentProgramInfo = {
 };
 
 let model = new Steve();
+let configMap = new Map();
 
 generateBumpTextures(gl, programInfo);
 generateBumpTextures(componentGl, componentProgramInfo);
@@ -146,6 +147,7 @@ generateReflectionTextures(componentGl, componentProgramInfo);
 
 resetComponentSelect(model);
 
+console.log(configMap);
 gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 componentGl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
 
