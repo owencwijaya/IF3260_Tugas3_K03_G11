@@ -207,6 +207,18 @@ const componentReset = () => {
   document.getElementById("component_xscale").value = 1.0;
   document.getElementById("component_yscale").value = 1.0;
   document.getElementById("component_zscale").value = 1.0;
+
+  model.cubeList.forEach((obj) => {
+    obj.config.translation.x = 0;
+    obj.config.translation.y = 0;
+    obj.config.translation.z = 0;
+    obj.config.rotation.x = 0;
+    obj.config.rotation.y = 0;
+    obj.config.rotation.z = 0;
+    obj.config.scale.x = 1000;
+    obj.config.scale.y = 1000;
+    obj.config.scale.z = 1000;
+  });
   requestAnimationFrame(render);
 };
 
@@ -248,3 +260,6 @@ componentTextureSelect.addEventListener("change", () => {
   customTextureButtonSubtree.disabled = componentTextureSelect.value != "0";
   requestAnimationFrame(render);
 });
+
+const componentResetButton = document.getElementById("component-reset-button");
+componentResetButton.addEventListener("click", componentReset);

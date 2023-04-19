@@ -88,7 +88,7 @@
             dengan beberapa hal berikut:
             <ul>
               <li>
-                Transformasi dari <i>component canvas</i>bersifat
+                Transformasi dari <i>component canvas</i> bersifat
                 <i>stacking</i>, sehingga dapat berdampak pada canvas utama
               </li>
               <li>
@@ -131,6 +131,60 @@
                 <b>Subtree</b> untuk mengubah tekstur hanya pada objek terpilih
                 dan subtree pada <i>component canvas</i>
               </li>
+            </ul>
+            <h1>Kontrol Kamera</h1>
+            <ul>
+              <li>
+                Pengguna dapat mengatur jarak kamera dari objek menggunakan
+                <i>slider</i> <b>"Camera distance"</b>
+              </li>
+              <li>
+                Pengguna dapat menggerakan kamera mengelilingi objek secara
+                horizontal menggunakan <i>slider</i> <b>"Horizontal position</b>
+              </li>
+              <ul>
+                <li>
+                  Pergerakan dilakukan sejauh <b>maksimal 180 derajat</b> dari
+                  posisi awal kamera
+                </li>
+              </ul>
+              <li>
+                Pengguna dapat menggerakan kamera mengelilingi objek secara
+                vertical menggunakan <i>slider</i> <b>"Vertical position</b>
+              </li>
+              <ul>
+                <li>
+                  Pergerakan dilakukan sejauh <b>maksimal 90 derajat</b> dari
+                  posisi awal kamera
+                </li>
+              </ul>
+              <li>
+                Khusus proyeksi <i>perspective</i> dan <i>oblique</i>, pengguna
+                dapat mengubah sudut tampilan dengan <i>FOV slider</i>
+              </li>
+            </ul>
+
+            <h1>Lain-lain</h1>
+            <ul>
+              <li>
+                Pengguna dapat me-reset parameter transformasi menggunakan
+                tombol <b>Reset</b>
+              </li>
+              <li>
+                Pengguna dapat melakukan <i>loading</i> objek yang sudah
+                disimpan selanjutnya dengan tombol <b>Load Model</b>
+              </li>
+              <li>
+                Pengguna dapat melakukan <i>save</i> objek yang telah dibuat
+                dengan mengisikan nama <i>file</i> di sebelah tombol
+                <b>Save Model</b>, lalu menekan tombol <b>Save Model</b>
+              </li>
+              <ul>
+                <li>
+                  Transformasi pada canvas komponen dan canvas utama akan
+                  dipisahkan dan akan di-<i>load</i> secara terpisah
+                </li>
+              </ul>
             </ul>
           </div>
         </div>
@@ -537,10 +591,7 @@
           </div>
 
           <div class="inline-flex">
-            <label class="file-button">
-              <input type="file" id="custom-texture-button" />
-              Upload Custom Texture (Whole)
-            </label>
+            <button id="component-reset-button">Reset</button>
           </div>
         </div>
 
@@ -656,6 +707,11 @@
           </div>
 
           <div class="inline-flex">
+            <label class="file-button">
+              <input type="file" id="custom-texture-button" />
+              Upload Custom Texture (Whole)
+            </label>
+
             <label class="file-button">
               <input type="file" id="custom-texture-button-subtree" />
               Upload Custom Texture (Subtree)
