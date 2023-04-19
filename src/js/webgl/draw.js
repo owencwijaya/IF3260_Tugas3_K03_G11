@@ -351,7 +351,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     modelViewMatrix,
     translateX,
     translateY,
-    factor * translateZ
+    translateZ
   );
 
   let parentObject = model.cubeList[model.getObjectIdxFromName(obj.name)];
@@ -370,20 +370,23 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   if (drawMode == Draw.ANIMATION) {
     const parentFrames = model.animation.get(mainObjectName);
     const frame = parentFrames[animationFrame % parentFrames.length];
+    if (obj.name == "Right Wing") {
+      console.log(parentObject.pivot);
+    }
     if (obj.name != mainObjectName) {
       modelViewMatrix = rotate(
         modelViewMatrix,
-        factor * frame.rotation.x,
-        factor * frame.rotation.y,
-        factor * frame.rotation.z
+        frame.rotation.x,
+        frame.rotation.y,
+        frame.rotation.z
       );
     }
 
     modelViewMatrix = rotateWithPivot(
       modelViewMatrix,
-      factor * rotateX,
-      factor * rotateY,
-      factor * rotateZ,
+      rotateX,
+      rotateY,
+      rotateZ,
       parentObject.pivot
     );
   } else if (drawMode == Draw.COMPONENT) {
@@ -394,31 +397,31 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       }
       modelViewMatrix = rotate(
         modelViewMatrix,
-        factor * model.globalConfig.rotation.x,
-        factor * model.globalConfig.rotation.y,
-        factor * model.globalConfig.rotation.z
+        model.globalConfig.rotation.x,
+        model.globalConfig.rotation.y,
+        model.globalConfig.rotation.z
       );
     }
 
     modelViewMatrix = rotateWithPivot(
       modelViewMatrix,
-      factor * obj.config.rotation.x,
-      factor * obj.config.rotation.y,
-      factor * obj.config.rotation.z,
+      obj.config.rotation.x,
+      obj.config.rotation.y,
+      obj.config.rotation.z,
       parentObject.pivot
     );
   } else if (drawMode == Draw.WHOLE) {
     modelViewMatrix = rotate(
       modelViewMatrix,
-      factor * (model.globalConfig.rotation.x + parseInt(xRotateSlider.value)),
-      factor * (model.globalConfig.rotation.y + parseInt(yRotateSlider.value)),
-      factor * (model.globalConfig.rotation.z + parseInt(zRotateSlider.value))
+      model.globalConfig.rotation.x + parseInt(xRotateSlider.value),
+      model.globalConfig.rotation.y + parseInt(yRotateSlider.value),
+      model.globalConfig.rotation.z + parseInt(zRotateSlider.value)
     );
     modelViewMatrix = rotateWithPivot(
       modelViewMatrix,
-      factor * obj.config.rotation.x,
-      factor * obj.config.rotation.y,
-      factor * obj.config.rotation.z,
+      obj.config.rotation.x,
+      obj.config.rotation.y,
+      obj.config.rotation.z,
       parentObject.pivot
     );
   }
@@ -449,11 +452,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
 
   gl.useProgram(programInfo.program);
 
-  let dirVec = [
-    0.3, 0.4, -0.4,
-
-    1,
-  ];
+  let dirVec = [0.3, 0.4, -0.4, 1];
 
   dirVec = multiplyMatVec(invert(lookAtMatrix), dirVec);
   gl.uniform3fv(

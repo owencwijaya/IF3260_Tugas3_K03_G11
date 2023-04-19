@@ -29,7 +29,7 @@ class Chicken {
       "Left Wing",
       [0, 0.05, 0.415],
       // [0, 0.65, 0.34],
-      [0, 0.65, -0.5],
+      [0, 0.2, 0.45],
       [0.8, 0.6, 0.075],
       "js/model/texture/chicken/chicken-body.jpg"
     );
@@ -37,7 +37,7 @@ class Chicken {
     const rightWing = new Cube(
       "Right Wing",
       [0, 0.05, -0.415],
-      [0, 0.65, 0.5],
+      [0, 0.2, -0.45],
       [0.8, 0.6, 0.075],
       "js/model/texture/chicken/chicken-body.jpg"
     );
@@ -227,15 +227,15 @@ class Chicken {
       );
       leftWing.push(
         createConfig(
-          [0.0015 * i, 0.0005 * i, 0.0015 * i],
-          [i / 3, 0, 0],
+          [-0.0015 * i, 0.0005 * i, -0.0015 * i],
+          [-i / 3, 0, 0],
           [1000, 1000, 1000]
         )
       );
       rightWing.push(
         createConfig(
           [-0.0015 * i, 0.0005 * i, -0.0015 * i],
-          [-i / 3, 0, 0],
+          [i / 3, 0, 0],
           [1000, 1000, 1000]
         )
       );

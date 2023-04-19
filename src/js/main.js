@@ -136,7 +136,7 @@ const componentProgramInfo = {
   },
 };
 
-let model = new Steve();
+let model = new Chicken();
 
 generateBumpTextures(gl, programInfo);
 generateBumpTextures(componentGl, componentProgramInfo);
