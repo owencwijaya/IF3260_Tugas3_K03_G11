@@ -192,23 +192,23 @@ class Spider {
     }
 
     for (let i = 6; i <= 24; i += 2) {
-      leg5.push(createConfig([0, 0, 0], [0, i*0.2, i ], [1000, 1000, 1000]));
-      leg1.push(createConfig([0, 0, 0], [0, i*0.2, -i ], [1000, 1000, 1000]));
+      leg5.push(createConfig([0, 0, 0], [0, i*0.2, -i ], [1000, 1000, 1000]));
+      leg1.push(createConfig([0, 0, 0], [0, i*0.2, i ], [1000, 1000, 1000]));
     }
     
     for (let i = 6; i <= 24; i += 3) {
-      leg6.push(createConfig([0, 0, 0], [0, i*0.2, i ], [1000, 1000, 1000]));
-      leg2.push(createConfig([0, 0, 0], [0, i*0.2, -i ], [1000, 1000, 1000]));
+      leg6.push(createConfig([0, 0, 0], [0, i*0.2, -i ], [1000, 1000, 1000]));
+      leg2.push(createConfig([0, 0, 0], [0, i*0.2, i ], [1000, 1000, 1000]));
     }
 
     for (let i = 6; i <= 24; i += 4) {
-      leg7.push(createConfig([0, 0, 0], [0, i*0.2, i ], [1000, 1000, 1000]));
-      leg3.push(createConfig([0, 0, 0], [0, i*0.2, -i ], [1000, 1000, 1000]));
+      leg7.push(createConfig([0, 0, 0], [0, i*0.2, -i ], [1000, 1000, 1000]));
+      leg3.push(createConfig([0, 0, 0], [0, i*0.2, i ], [1000, 1000, 1000]));
     }
 
     for (let i = 6; i <= 24; i += 6) {
-      leg8.push(createConfig([0, 0, 0], [0, i*0.2, i ], [1000, 1000, 1000]));
-      leg4.push(createConfig([0, 0, 0], [0, i*0.2, -i ], [1000, 1000, 1000]));
+      leg8.push(createConfig([0, 0, 0], [0, i*0.2, -i ], [1000, 1000, 1000]));
+      leg4.push(createConfig([0, 0, 0], [0, i*0.2, i ], [1000, 1000, 1000]));
     }
 
     body.push(...body.slice().reverse());
