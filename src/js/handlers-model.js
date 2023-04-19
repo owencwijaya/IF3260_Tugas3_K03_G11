@@ -141,16 +141,25 @@ const reviver = (key, value) => {
 
 const saveModelButton = document.getElementById("save-model-button");
 saveModelButton.addEventListener("click", () => {
-  model.globalConfig.translation.x += parseInt(xTranslateSlider.value);
-  model.globalConfig.translation.y += parseInt(yTranslateSlider.value);
-  model.globalConfig.translation.z += parseInt(zTranslateSlider.value);
-  model.globalConfig.rotation.x += parseInt(xRotateSlider.value);
-  model.globalConfig.rotation.y += parseInt(yRotateSlider.value);
-  model.globalConfig.rotation.z += parseInt(zRotateSlider.value);
-  model.globalConfig.scale.x += parseInt(xScaleSlider.value) - 1000;
-  model.globalConfig.scale.y += parseInt(yScaleSlider.value) - 1000;
-  model.globalConfig.scale.z += parseInt(zScaleSlider.value) - 1000;
-  const content = JSON.stringify(model, replacer, "\t");
+  const wholeCanvasState = createConfig(
+    [
+      parseInt(xTranslateSlider.value),
+      parseInt(yTranslateSlider.value),
+      parseInt(zTranslateSlider.value),
+    ],
+    [
+      parseInt(xRotateSlider.value),
+      parseInt(yRotateSlider.value),
+      parseInt(zRotateSlider.value),
+    ],
+    [
+      parseInt(xScaleSlider.value),
+      parseInt(yScaleSlider.value),
+      parseInt(zScaleSlider.value),
+    ]
+  );
+  const content = JSON.stringify([wholeCanvasState, model], replacer, "\t");
+  console.log(JSON.parse(content, reviver));
 
   const filename = document.getElementById("filename").value;
   if (filename == "") {
@@ -180,53 +189,44 @@ loadModelButton.addEventListener("change", () => {
 
   reader.onload = (evt) => {
     const content = JSON.parse(evt.target.result, reviver);
-    if (content.name == "Steve") {
+    const wholeCanvasState = content[0];
+    const loadedModel = content[1];
+    if (loadedModel.name == "Steve") {
       model = new Steve();
-    } else if (content.name == "Spider") {
+    } else if (loadedModel.name == "Spider") {
       model = new Spider();
-    } else if (content.name == "Chicken") {
+    } else if (loadedModel.name == "Chicken") {
       model = new Chicken();
     }
 
     model.createTextures();
     model.createComponentTextures();
 
-    model.globalConfig = content.globalConfig;
+    model.globalConfig = loadedModel.globalConfig;
     console.log(model.globalConfig);
+    model.movedMap = loadedModel.movedMap;
 
-    const mainObject =
-      model.cubeList[model.getObjectIdxFromName(model.mainObject)];
-    model.movedMap = content.movedMap;
+    xTranslateSlider.value = wholeCanvasState.translation.x;
+    yTranslateSlider.value = wholeCanvasState.translation.y;
+    zTranslateSlider.value = wholeCanvasState.translation.z;
+    xRotateSlider.value = wholeCanvasState.rotation.x;
+    yRotateSlider.value = wholeCanvasState.rotation.y;
+    zRotateSlider.value = wholeCanvasState.rotation.z;
+    xScaleSlider.value = wholeCanvasState.scale.x;
+    yScaleSlider.value = wholeCanvasState.scale.y;
+    zScaleSlider.value = wholeCanvasState.scale.z;
 
-    xTranslateSlider.value =
-      content.globalConfig.translation.x - mainObject.config.translation.x;
-    yTranslateSlider.value =
-      content.globalConfig.translation.y - mainObject.config.translation.y;
-    zTranslateSlider.value =
-      content.globalConfig.translation.z - mainObject.config.translation.z;
-    xRotateSlider.value =
-      content.globalConfig.rotation.x - mainObject.config.rotation.x;
-    yRotateSlider.value =
-      content.globalConfig.rotation.y - mainObject.config.rotation.y;
-    zRotateSlider.value =
-      content.globalConfig.rotation.z - mainObject.config.rotation.z;
-    xScaleSlider.value =
-      content.globalConfig.scale.x - mainObject.config.scale.x + 1000;
-    yScaleSlider.value =
-      content.globalConfig.scale.y - mainObject.config.scale.y + 1000;
-    zScaleSlider.value =
-      content.globalConfig.scale.z - mainObject.config.scale.z + 1000;
+    componentXTranslateSlider.value = loadedModel.globalConfig.translation.x;
+    componentYTranslateSlider.value = loadedModel.globalConfig.translation.y;
+    componentZTranslateSlider.value = loadedModel.globalConfig.translation.z;
+    componentXRotateSlider.value = loadedModel.globalConfig.rotation.x;
+    componentYRotateSlider.value = loadedModel.globalConfig.rotation.y;
+    componentZRotateSlider.value = loadedModel.globalConfig.rotation.z;
+    componentXScaleSlider.value = loadedModel.globalConfig.scale.x;
+    componentYScaleSlider.value = loadedModel.globalConfig.scale.y;
+    componentZScaleSlider.value = loadedModel.globalConfig.scale.z;
 
-    componentXTranslateSlider.value = mainObject.config.translation.x;
-    componentYTranslateSlider.value = mainObject.config.translation.y;
-    componentZTranslateSlider.value = mainObject.config.translation.z;
-    componentXRotateSlider.value = mainObject.config.rotation.x;
-    componentYRotateSlider.value = mainObject.config.rotation.y;
-    componentZRotateSlider.value = mainObject.config.rotation.z;
-    componentXScaleSlider.value = mainObject.config.scale.x;
-    componentYScaleSlider.value = mainObject.config.scale.y;
-    componentZScaleSlider.value = mainObject.config.scale.z;
-
+    currentComponent = model.mainObject;
     document.getElementById("xtranslation").value =
       xTranslateSlider.value / 1000;
     document.getElementById("ytranslation").value =
@@ -263,8 +263,8 @@ loadModelButton.addEventListener("change", () => {
     document.getElementById("component_zscale").value =
       componentZScaleSlider.value / 1000;
 
-    for (let i = 0; i < model.cubeList.length; i++) {
-      model.cubeList[i] = content.cubeList[i];
+    for (let i = 0; i < loadedModel.cubeList.length; i++) {
+      model.cubeList[i] = loadedModel.cubeList[i];
     }
 
     resetComponentSelect(model);
@@ -316,6 +316,7 @@ steveButton.addEventListener("click", () => {
   model.createTextures();
   model.createComponentTextures();
   reset();
+  componentReset();
   resetComponentSelect(model);
   requestAnimationFrame(render);
 });
@@ -325,6 +326,7 @@ spiderButton.addEventListener("click", () => {
   model.createTextures();
   model.createComponentTextures();
   reset();
+  componentReset();
   resetComponentSelect(model);
   requestAnimationFrame(render);
 });
@@ -334,6 +336,7 @@ chickenButton.addEventListener("click", () => {
   model.createTextures();
   model.createComponentTextures();
   reset();
+  componentReset();
   resetComponentSelect(model);
   requestAnimationFrame(render);
 });
