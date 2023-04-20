@@ -145,8 +145,6 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       } else if (model.findChildren(currentComponent).includes(obj)) {
         const tempConfig = configMap.get(obj.name);
         const parentConfig = configMap.get(currentComponent);
-        console.log(parentConfig);
-        console.log(obj.name, tempConfig);
 
         obj.config.translation.x =
           tempConfig.translation.x +
@@ -409,9 +407,7 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
   if (drawMode == Draw.ANIMATION) {
     const parentFrames = model.animation.get(mainObjectName);
     const frame = parentFrames[animationFrame % parentFrames.length];
-    if (obj.name == "Right Wing") {
-      console.log(parentObject.pivot);
-    }
+
     if (obj.name != mainObjectName) {
       modelViewMatrix = rotate(
         modelViewMatrix,
@@ -545,13 +541,8 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
     gl.uniform3fv(programInfo.uniformLocations.ambientLight, [0.4, 0.4, 0.4]);
   } else {
     if (renderMode == 0) {
-      {
-        gl.disableVertexAttribArray(programInfo.attribLocations.vertexNormal);
-        gl.uniform3fv(
-          programInfo.uniformLocations.ambientLight,
-          [1.0, 1.0, 1.0]
-        );
-      }
+      gl.disableVertexAttribArray(programInfo.attribLocations.vertexNormal);
+      gl.uniform3fv(programInfo.uniformLocations.ambientLight, [1.0, 1.0, 1.0]);
     }
   }
 

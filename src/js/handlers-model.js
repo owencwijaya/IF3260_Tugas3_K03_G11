@@ -159,7 +159,6 @@ saveModelButton.addEventListener("click", () => {
     ]
   );
   const content = JSON.stringify([wholeCanvasState, model], replacer, "\t");
-  console.log(JSON.parse(content, reviver));
 
   const filename = document.getElementById("filename").value;
   if (filename == "") {
@@ -205,7 +204,6 @@ loadModelButton.addEventListener("change", () => {
     model.createComponentTextures();
 
     model.globalConfig = loadedModel.globalConfig;
-    console.log(model.globalConfig);
     model.movedMap = loadedModel.movedMap;
 
     xTranslateSlider.value = wholeCanvasState.translation.x;
