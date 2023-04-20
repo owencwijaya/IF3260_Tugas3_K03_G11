@@ -164,16 +164,10 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
           tempConfig.rotation.x +
           parseInt(componentXRotateSlider.value) -
           parentConfig.rotation.x;
-        console.log(
-          tempConfig.rotation.x,
-          parentConfig.rotation.x,
-          componentXRotateSlider.value
-        );
         obj.config.rotation.y =
           tempConfig.rotation.y +
           parseInt(componentYRotateSlider.value) -
           parentConfig.rotation.y;
-
         obj.config.rotation.z =
           tempConfig.rotation.z +
           parseInt(componentZRotateSlider.value) -
@@ -192,11 +186,11 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
           parentConfig.scale.z;
       }
       if (!model.movedMap.get(obj.name)) {
-        const parentObject =
-          model.cubeList[model.getObjectIdxFromName(model.mainObject)];
+        // const parentObject =
+        //   model.cubeList[model.getObjectIdxFromName(model.mainObject)];
         model.movedMap.set(
           obj.name,
-          JSON.stringify(obj.config) != JSON.stringify(parentObject.config)
+          JSON.stringify(obj.config) != JSON.stringify(model.globalConfig)
         );
       }
     }
@@ -457,23 +451,28 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       parentObject.pivot
     );
 
-    if (currentComponent == model.mainObject) {
-      modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
+    if (currentComponent == model.mainObject && !model.movedMap.get(obj.name)) {
+      modelViewMatrix = scale(modelViewMatrix, scaleX, scaleY, scaleZ);
     } else {
       modelViewMatrix = scaleWithPivot(
         modelViewMatrix,
-        obj,
         scaleX,
         scaleY,
-        scaleZ
+        scaleZ,
+        obj.pivot
       );
     }
   } else if (drawMode == Draw.WHOLE) {
-    modelViewMatrix = rotate(
+    modelViewMatrix = rotateWithPivot(
       modelViewMatrix,
       model.globalConfig.rotation.x + parseInt(xRotateSlider.value),
       model.globalConfig.rotation.y + parseInt(yRotateSlider.value),
-      model.globalConfig.rotation.z + parseInt(zRotateSlider.value)
+      model.globalConfig.rotation.z + parseInt(zRotateSlider.value),
+      [
+        -obj.config.translation.x / 1000,
+        -obj.config.translation.y / 1000,
+        -obj.config.translation.z / 1000,
+      ]
     );
     modelViewMatrix = rotateWithPivot(
       modelViewMatrix,
@@ -482,14 +481,17 @@ const draw = (gl, programInfo, obj, texture, drawMode, animationFrame = 0) => {
       obj.config.rotation.z,
       parentObject.pivot
     );
-    modelViewMatrix = scale(modelViewMatrix, obj, scaleX, scaleY, scaleZ);
-    // modelViewMatrix = scaleWithPivot(
-    //   modelViewMatrix,
-    //   obj,
-    //   scaleX,
-    //   scaleY,
-    //   scaleZ
-    // );
+    if (!model.movedMap.get(obj.name)) {
+      modelViewMatrix = scale(modelViewMatrix, scaleX, scaleY, scaleZ);
+    } else {
+      modelViewMatrix = scaleWithPivot(
+        modelViewMatrix,
+        scaleX,
+        scaleY,
+        scaleZ,
+        obj.pivot
+      );
+    }
   }
 
   let normalMatrix = invert(modelViewMatrix);

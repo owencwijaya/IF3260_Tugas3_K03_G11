@@ -67,7 +67,7 @@ class Steve {
     const rightLeg = new Cube(
       "Right Leg",
       [0.1, -0.4, 0],
-      [0, 0, 0],
+      [0.1, 0, 0],
       [0.2, 0.8, 0.2],
       "js/model/texture/steve/steve_leg.png"
     );
@@ -75,7 +75,7 @@ class Steve {
     const leftLeg = new Cube(
       "Left Leg",
       [-0.1, -0.4, 0],
-      [0, 0, 0],
+      [-0.1, 0, 0],
       [0.2, 0.8, 0.2],
       "js/model/texture/steve/steve_leg.png"
     );

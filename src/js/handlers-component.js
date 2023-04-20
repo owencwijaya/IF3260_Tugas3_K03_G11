@@ -111,41 +111,53 @@ const resetComponentSelect = (obj) => {
       const componentIdx = model.getObjectIdxFromName(component.name);
       const comp = model.cubeList[componentIdx];
 
-      componentXTranslateSlider.value = comp.config.translation.x;
-      componentYTranslateSlider.value = comp.config.translation.y;
-      componentZTranslateSlider.value = comp.config.translation.z;
-      componentXRotateSlider.value = comp.config.rotation.x;
-      componentYRotateSlider.value = comp.config.rotation.y;
-      componentZRotateSlider.value = comp.config.rotation.z;
-      componentXScaleSlider.value = comp.config.scale.x;
-      componentYScaleSlider.value = comp.config.scale.y;
-      componentZScaleSlider.value = comp.config.scale.z;
+      if (component.name == obj.mainObject) {
+        componentXTranslateSlider.value = model.globalConfig.translation.x;
+        componentYTranslateSlider.value = model.globalConfig.translation.y;
+        componentZTranslateSlider.value = model.globalConfig.translation.z;
+        componentXRotateSlider.value = model.globalConfig.rotation.x;
+        componentYRotateSlider.value = model.globalConfig.rotation.y;
+        componentZRotateSlider.value = model.globalConfig.rotation.z;
+        componentXScaleSlider.value = model.globalConfig.scale.x;
+        componentYScaleSlider.value = model.globalConfig.scale.y;
+        componentZScaleSlider.value = model.globalConfig.scale.z;
+      } else {
+        componentXTranslateSlider.value = comp.config.translation.x;
+        componentYTranslateSlider.value = comp.config.translation.y;
+        componentZTranslateSlider.value = comp.config.translation.z;
+        componentXRotateSlider.value = comp.config.rotation.x;
+        componentYRotateSlider.value = comp.config.rotation.y;
+        componentZRotateSlider.value = comp.config.rotation.z;
+        componentXScaleSlider.value = comp.config.scale.x;
+        componentYScaleSlider.value = comp.config.scale.y;
+        componentZScaleSlider.value = comp.config.scale.z;
+      }
 
       document.getElementById("component_xtranslation").value = (
-        comp.config.translation.x / 1000
+        componentXTranslateSlider.value / 1000
       ).toFixed(2);
       document.getElementById("component_ytranslation").value = (
-        comp.config.translation.y / 1000
+        componentYTranslateSlider.value / 1000
       ).toFixed(2);
       document.getElementById("component_ztranslation").value = (
-        comp.config.translation.z / 1000
+        componentZTranslateSlider.value / 1000
       ).toFixed(2);
 
       document.getElementById("component_xrotation").value =
-        comp.config.rotation.x;
+        componentXRotateSlider.value;
       document.getElementById("component_yrotation").value =
-        comp.config.rotation.y;
+        componentYRotateSlider.value;
       document.getElementById("component_zrotation").value =
-        comp.config.rotation.z;
+        componentZRotateSlider.value;
 
       document.getElementById("component_xscale").value = (
-        comp.config.scale.x / 1000
+        componentXScaleSlider.value / 1000
       ).toFixed(2);
       document.getElementById("component_yscale").value = (
-        comp.config.scale.y / 1000
+        componentYScaleSlider.value / 1000
       ).toFixed(2);
       document.getElementById("component_zscale").value = (
-        comp.config.scale.z / 1000
+        componentZScaleSlider.value / 1000
       ).toFixed(2);
       requestAnimationFrame(render);
     });
