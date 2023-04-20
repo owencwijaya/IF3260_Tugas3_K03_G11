@@ -8,12 +8,16 @@
 
 ## Cara Menjalankan
 _Fork_ repository ini ke komputer Anda terlebih dahulu. Ada 3 cara untuk menjalankan aplikasi:
-1. **Membuka file index.html**
+1. **Menggunakan `http.server` Python**
 2. **Menggunakan Visual Studio Code**
 
-### Membuka `index.html`
-1. Pastikan _repository_ ini sudah di-fork
-2. Buka direktori `src`, lalu buka file `index.html` pada _browser_ Anda
+### Menggunakan `http.server` Python
+1. Pastikan _repository_ ini sudah di-fork dan _Python interpreter_ sudah terpasang
+2. Buka terminal pada direktori `src`, lalu jalankan perintah berikut:
+```
+python -m http.server 8080
+```
+Perintah ini akan menjalankan _HTTP server_ pada _port_ 8080
 
 ### Menggunakan Visual Studio Code
 1. Pastikan _extension_ **_Live Server_** sudah terpasang
